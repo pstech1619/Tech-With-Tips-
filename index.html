@@ -32,13 +32,40 @@ padding-bottom:90px;
 .logo span{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center}
 .btn{background:var(--primary);color:#fff;padding:10px 22px;border-radius:14px;text-decoration:none;font-weight:600}
 
-/* HERO */
-.hero{position:relative;min-height:260px;border-radius:0 0 22px 22px;overflow:hidden}
-.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') center/cover}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.75),rgba(16,185,129,.75))}
-.hero-text{position:relative;color:#fff;text-align:center;padding:70px 16px}
-.hero-text h1{font-family:Poppins;font-size:28px}
-.hero-text p{opacity:.95}
+/* HERO SLIDER */
+.hero{
+position:relative;
+height:280px;
+overflow:hidden;
+border-radius:0 0 22px 22px;
+}
+
+.hero-slider img{
+position:absolute;
+width:100%;
+height:100%;
+object-fit:cover;
+opacity:0;
+animation:slide 12s infinite;
+}
+
+.hero-slider img:nth-child(1){animation-delay:0s}
+.hero-slider img:nth-child(2){animation-delay:4s}
+.hero-slider img:nth-child(3){animation-delay:8s}
+
+@keyframes slide{
+0%{opacity:0}
+10%{opacity:1}
+30%{opacity:1}
+40%{opacity:0}
+100%{opacity:0}
+}
+
+.hero-overlay{
+position:absolute;
+inset:0;
+background:linear-gradient(135deg,rgba(37,99,235,.6),rgba(16,185,129,.6))
+}
 
 /* SEARCH */
 .search{margin:-30px auto 40px;max-width:600px;position:relative;z-index:10}
@@ -74,19 +101,18 @@ padding-bottom:90px;
 <header class="header">
 <div class="container nav">
 <div class="logo"><span>T</span>TechWithTips</div>
-<a class="btn" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">Join WhatsApp</a>
+<a class="btn" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">Join WhatsApp</a>
 </div>
 </header>
 
 <section>
 <div class="hero">
-<div class="hero-bg"></div>
-<div class="hero-overlay"></div>
-<div class="hero-text">
-<h1>Trusted WhatsApp Earning Apps</h1>
-<p>Verified & Genuine Apps Only</p>
+<div class="hero-slider">
+<img src="PK.jpeg" loading="lazy">
+<img src="PKS.jpeg" loading="lazy">
+<img src="PKS1.jpeg" loading="lazy">
 </div>
+<div class="hero-overlay"></div>
 </div>
 
 <div class="container">
@@ -104,25 +130,17 @@ href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">Join WhatsApp</a>
 
 <!-- FLOATING -->
 <div class="social-float">
-<a class="social-btn whatsapp" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">
-<i class="fab fa-whatsapp"></i></a>
-<a class="social-btn telegram" target="_blank"
-href="https://t.me/techwithtips0">
-<i class="fab fa-telegram-plane"></i></a>
+<a class="social-btn whatsapp" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"><i class="fab fa-whatsapp"></i></a>
+<a class="social-btn telegram" target="_blank" href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i></a>
 </div>
 
 <!-- BOTTOM BAR -->
 <div class="bottom-bar">
-<a class="wa" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">
-<i class="fab fa-whatsapp"></i> WhatsApp</a>
-<a class="tg" target="_blank"
-href="https://t.me/techwithtips0">
-<i class="fab fa-telegram-plane"></i> Telegram</a>
+<a class="wa" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"><i class="fab fa-whatsapp"></i> WhatsApp</a>
+<a class="tg" target="_blank" href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i> Telegram</a>
 </div>
 
-<!-- 🔥 FAST FIREBASE + CACHE -->
+<!-- 🔥 FAST FIREBASE -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
@@ -139,10 +157,9 @@ const app=initializeApp(firebaseConfig);
 const db=getDatabase(app);
 const box=document.getElementById("apps");
 
-/* render */
-function render(list){
+function render(apps){
 box.innerHTML="";
-list.forEach(a=>{
+apps.forEach(a=>{
 box.innerHTML+=`
 <div class="app-card">
 <div class="app-head">
@@ -162,17 +179,12 @@ ${a.logoUrl?`<img src="${a.logoUrl}" loading="lazy" style="width:100%;height:100
 });
 }
 
-/* CACHE FIRST */
 const cache=localStorage.getItem("apps_cache");
-if(cache){
-render(JSON.parse(cache));
-}
+if(cache) render(JSON.parse(cache));
 
-/* FIREBASE LOAD */
 const snap=await get(ref(db,"apps"));
 if(snap.exists()){
-const apps=Object.values(snap.val());
-apps.sort((a,b)=>(a.rank||999)-(b.rank||999));
+const apps=Object.values(snap.val()).sort((a,b)=>(a.rank||999)-(b.rank||999));
 localStorage.setItem("apps_cache",JSON.stringify(apps));
 render(apps);
 }
