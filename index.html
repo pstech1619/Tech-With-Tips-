@@ -1,1776 +1,209 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>TechWithTips - WhatsApp Earning Apps Platform</title>
-    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>TechWithTips – WhatsApp Earning Apps</title>
 
-    <style>
-        /* ================== BASE / WEBSITE STYLES ================== */
-        * { margin: 0; padding: 0; box-sizing: border-box; }
+<link rel="preconnect" href="https://www.gstatic.com">
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Poppins:wght@600;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
-        :root {
-            --orange: #ff6b35;
-            --dark-blue: #1a3a52;
-            --white: #ffffff;
-            --light-gray: #f5f5f5;
-            --red: #e63946;
-            --neon-blue: #00d4ff;
-            --green: #25d366;
-        }
+<style>
+:root{
+--primary:#2563eb;
+--secondary:#10b981;
+--accent:#f97316;
+--dark:#1e293b;
+--radius:14px;
+}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Inter,sans-serif;color:var(--dark)}
+.container{max-width:1200px;margin:auto;padding:0 16px}
 
-        html { scroll-behavior: smooth; }
+/* HEADER */
+.header{position:sticky;top:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06);z-index:99}
+.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
+.logo{display:flex;gap:10px;align-items:center;font-family:Poppins;font-size:22px;font-weight:700}
+.logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center}
+.btn{padding:10px 22px;border-radius:var(--radius);font-weight:600;background:var(--primary);color:#fff}
 
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            background-color: var(--light-gray);
-            color: var(--dark-blue);
-            overflow-x: hidden;
-        }
+/* HERO */
+.hero{position:relative;height:300px;overflow:hidden}
+.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s}
+.slide.active{opacity:1}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.7),rgba(16,185,129,.7))}
+.hero-text{position:absolute;z-index:2;color:#fff;text-align:center;width:100%;top:50%;transform:translateY(-50%)}
+.hero-text h1{font-family:Poppins;font-size:32px}
 
-        @keyframes glow {
-            0%, 100% {
-                box-shadow: 0 0 10px rgba(255, 107, 53, 0.5), 0 4px 15px rgba(0, 0, 0, 0.1);
-            }
-            50% {
-                box-shadow: 0 0 20px rgba(255, 107, 53, 0.8), 0 4px 15px rgba(0, 0, 0, 0.2);
-            }
-        }
+/* SEARCH */
+.search{margin:-30px auto 40px;max-width:600px;z-index:5;position:relative}
+.search input{width:100%;padding:15px;border-radius:var(--radius);border:2px solid #e5e7eb}
 
-        @keyframes neon-glow {
-            0%, 100% {
-                box-shadow: 0 0 15px rgba(0, 212, 255, 0.6), inset 0 0 15px rgba(0, 212, 255, 0.2);
-            }
-            50% {
-                box-shadow: 0 0 30px rgba(0, 212, 255, 0.9), inset 0 0 20px rgba(0, 212, 255, 0.3);
-            }
-        }
+/* APPS */
+.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
+.app-card{border:1px solid #e5e7eb;border-radius:var(--radius);padding:16px}
+.app-head{display:flex;gap:14px;align-items:center}
+.app-icon{width:60px;height:60px;border-radius:14px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px}
+.rank{margin-left:auto;background:var(--accent);color:#fff;padding:4px 10px;border-radius:14px}
 
-        @keyframes pulse {
-            0%, 100% { transform: scale(1); opacity: 1; }
-            50%      { transform: scale(1.05); opacity: 0.9; }
-        }
+/* LOADING */
+.shimmer{height:120px;border-radius:var(--radius);
+background:linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 37%,#f1f5f9 63%);
+background-size:400% 100%;animation:shimmer 1.4s infinite}
+@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
 
-        @keyframes slide-down {
-            from { opacity: 0; transform: translateY(-20px); }
-            to   { opacity: 1; transform: translateY(0); }
-        }
+/* FLOATING SOCIAL */
+.social-float{position:fixed;right:14px;top:45%;display:flex;flex-direction:column;gap:12px;z-index:9999}
+.social-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.whatsapp{background:#25D366}
+.telegram{background:#229ED9}
 
-        @keyframes fade-in {
-            from { opacity: 0; }
-            to   { opacity: 1; }
-        }
+/* MOBILE BAR */
+.bottom-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;padding:10px;z-index:9999}
+.bottom-bar a{flex:1;margin:0 6px;padding:12px;border-radius:var(--radius);text-align:center;font-weight:700;color:#fff}
+.wa{background:#25D366}
+.tg{background:#229ED9}
 
-        @keyframes underline {
-            from { width: 0; }
-            to   { width: 100%; }
-        }
-
-        @keyframes slide-in {
-            from { transform: translateX(100%); }
-            to   { transform: translateX(0); }
-        }
-
-        /* HEADER */
-        .header {
-            position: fixed;
-            top: 0; left: 0; right: 0;
-            background: linear-gradient(135deg, var(--orange) 0%, #ff8555 100%);
-            padding: 1rem 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
-            z-index: 100;
-            animation: slide-down 0.5s ease-out;
-        }
-
-        .logo {
-            font-size: 1.8rem;
-            font-weight: 900;
-            color: white;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            cursor: pointer;
-            transition: transform 0.3s ease;
-        }
-        .logo:hover { transform: scale(1.05); }
-
-        .logo-icon {
-            width: 40px;
-            height: 40px;
-            background: linear-gradient(135deg, white, rgba(255, 255, 255, 0.8));
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-weight: bold;
-            color: var(--orange);
-            font-size: 1.5rem;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-        }
-
-        .nav-menu {
-            display: flex;
-            gap: 2rem;
-            align-items: center;
-        }
-
-        .nav-btn {
-            color: white;
-            background: none;
-            border: none;
-            font-size: 1rem;
-            font-weight: 600;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-        }
-
-        .nav-btn::after {
-            content: '';
-            position: absolute;
-            bottom: -5px; left: 0;
-            width: 0; height: 2px;
-            background: white;
-            transition: width 0.3s ease;
-        }
-        .nav-btn:hover::after {
-            width: 100%;
-            animation: underline 0.3s ease;
-        }
-        .nav-btn:hover {
-            text-shadow: 0 0 15px rgba(255, 255, 255, 0.8);
-            transform: scale(1.05);
-        }
-
-        .header-right {
-            display: flex;
-            gap: 1.5rem;
-            align-items: center;
-        }
-
-        .whatsapp-btn {
-            background: var(--green);
-            color: white;
-            border: none;
-            padding: 0.7rem 1.5rem;
-            border-radius: 25px;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.3);
-        }
-        .whatsapp-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.6);
-            animation: glow 1.5s ease-in-out infinite;
-        }
-
-        .hamburger {
-            display: flex;
-            flex-direction: column;
-            gap: 5px;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-        .hamburger span {
-            width: 25px; height: 3px;
-            background: white;
-            border-radius: 2px;
-            transition: all 0.3s ease;
-        }
-
-        /* MAIN CONTENT */
-        .main-content {
-            margin-top: 80px;
-            min-height: 100vh;
-            padding: 2rem 1rem;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fade-in 0.5s ease-out;
-        }
-
-        .search-container {
-            max-width: 600px;
-            margin: 2rem auto;
-            position: relative;
-        }
-
-        .search-bar {
-            width: 100%;
-            padding: 1rem 1.5rem;
-            padding-right: 3rem;
-            border: 2px solid var(--orange);
-            border-radius: 30px;
-            font-size: 1rem;
-            background: white;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
-            transition: all 0.3s ease;
-        }
-        .search-bar:focus {
-            outline: none;
-            box-shadow: 0 0 25px rgba(255, 107, 53, 0.5);
-            border-color: #ff8555;
-            transform: scale(1.02);
-        }
-
-        .search-icon {
-            position: absolute;
-            right: 1.5rem;
-            top: 50%;
-            transform: translateY(-50%);
-            color: var(--orange);
-            font-size: 1.2rem;
-            cursor: pointer;
-        }
-
-        .tabs-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-            display: flex;
-            gap: 2rem;
-            border-bottom: 2px solid #e0e0e0;
-            padding-bottom: 1rem;
-        }
-
-        .tab-btn {
-            background: none;
-            border: none;
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: #999;
-            cursor: pointer;
-            position: relative;
-            transition: all 0.3s ease;
-            padding: 0.5rem 0;
-        }
-        .tab-btn.active { color: var(--orange); }
-        .tab-btn.active::after {
-            content: '';
-            position: absolute;
-            bottom: -1rem; left: 0;
-            width: 100%; height: 3px;
-            background: linear-gradient(90deg, var(--orange), #ff8555);
-            animation: underline 0.4s ease;
-        }
-        .tab-btn:hover { color: var(--orange); transform: scale(1.05); }
-
-        .apps-container {
-            max-width: 1200px;
-            margin: 2rem auto;
-        }
-
-        .app-item {
-            background: white;
-            border-radius: 15px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1.5rem;
-            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-        .app-item::before {
-            content: '';
-            position: absolute;
-            top: 0; left: -100%;
-            width: 100%; height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 107, 53, 0.1), transparent);
-            transition: left 0.5s ease;
-        }
-        .app-item:hover::before { left: 100%; }
-        .app-item:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.2);
-        }
-
-        .app-icon {
-            width: 70px; height: 70px;
-            border-radius: 15px;
-            background: linear-gradient(135deg, var(--orange), #ff8555);
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 2rem; font-weight: bold;
-            flex-shrink: 0;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-            transition: all 0.3s ease;
-        }
-
-        /* image logo */
-        .app-icon img.app-logo-img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            border-radius: 15px;
-            display: block;
-        }
-
-        .app-item:hover .app-icon {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.5);
-        }
-
-        .rank-badge {
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--dark-blue), #2a5a7f);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: 900; font-size: 1.2rem;
-            flex-shrink: 0;
-            box-shadow: 0 4px 12px rgba(26, 58, 82, 0.3);
-            transition: all 0.3s ease;
-        }
-        .app-item:hover .rank-badge {
-            transform: scale(1.15);
-            box-shadow: 0 6px 20px rgba(26, 58, 82, 0.5);
-        }
-
-        .app-info { flex: 1; }
-        .app-name {
-            font-size: 1.2rem;
-            font-weight: 900;
-            color: var(--dark-blue);
-            margin-bottom: 0.3rem;
-        }
-        .app-subtitle {
-            font-size: 0.9rem;
-            color: var(--red);
-            font-weight: 600;
-        }
-
-        .download-btn {
-            background: linear-gradient(135deg, var(--neon-blue), #00e6ff);
-            color: white;
-            border: none;
-            padding: 0.8rem 1.8rem;
-            border-radius: 25px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(0, 212, 255, 0.4);
-            position: relative;
-            overflow: hidden;
-            flex-shrink: 0;
-        }
-        .download-btn::before {
-            content: '';
-            position: absolute;
-            top: -50%; left: -50%;
-            width: 200%; height: 200%;
-            background: radial-gradient(circle, rgba(255, 255, 255, 0.3), transparent);
-            animation: pulse 2s ease-in-out infinite;
-        }
-        .download-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 30px rgba(0, 212, 255, 0.8);
-            animation: neon-glow 1.5s ease-in-out infinite;
-        }
-
-        .page { display: none; animation: fade-in 0.5s ease-out; }
-        .page.active { display: block; }
-
-        .page-title {
-            font-size: 2.5rem;
-            font-weight: 900;
-            color: var(--dark-blue);
-            text-align: center;
-            margin-bottom: 2rem;
-            position: relative;
-            display: inline-block;
-        }
-        .page-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px; left: 50%;
-            transform: translateX(-50%);
-            width: 80px; height: 4px;
-            background: linear-gradient(90deg, var(--orange), #ff8555);
-            border-radius: 2px;
-        }
-
-        .page-content {
-            max-width: 900px;
-            margin: 0 auto;
-            padding: 2rem;
-        }
-
-        .about-logo { text-align: center; margin-bottom: 2rem; }
-        .about-logo-icon {
-            width: 100px; height: 100px;
-            background: linear-gradient(135deg, var(--orange), #ff8555);
-            border-radius: 20px;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 3rem; font-weight: bold;
-            margin: 0 auto 1rem;
-            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.4);
-        }
-        .about-text {
-            font-size: 1.05rem;
-            line-height: 1.8;
-            color: #555;
-            text-align: justify;
-            margin-bottom: 2rem;
-        }
-        .about-buttons {
-            display: flex;
-            gap: 1rem;
-            justify-content: center;
-            flex-wrap: wrap;
-        }
-        .about-btn {
-            background: linear-gradient(135deg, var(--orange), #ff8555);
-            color: white;
-            border: none;
-            padding: 0.9rem 2rem;
-            border-radius: 25px;
-            font-weight: 700;
-            cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.3);
-        }
-        .about-btn:hover {
-            transform: scale(1.08);
-            box-shadow: 0 6px 25px rgba(255, 107, 53, 0.6);
-        }
-
-        .policy-section { margin-bottom: 2rem; }
-        .policy-heading {
-            font-size: 1.3rem;
-            font-weight: 700;
-            color: var(--orange);
-            margin-bottom: 0.8rem;
-            margin-top: 1.5rem;
-        }
-        .policy-text {
-            font-size: 1rem;
-            line-height: 1.8;
-            color: #555;
-            text-align: justify;
-        }
-
-        .blog-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-        .blog-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
-            transition: all 0.3s ease;
-        }
-        .blog-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 30px rgba(255, 107, 53, 0.2);
-        }
-        .blog-card-header {
-            background: linear-gradient(135deg, var(--orange), #ff8555);
-            padding: 2rem;
-            color: white;
-            text-align: center;
-        }
-        .blog-card-title { font-size: 1.2rem; font-weight: 700; }
-        .blog-card-body { padding: 1.5rem; }
-        .blog-card-date { font-size: 0.9rem; color: #999; margin-bottom: 0.5rem; }
-        .blog-card-text { font-size: 0.95rem; line-height: 1.6; color: #555; }
-        .no-blogs {
-            text-align: center;
-            padding: 3rem;
-            font-size: 1.2rem;
-            color: #999;
-        }
-
-        .contact-info {
-            background: white;
-            border: 2px solid var(--orange);
-            border-radius: 15px;
-            padding: 2rem;
-            max-width: 500px;
-            margin: 2rem auto;
-            box-shadow: 0 4px 20px rgba(255, 107, 53, 0.2);
-        }
-        .contact-item {
-            margin-bottom: 1.5rem;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-        .contact-icon {
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--orange), #ff8555);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.5rem; flex-shrink: 0;
-        }
-        .contact-text { display: flex; flex-direction: column; }
-        .contact-label { font-weight: 700; color: var(--dark-blue); font-size: 0.9rem; }
-        .contact-value {
-            font-size: 1rem; color: #555;
-            text-decoration: none; transition: color 0.3s ease;
-        }
-        .contact-value:hover { color: var(--orange); }
-
-        .floating-social {
-            position: fixed;
-            right: 20px;
-            top: 50%;
-            transform: translateY(-50%);
-            display: flex;
-            flex-direction: column;
-            gap: 1rem;
-            z-index: 50;
-            animation: slide-down 0.8s ease-out;
-        }
-        .social-icon {
-            width: 50px; height: 50px;
-            background: linear-gradient(135deg, var(--orange), #ff8555);
-            border-radius: 50%;
-            display: flex; align-items: center; justify-content: center;
-            color: white; font-size: 1.3rem; cursor: pointer;
-            transition: all 0.3s ease;
-            box-shadow: 0 4px 15px rgba(255, 107, 53, 0.4);
-            overflow: hidden;
-        }
-        .social-icon img {
-            width: 70%; height: 70%;
-            object-fit: contain; display: block;
-        }
-        .social-icon:hover {
-            transform: scale(1.15);
-            box-shadow: 0 0 30px rgba(255, 107, 53, 0.8);
-            animation: neon-glow 1.5s ease-in-out infinite;
-        }
-
-        .footer {
-            background: linear-gradient(135deg, #cc5a2c, #ff6b35);
-            color: white;
-            padding: 2rem;
-            text-align: center;
-            margin-top: 3rem;
-        }
-        .footer-buttons {
-            display: flex;
-            justify-content: center;
-            gap: 1.5rem;
-            flex-wrap: wrap;
-            margin-bottom: 1.5rem;
-        }
-        .footer-btn {
-            background: rgba(255, 255, 255, 0.2);
-            color: white;
-            border: 1px solid rgba(255, 255, 255, 0.5);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            font-weight: 600;
-            cursor: pointer;
-            transition: all 0.3s ease;
-        }
-        .footer-btn:hover {
-            background: white;
-            color: var(--orange);
-            transform: scale(1.05);
-        }
-        .footer-text {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.9);
-        }
-
-        @media (min-width: 769px) {
-            .mobile-menu { display: none !important; }
-        }
-
-        @media (max-width: 1024px) {
-            .main-content { padding: 1.5rem 1rem; }
-        }
-
-        @media (max-width: 768px) {
-            .header { padding: 0.7rem 0.8rem; }
-            .nav-menu { display: none; }
-            .header-right {
-                gap: 0.5rem;
-                justify-content: flex-end;
-            }
-            .header-right .whatsapp-btn { display: none; }
-            .hamburger { display: flex; }
-
-            .hamburger.active span:nth-child(1) {
-                transform: rotate(45deg) translate(8px, 8px);
-            }
-            .hamburger.active span:nth-child(2) { opacity: 0; }
-            .hamburger.active span:nth-child(3) {
-                transform: rotate(-45deg) translate(7px, -7px);
-            }
-
-            .mobile-menu {
-                display: none;
-                position: fixed;
-                top: 70px; right: 0;
-                height: calc(100% - 70px);
-                width: 70%; max-width: 320px;
-                background: linear-gradient(135deg, var(--orange), #ff8555);
-                padding: 1rem;
-                z-index: 120;
-                border-radius: 24px 0 0 24px;
-                box-shadow: -4px 0 20px rgba(0,0,0,0.25);
-                animation: slide-in 0.3s ease-out;
-            }
-            .mobile-menu.active { display: block; }
-
-            .mobile-menu-panel {
-                display: flex;
-                flex-direction: column;
-                gap: 0.6rem;
-                height: 100%;
-            }
-            .mobile-close {
-                align-self: flex-end;
-                background: rgba(255, 255, 255, 0.25);
-                border: none;
-                color: #fff;
-                font-size: 1.1rem;
-                border-radius: 999px;
-                padding: 0.2rem 0.7rem;
-                cursor: pointer;
-                margin-bottom: 0.5rem;
-            }
-            .mobile-nav-btn {
-                width: 100%;
-                text-align: left;
-                padding: 0.8rem 1rem;
-                border-radius: 12px;
-                background: rgba(255,255,255,0.18);
-                border: 1px solid rgba(255,255,255,0.45);
-                color: #fff;
-                font-size: 0.98rem;
-                font-weight: 600;
-            }
-
-            .main-content { margin-top: 70px; padding: 1rem; }
-
-            .app-item {
-                flex-direction: column;
-                text-align: center;
-                padding: 1rem;
-            }
-            .app-item > * { width: 100%; }
-            .download-btn { width: 100%; }
-
-            .floating-social {
-                top: auto;
-                bottom: 15px;
-                right: 10px;
-                transform: none;
-                flex-direction: row;
-                gap: 0.6rem;
-            }
-            .social-icon { width: 40px; height: 40px; font-size: 1rem; }
-
-            .page-title { font-size: 1.8rem; }
-            .page-content { padding: 1rem; }
-
-            .tabs-container {
-                gap: 1rem;
-                padding-bottom: 0.5rem;
-                overflow-x: auto;
-            }
-
-            .footer-buttons { gap: 0.5rem; }
-            .footer-btn { padding: 0.5rem 0.8rem; font-size: 0.75rem; }
-
-            .blog-grid { grid-template-columns: 1fr; }
-        }
-
-        @media (max-width: 480px) {
-            .logo { font-size: 1.3rem; }
-            .logo-icon { width: 35px; height: 35px; font-size: 1.2rem; }
-            .page-title { font-size: 1.5rem; }
-            .rank-badge { width: 40px; height: 40px; font-size: 1rem; }
-            .app-icon { width: 60px; height: 60px; font-size: 1.5rem; }
-            .search-container { max-width: 100%; }
-            .contact-info { margin: 1rem 0; }
-        }
-
-        /* ================== LOGIN / SIGNUP STYLES ================== */
-        .animated-gradient {
-            background: linear-gradient(-45deg,#ff6b35,#ff9558,#ff6b35,#ffa500,#ff8c42);
-            background-size:400% 400%;
-            animation: gradientShift 15s ease infinite;
-            position:fixed;
-            width:100%; height:100%;
-            top:0; left:0;
-            z-index:-1;
-        }
-        @keyframes gradientShift{
-            0%{background-position:0% 50%}
-            50%{background-position:100% 50%}
-            100%{background-position:0% 50%}
-        }
-        .particles{
-            position:fixed;
-            width:100%; height:100%;
-            overflow:hidden; z-index:-1;
-            pointer-events:none
-        }
-        .particle{
-            position:absolute;
-            background:rgba(255,255,255,.1);
-            border-radius:50%;
-            animation:float 20s infinite linear;
-        }
-        @keyframes float{
-            0%{transform:translateY(100vh) scale(0);opacity:0}
-            10%,90%{opacity:.4}
-            100%{transform:translateY(-100vh) scale(1.5);opacity:0}
-        }
-        .glass-card{
-            background:rgba(255,255,255,.15);
-            backdrop-filter:blur(20px);
-            border-radius:20px;
-            border:1px solid rgba(255,255,255,.3);
-            box-shadow:0 8px 32px rgba(0,0,0,.2);
-            padding:2rem;
-            width:90%;
-            max-width:450px;
-            transition:.3s
-        }
-        .glass-card:hover{
-            transform:translateY(-5px);
-            box-shadow:0 12px 40px rgba(0,0,0,.3)
-        }
-        .auth-tab-container{
-            display:flex;
-            justify-content:center;
-            margin-bottom:2rem;
-            background:rgba(255,255,255,.1);
-            border-radius:50px;
-            padding:4px
-        }
-        .auth-tab{
-            flex:1;
-            padding:12px;
-            text-align:center;
-            cursor:pointer;
-            color:rgba(255,255,255,.7);
-            font-weight:600;
-            border-radius:50px;
-            transition:.3s
-        }
-        .auth-tab.active{
-            background:white;
-            color:#ff6b35;
-            box-shadow:0 4px 15px rgba(255,107,53,.3)
-        }
-        .auth-form-container{
-            display:none;
-            animation:fadeIn .5s ease
-        }
-        .auth-form-container.active{display:block}
-        .input-group{
-            position:relative;
-            margin-bottom:1.5rem;
-            transition:.2s
-        }
-        .input-group i{
-            position:absolute;
-            left:15px;
-            top:50%;
-            transform:translateY(-50%);
-            color:#ff6b35;
-            font-size:18px;
-            pointer-events:none;          /* icon click block fix */
-        }
-        .input-group input{
-            width:100%;
-            padding:14px 45px;
-            border:2px solid rgba(255,255,255,.2);
-            border-radius:50px;
-            background:rgba(255,255,255,.9);
-            font-size:16px;
-            outline:none;
-            transition:.3s;
-            position:relative;            /* click area above */
-            z-index:1;
-        }
-        .input-group input:focus{
-            border-color:#ff6b35;
-            background:white;
-            box-shadow:0 0 20px rgba(255,107,53,.4);
-            transform:translateY(-2px)
-        }
-        .password-toggle{
-            position:absolute;
-            right:15px;
-            top:50%;
-            transform:translateY(-50%);
-            cursor:pointer;
-            color:#666;
-            z-index:2;
-        }
-        .btn-primary{
-            width:100%;
-            padding:14px;
-            background:linear-gradient(135deg,#ff6b35,#ffa500);
-            color:white;
-            border:none;
-            border-radius:50px;
-            font-size:18px;
-            font-weight:600;
-            cursor:pointer;
-            transition:.3s;
-            text-transform:uppercase;
-            position:relative;
-            overflow:hidden;
-            display:flex;
-            justify-content:center;
-            align-items:center
-        }
-        .btn-primary:hover{
-            transform:translateY(-3px);
-            box-shadow:0 10px 30px rgba(255,107,53,.5)
-        }
-        .spinner{
-            display:none;
-            width:20px; height:20px;
-            border:3px solid rgba(255,255,255,.3);
-            border-top-color:white;
-            border-radius:50%;
-            animation:spin .8s linear infinite
-        }
-        @keyframes spin{to{transform:rotate(360deg)}}
-        .btn-primary.loading .btn-text{display:none}
-        .btn-primary.loading .spinner{display:block}
-        .main-heading{text-align:center;color:white;font-size:3rem;font-weight:700;margin-bottom:.5rem}
-        .sub-heading{text-align:center;color:white;font-size:1.2rem;margin-bottom:2rem}
-
-        #login-screen { min-height: 100vh; }
-        #app-screen { display:none; }
-    </style>
+@media(max-width:768px){
+.bottom-bar{display:flex}
+.social-float{display:none}
+.hero-text h1{font-size:24px}
+}
+</style>
 </head>
+
 <body>
 
-    <!-- ========== LOGIN / SIGNUP SCREEN ========== -->
-    <div id="login-screen">
-        <div class="animated-gradient"></div>
-        <div id="particles" class="particles"></div>
+<header class="header">
+<div class="container nav">
+<div class="logo"><div class="logo-icon">T</div>TechWithTips</div>
+<a class="btn" target="_blank"
+href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52nESKO">Join WhatsApp</a>
+</div>
+</header>
+
+<section>
+<div class="hero">
+<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1526378722443-4bbd3a6b2e98')"></div>
+<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')"></div>
+<div class="hero-overlay"></div>
+<div class="hero-text">
+<h1>Trusted WhatsApp Earning Apps</h1>
+<p>Verified & genuine earning apps</p>
+</div>
+</div>
+
+<div class="container">
+<div class="search">
+<input placeholder="Search earning apps...">
+</div>
+
+<div class="apps" id="apps">
+<div class="shimmer"></div>
+<div class="shimmer"></div>
+<div class="shimmer"></div>
+</div>
+</div>
+</section>
+
+<!-- FLOATING SOCIAL -->
+<div class="social-float">
+<a class="social-btn whatsapp" target="_blank"
+href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52nESKO"><i class="fab fa-whatsapp"></i></a>
+<a class="social-btn telegram" target="_blank"
+href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i></a>
+</div>
+
+<!-- MOBILE BAR -->
+<div class="bottom-bar">
+<a class="wa" target="_blank"
+href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52nESKO">
+<i class="fab fa-whatsapp"></i> WhatsApp
+</a>
+<a class="tg" target="_blank"
+href="https://t.me/techwithtips0">
+<i class="fab fa-telegram-plane"></i> Telegram
+</a>
+</div>
+
+<script>
+/* SLIDER */
+let slides=document.querySelectorAll(".slide"),i=0;
+setInterval(()=>{
+slides[i].classList.remove("active");
+i=(i+1)%slides.length;
+slides[i].classList.add("active");
+},3500);
+</script>
+
+<!-- FIREBASE FAST + CACHE -->
+<script type="module">
+import {
+initializeApp
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import {
+getDatabase,
+ref,
+query,
+orderByChild,
+limitToFirst,
+get
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+
+const firebaseConfig={
+apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
+authDomain:"pawan-9dd64.firebaseapp.com",
+databaseURL:"https://pawan-9dd64-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId:"pawan-9dd64",
+appId:"1:261645960158:web:69b39c9ac9e132c1ef134f"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getDatabase(app);
+
+let allApps=[];
+
+/* CACHE FIRST */
+const cached=localStorage.getItem("apps_cache");
+if(cached){
+allApps=JSON.parse(cached);
+render();
+}
+
+/* FAST QUERY */
+async function loadApps(){
+const q=query(ref(db,"apps"),orderByChild("rank"),limitToFirst(12));
+const snap=await get(q);
+allApps=snap.exists()?Object.values(snap.val()):[];
+localStorage.setItem("apps_cache",JSON.stringify(allApps));
+render();
+}
+
+setTimeout(loadApps,300);
+
+function render(){
+const c=document.getElementById("apps");
+c.innerHTML="";
+allApps.forEach(a=>{
+c.innerHTML+=`
+<div class="app-card">
+<div class="app-head">
+<div class="app-icon">${a.logoUrl?`<img src="${a.logoUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:14px">`:"📱"}</div>
+<div>
+<h3>${a.name}</h3>
+<p>${a.subtitle||""}</p>
+</div>
+<div class="rank">#${a.rank||"-"}</div>
+</div>
+<div style="margin-top:14px">
+<a class="btn" href="${a.url}" target="_blank">Download</a>
+</div>
+</div>`;
+});
+}
+</script>
 
-        <div class="min-h-screen flex flex-col items-center justify-center p-4">
-            <h1 class="main-heading">Welcome Back</h1>
-            <p class="sub-heading">Sign in to continue your journey</p>
-            <div class="glass-card">
-                <div class="auth-tab-container">
-                    <div class="auth-tab active" onclick="switchAuthTab('login')">Login</div>
-                    <div class="auth-tab" onclick="switchAuthTab('signup')">Create Account</div>
-                </div>
-
-                <!-- LOGIN FORM -->
-                <div id="login-form" class="auth-form-container active">
-                    <form onsubmit="handleLogin(event)">
-                        <div class="input-group"><i class="fas fa-envelope"></i>
-                            <input id="login-email" type="email" placeholder="Email Address" required>
-                        </div>
-                        <div class="input-group"><i class="fas fa-lock"></i>
-                            <input id="login-password" type="password" placeholder="Password" required>
-                            <i class="fas fa-eye password-toggle" onclick="togglePassword('login-password')"></i>
-                        </div>
-                        <button class="btn-primary" type="submit">
-                            <span class="btn-text">Login</span>
-                            <div class="spinner"></div>
-                        </button>
-                    </form>
-                </div>
-
-                <!-- SIGNUP FORM -->
-                <div id="signup-form" class="auth-form-container">
-                    <form onsubmit="handleSignup(event)">
-                        <div class="input-group"><i class="fas fa-user"></i>
-                            <input id="full-name" type="text" placeholder="Full Name" required>
-                        </div>
-                        <div class="input-group"><i class="fas fa-envelope"></i>
-                            <input id="signup-email" type="email" placeholder="Email Address" required>
-                        </div>
-                        <div class="input-group"><i class="fas fa-lock"></i>
-                            <input id="signup-password" type="password" placeholder="Password" required minlength="8">
-                            <i class="fas fa-eye password-toggle" onclick="togglePassword('signup-password')"></i>
-                        </div>
-                        <div class="input-group"><i class="fas fa-lock"></i>
-                            <input id="confirm-password" type="password" placeholder="Confirm Password" required minlength="8">
-                            <i class="fas fa-eye password-toggle" onclick="togglePassword('confirm-password')"></i>
-                        </div>
-                        <button class="btn-primary" type="submit">
-                            <span class="btn-text">Create Account</span>
-                            <div class="spinner"></div>
-                        </button>
-                    </form>
-                </div>
-            </div>
-        </div>
-    </div>
-
-    <!-- ========== MAIN WEBSITE (AFTER LOGIN) ========== -->
-    <div id="app-screen">
-        <!-- HEADER -->
-        <header class="header">
-            <div class="logo" onclick="switchPage('home')">
-                <div class="logo-icon">💰</div>
-                <span>TechWithTips</span>
-            </div>
-
-            <nav class="nav-menu" id="navMenu">
-                <button class="nav-btn" onclick="switchPage('home')">Home</button>
-                <button class="nav-btn" onclick="switchPage('about')">About</button>
-                <button class="nav-btn" onclick="switchPage('policy')">Policy</button>
-                <button class="nav-btn" onclick="switchPage('blog')">Blog</button>
-                <button class="nav-btn" onclick="switchPage('contact')">Contact</button>
-                <button class="nav-btn" onclick="switchPage('admin')">Admin</button>
-            </nav>
-
-            <div class="header-right">
-                <button class="whatsapp-btn" onclick="openWhatsApp()">
-                    <span>💬</span><span>Join WhatsApp</span>
-                </button>
-                <button class="whatsapp-btn" style="background:#1a3a52;" onclick="logoutUser()">
-                    <span>🚪</span><span>Logout</span>
-                </button>
-                <button class="hamburger" id="hamburger" onclick="toggleMobileMenu()">
-                    <span></span><span></span><span></span>
-                </button>
-            </div>
-        </header>
-
-        <!-- MOBILE MENU -->
-        <nav class="mobile-menu" id="mobileMenu">
-            <div class="mobile-menu-panel">
-                <button class="mobile-close" onclick="toggleMobileMenu()">✕</button>
-
-                <button class="nav-btn mobile-nav-btn" onclick="switchPageMobile('home')">Home</button>
-                <button class="nav-btn mobile-nav-btn" onclick="switchPageMobile('about')">About</button>
-                <button class="nav-btn mobile-nav-btn" onclick="switchPageMobile('policy')">Policy</button>
-                <button class="nav-btn mobile-nav-btn" onclick="switchPageMobile('blog')">Blog</button>
-                <button class="nav-btn mobile-nav-btn" onclick="switchPageMobile('contact')">Contact</button>
-                <button class="nav-btn mobile-nav-btn" onclick="switchPageMobile('admin')">Admin</button>
-            </div>
-        </nav>
-
-        <!-- MAIN CONTENT -->
-        <div class="main-content">
-            <!-- HOME PAGE -->
-            <div id="home" class="page active">
-                <div class="search-container">
-                    <input 
-                        type="text" 
-                        class="search-bar" 
-                        placeholder="Search All Apps Here…" 
-                        id="searchInput"
-                        onkeyup="searchApps()"
-                    >
-                    <span class="search-icon">🔍</span>
-                </div>
-
-                <div class="tabs-container">
-                    <button class="tab-btn active" onclick="switchAppTab('all-apps', this)">All Apps</button>
-                    <button class="tab-btn" onclick="switchAppTab('new-apps', this)">New Apps</button>
-                </div>
-
-                <div class="apps-container" id="appsContainer"></div>
-            </div>
-
-            <!-- ABOUT PAGE -->
-            <div id="about" class="page">
-                <div class="page-content">
-                    <div class="about-logo">
-                        <div class="about-logo-icon">💰</div>
-                        <h2 class="page-title">About Us</h2>
-                    </div>
-                    
-                    <p class="about-text">
-                        Welcome to TechWithTips, your ultimate destination for discovering the best WhatsApp earning applications. 
-                        Our platform is designed to help users find legitimate and trustworthy apps that offer real earning opportunities 
-                        right from their WhatsApp. We meticulously curate and test every app before featuring it, ensuring quality and reliability.
-                    </p>
-
-                    <p class="about-text">
-                        Founded with the vision to empower individuals with easy access to income-generating opportunities, TechWithTips 
-                        has become the go-to platform for thousands of users worldwide. Our team works tirelessly to update our app listings, 
-                        add new opportunities, and provide detailed information to help you make informed decisions. Whether you're looking 
-                        for passive income or active earning opportunities, TechWithTips is your trusted partner.
-                    </p>
-
-                    <p class="about-text">
-                        We believe in transparency, security, and user satisfaction. Every app on our platform has been thoroughly vetted 
-                        for legitimacy and user safety. Join our growing community today and start earning with confidence!
-                    </p>
-
-                    <div class="about-buttons">
-                        <button class="about-btn" onclick="switchPage('contact')">Contact Us</button>
-                        <button class="about-btn" onclick="switchPage('policy')">Privacy Policy</button>
-                        <button class="about-btn" onclick="openWhatsApp()">Join WhatsApp</button>
-                    </div>
-                </div>
-            </div>
-
-            <!-- POLICY PAGE -->
-            <div id="policy" class="page">
-                <div class="page-content">
-                    <h2 class="page-title">Privacy Policy</h2>
-                    
-                    <div style="margin-top: 3rem;">
-                        <div class="policy-section">
-                            <h3 class="policy-heading">1. Introduction</h3>
-                            <p class="policy-text">
-                                TechWithTips ("we," "our," or "us") is committed to protecting your privacy. This Privacy Policy explains 
-                                how we collect, use, disclose, and otherwise process personal information in connection with our website 
-                                and services. Please read this policy carefully to understand our privacy practices.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">2. Information We Collect</h3>
-                            <p class="policy-text">
-                                We may collect information about you in various ways. The information we may collect on our site includes:
-                                Personal identification information (name, email address, phone number, etc.) when you voluntarily submit 
-                                forms or contact us. Usage data and browsing information through cookies and similar tracking technologies. 
-                                Device information such as IP address, browser type, and operating system. Interaction data regarding how 
-                                you use our services and applications listed on our platform.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">3. How We Use Your Information</h3>
-                            <p class="policy-text">
-                                The information we collect is used to: Provide, maintain, and improve our website and services. Send you 
-                                updates, promotional materials, and notifications (with your consent). Respond to your inquiries and provide 
-                                customer support. Analyze trends and user behavior to enhance our platform. Comply with legal obligations and 
-                                protect our rights and the rights of our users. Prevent fraudulent activities and ensure platform security.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">4. Data Security</h3>
-                            <p class="policy-text">
-                                We implement appropriate technical and organizational measures to protect your personal information against 
-                                unauthorized access, alteration, disclosure, or destruction. However, no method of transmission over the 
-                                internet is 100% secure. While we strive to protect your information, we cannot guarantee absolute security.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">5. Third-Party Links</h3>
-                            <p class="policy-text">
-                                Our website may contain links to third-party applications and websites. We are not responsible for the 
-                                privacy practices of these external sites. We encourage you to review the privacy policies of any third-party 
-                                services before providing your personal information or downloading their applications.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">6. Your Rights</h3>
-                            <p class="policy-text">
-                                You have the right to access, update, or delete your personal information at any time. You can opt out of 
-                                receiving promotional communications from us. You have the right to request information about how your data 
-                                is being processed. To exercise these rights, please contact us using the information provided in our Contact page.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">7. Changes to This Policy</h3>
-                            <p class="policy-text">
-                                We may update this Privacy Policy from time to time to reflect changes in our practices, technology, legal 
-                                requirements, or other factors. We will notify you of any material changes by posting the updated policy on 
-                                our website with an updated revision date. Your continued use of our platform constitutes your acceptance of 
-                                the updated Privacy Policy.
-                            </p>
-                        </div>
-
-                        <div class="policy-section">
-                            <h3 class="policy-heading">8. Contact Us</h3>
-                            <p class="policy-text">
-                                If you have any questions about this Privacy Policy or our privacy practices, please don't hesitate to contact 
-                                us. You can reach us through our Contact page or via email at privacy@techwithtips.com. We're here to help and 
-                                will respond to your inquiries promptly.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- BLOG PAGE -->
-            <div id="blog" class="page">
-                <div class="page-content">
-                    <h2 class="page-title">Blog Posts</h2>
-                    <div class="blog-grid" id="blogGrid">
-                        <div class="no-blogs">No blogs found. Check back soon for exciting updates!</div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- CONTACT PAGE -->
-            <div id="contact" class="page">
-                <div class="page-content">
-                    <h2 class="page-title">Contact Us</h2>
-                    
-                    <div class="contact-info">
-                        <div class="contact-item">
-                            <div class="contact-icon">📧</div>
-                            <div class="contact-text">
-                                <span class="contact-label">Email Address</span>
-                                <a href="mailto:support@techwithtips.com" class="contact-value">support@techwithtips.com</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">📱</div>
-                            <div class="contact-text">
-                                <span class="contact-label">Telegram Channel</span>
-                                <a href="https://t.me/TechWithTips" target="_blank" class="contact-value">@TechWithTips</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">💬</div>
-                            <div class="contact-text">
-                                <span class="contact-label">WhatsApp Group</span>
-                                <a href="https://chat.whatsapp.com/TechWithTips" target="_blank" class="contact-value">Join WhatsApp Community</a>
-                            </div>
-                        </div>
-
-                        <div class="contact-item">
-                            <div class="contact-icon">🌐</div>
-                            <div class="contact-text">
-                                <span class="contact-label">Response Time</span>
-                                <span class="contact-value">24 - 48 Hours</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- ADMIN PAGE -->
-            <div id="admin" class="page">
-                <div class="page-content">
-                    <h2 class="page-title">Admin Panel</h2>
-
-                    <p style="text-align:center; margin-bottom:1.5rem; color:#666;">
-                        Yaha se naya WhatsApp earning app add karo, edit karo ya delete karo.
-                        Data <b>Firebase Realtime Database</b> me save rahega (sab users ke liye same).
-                    </p>
-
-                    <form id="appForm" onsubmit="handleAppForm(event)"
-                          style="max-width:600px;margin:0 auto;background:#fff;border-radius:15px;
-                                 padding:1.5rem;box-shadow:0 4px 20px rgba(0,0,0,0.08);">
-                        <input type="hidden" id="editingId" value="">
-
-                        <div style="margin-bottom:1rem;">
-                            <label style="font-weight:700;">App Name</label>
-                            <input id="appName" type="text" required
-                                   style="width:100%;padding:0.7rem 1rem;border-radius:10px;border:1px solid #ccc;margin-top:0.3rem;">
-                        </div>
-
-                        <div style="margin-bottom:1rem;">
-                            <label style="font-weight:700;">Subtitle / Short Description</label>
-                            <input id="appSubtitle" type="text" required
-                                   placeholder="Earn ₹500/day by doing tasks"
-                                   style="width:100%;padding:0.7rem 1rem;border-radius:10px;border:1px solid #ccc;margin-top:0.3rem;">
-                        </div>
-
-                        <!-- Icon -> Logo upload -->
-                        <div style="display:flex;gap:1rem;margin-bottom:1rem;flex-wrap:wrap;">
-                            <div style="flex:1;min-width:120px;">
-                                <label style="font-weight:700;">App Logo (Image)</label>
-                                <input id="appLogo" type="file" accept="image/*"
-                                       style="width:100%;padding:0.5rem 0.3rem;border-radius:10px;border:1px solid #ccc;margin-top:0.3rem;background:#fff;">
-                                <small style="font-size:0.8rem;color:#777;">PNG / JPG, square image best rahega.</small>
-                                <input type="hidden" id="existingLogoUrl" value="">
-                            </div>
-
-                            <div style="flex:1;min-width:120px;">
-                                <label style="font-weight:700;">Rank</label>
-                                <input id="appRank" type="number" min="1" placeholder="11"
-                                       style="width:100%;padding:0.7rem 1rem;border-radius:10px;border:1px solid #ccc;margin-top:0.3rem;">
-                            </div>
-                            <div style="flex:1;min-width:120px;">
-                                <label style="font-weight:700;">Category</label>
-                                <select id="appCategory"
-                                        style="width:100%;padding:0.7rem 1rem;border-radius:10px;border:1px solid #ccc;margin-top:0.3rem;">
-                                    <option value="all">All Apps</option>
-                                    <option value="new">New Apps</option>
-                                </select>
-                            </div>
-                        </div>
-
-                        <div style="margin-bottom:1rem;">
-                            <label style="font-weight:700;">Download Link (URL)</label>
-                            <input id="appUrl" type="url" required
-                                   placeholder="https://example.com/my-app-download"
-                                   style="width:100%;padding:0.7rem 1rem;border-radius:10px;border:1px solid #ccc;margin-top:0.3rem;">
-                        </div>
-
-                        <button id="appFormBtn" type="submit"
-                                style="width:100%;padding:0.9rem;border:none;border-radius:25px;
-                                       background:linear-gradient(135deg,var(--orange),#ff8555);
-                                       color:#fff;font-weight:800;font-size:1rem;cursor:pointer;
-                                       box-shadow:0 4px 15px rgba(255,107,53,0.4);">
-                            ➕ Add App to List
-                        </button>
-                    </form>
-
-                    <h3 style="margin-top:2.5rem;font-size:1.3rem;font-weight:800;text-align:center;color:var(--dark-blue);">
-                        Current Apps in Database
-                    </h3>
-                    <ul id="adminAppList"
-                        style="max-width:600px;margin:1.5rem auto 0;padding-left:1.2rem;color:#555;"></ul>
-                </div>
-            </div>
-        </div>
-
-        <!-- FLOATING SOCIAL MEDIA -->
-        <div class="floating-social">
-            <div class="social-icon" title="Telegram" onclick="openTelegram()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/8/82/Telegram_logo.svg" alt="Telegram">
-            </div>
-
-            <div class="social-icon" title="YouTube" onclick="openYouTube()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/b/b8/YouTube_Logo_2017.svg" alt="YouTube">
-            </div>
-
-            <div class="social-icon" title="WhatsApp" onclick="openWhatsApp()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-            </div>
-
-            <div class="social-icon" title="Instagram" onclick="openInstagram()">
-                <img src="https://upload.wikimedia.org/wikipedia/commons/a/a5/Instagram_icon.png" alt="Instagram">
-            </div>
-        </div>
-
-        <!-- FOOTER -->
-        <footer class="footer">
-            <div class="footer-buttons">
-                <button class="footer-btn" onclick="switchPage('about')">About Us</button>
-                <button class="footer-btn" onclick="switchPage('contact')">Contact Us</button>
-                <button class="footer-btn" onclick="switchPage('policy')">Privacy Policy</button>
-                <button class="footer-btn" onclick="switchPage('policy')">Terms & Conditions</button>
-                <button class="footer-btn" onclick="switchPage('policy')">Disclaimer</button>
-            </div>
-            <p class="footer-text">Copyright © TechWithTips All Rights Reserved</p>
-        </footer>
-    </div> <!-- /#app-screen -->
-
-    <!-- ========== FULL JS (MODULE) ========== -->
-    <script type="module">
-        import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-        import {
-            getAuth,
-            createUserWithEmailAndPassword,
-            signInWithEmailAndPassword,
-            onAuthStateChanged,
-            signOut
-        } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-auth.js";
-        import {
-            getDatabase,
-            ref,
-            push,
-            onValue,
-            update,
-            remove
-        } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
-
-        // ---------- FIREBASE CONFIG ----------
-        const firebaseConfig = {
-            apiKey: "AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
-            authDomain: "pawan-9dd64.firebaseapp.com",
-            databaseURL: "https://pawan-9dd64-default-rtdb.asia-southeast1.firebasedatabase.app",
-            projectId: "pawan-9dd64",
-            storageBucket: "pawan-9dd64.firebasestorage.app",
-            messagingSenderId: "261645960158",
-            appId: "1:261645960158:web:69b39c9ac9e132c1ef134f",
-            measurementId: "G-2SM29D8FGW"
-        };
-
-        const app = initializeApp(firebaseConfig);
-        const auth = getAuth(app);
-        const db = getDatabase(app);
-        const appsRef = ref(db, "apps");
-
-        const loginScreen = document.getElementById('login-screen');
-        const appScreen = document.getElementById('app-screen');
-
-        // ---------- STATE ----------
-        const ADMIN_PIN = "991821";
-        let isAdmin = false;
-        let allApps = [];
-        let currentAppsTab = "all-apps";
-
-        const defaultApps = [
-            { name: "MoneyMaker Pro",   subtitle: "Earn ₹500/day by completing tasks",   icon: "💵", rank: 1,  category: "all", url: "https://example.com/moneymaker" },
-            { name: "CashReward Plus",  subtitle: "Get instant rewards and cashback",    icon: "🎁", rank: 2,  category: "all", url: "https://example.com/cashreward" },
-            { name: "TaskBuddy Elite",  subtitle: "Simple tasks, big rewards",           icon: "✅", rank: 3,  category: "new", url: "https://example.com/taskbuddy" },
-            { name: "PayPoint Master",  subtitle: "Convert points to real money",        icon: "💳", rank: 4,  category: "all", url: "https://example.com/paypoint" },
-            { name: "EarnQuick Pro",    subtitle: "Fastest payment in the market",       icon: "⚡", rank: 5,  category: "new", url: "https://example.com/earnquick" },
-            { name: "BonusHub Ultimate",subtitle: "Unlimited bonus opportunities",       icon: "🏆", rank: 6,  category: "all", url: "https://example.com/bonushub" },
-            { name: "RewardVault Elite",subtitle: "Safe and secure earnings",            icon: "🔐", rank: 7,  category: "new", url: "https://example.com/rewardvault" },
-            { name: "IncomeBoost Pro",  subtitle: "Passive income made simple",          icon: "📈", rank: 8,  category: "all", url: "https://example.com/incomeboost" },
-            { name: "CoinCollect Plus", subtitle: "Collect coins, earn cash",            icon: "🪙", rank: 9,  category: "all", url: "https://example.com/coincollect" },
-            { name: "MillionaireClub",  subtitle: "Join the earning community",          icon: "👑", rank:10,  category: "all", url: "https://example.com/millionaire" }
-        ];
-
-        // ---------- AUTH STATE ----------
-        onAuthStateChanged(auth, (user) => {
-            if (user) {
-                if (loginScreen) loginScreen.style.display = 'none';
-                if (appScreen) appScreen.style.display = 'block';
-            } else {
-                if (loginScreen) loginScreen.style.display = 'block';
-                if (appScreen) appScreen.style.display = 'none';
-            }
-        });
-
-        // ---------- LOGIN / SIGNUP ----------
-        function switchAuthTab(tab){
-            document.querySelectorAll('.auth-tab').forEach(x=>x.classList.remove('active'));
-            document.querySelectorAll('.auth-form-container').forEach(x=>x.classList.remove('active'));
-
-            if(tab==='login'){
-                document.querySelector('.auth-tab:nth-child(1)').classList.add('active');
-                document.getElementById('login-form').classList.add('active');
-                document.querySelector('.main-heading').textContent='Welcome Back';
-                document.querySelector('.sub-heading').textContent='Sign in to continue your journey';
-            } else {
-                document.querySelector('.auth-tab:nth-child(2)').classList.add('active');
-                document.getElementById('signup-form').classList.add('active');
-                document.querySelector('.main-heading').textContent='Join Us Today';
-                document.querySelector('.sub-heading').textContent='Create your account and start exploring';
-            }
-        }
-
-        function togglePassword(id){
-            const input=document.getElementById(id);
-            if (!input) return;
-            input.type=input.type==="password"?"text":"password";
-        }
-
-        async function handleLogin(e) {
-            e.preventDefault();
-            const email = document.getElementById("login-email").value;
-            const password = document.getElementById("login-password").value;
-            const btn = e.target.querySelector(".btn-primary");
-            btn.classList.add("loading");
-
-            try {
-                await signInWithEmailAndPassword(auth, email, password);
-            } catch (err) {
-                alert(err.message);
-            }
-            btn.classList.remove("loading");
-        }
-
-        async function handleSignup(e) {
-            e.preventDefault();
-            const emailEl = document.getElementById("signup-email");
-            const passEl = document.getElementById("signup-password");
-            const confirmEl = document.getElementById("confirm-password");
-            const nameEl = document.getElementById("full-name");
-
-            if (!emailEl || !passEl || !confirmEl || !nameEl) {
-                alert("Signup form loading error. IDs check karo: signup-email, signup-password, confirm-password, full-name.");
-                return;
-            }
-
-            const email = emailEl.value;
-            const password = passEl.value;
-            const confirm = confirmEl.value;
-            const fullName = nameEl.value;
-            const btn = e.target.querySelector(".btn-primary");
-
-            if (password !== confirm) {
-                alert("Passwords do not match!");
-                return;
-            }
-
-            btn.classList.add("loading");
-
-            try {
-                await createUserWithEmailAndPassword(auth, email, password);
-                alert("Account Created Successfully 🎉");
-                switchAuthTab("login");
-            } catch (err) {
-                alert(err.message);
-            }
-            btn.classList.remove("loading");
-        }
-
-        async function logoutUser() {
-            try {
-                await signOut(auth);
-            } catch (err) {
-                alert(err.message);
-            }
-        }
-
-        // ---------- PARTICLES + INPUT ANIM ----------
-        function createParticles(){
-            const cont=document.getElementById("particles");
-            if(!cont) return;
-            for(let i=0;i<15;i++){
-                const p=document.createElement("div");
-                p.classList.add("particle");
-                const size=Math.random()*60+20;
-                p.style.width=size+"px";p.style.height=size+"px";
-                p.style.left=Math.random()*100+"%";
-                p.style.animationDelay=Math.random()*20+"s";
-                p.style.animationDuration=(Math.random()*20+15)+"s";
-                cont.appendChild(p);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', () => {
-            document.querySelectorAll('.input-group input').forEach(inp=>{
-                inp.addEventListener('focus',()=>inp.parentElement.style.transform='scale(1.02)');
-                inp.addEventListener('blur',()=>inp.parentElement.style.transform='scale(1)');
-            });
-            createParticles();
-        });
-
-        // ---------- File -> Base64 helper (Storage ke bina) ----------
-        function readFileAsDataURL(file) {
-            return new Promise((resolve, reject) => {
-                const reader = new FileReader();
-                reader.onload = () => resolve(reader.result);
-                reader.onerror = reject;
-                reader.readAsDataURL(file);
-            });
-        }
-
-        // ---------- ADMIN / APPS (REALTIME DB) ----------
-        function askAdminLogin() {
-            const pin = prompt("Enter admin PIN:");
-            if (pin === ADMIN_PIN) {
-                isAdmin = true;
-                alert("✅ Admin access granted");
-                return true;
-            } else if (pin !== null) {
-                alert("❌ Wrong PIN");
-            }
-            return false;
-        }
-
-        function loadApps() {
-            onValue(appsRef, (snapshot) => {
-                const data = snapshot.val();
-
-                // First time: agar DB empty hai, default apps push karo
-                if (!data) {
-                    defaultApps.forEach(app => {
-                        push(appsRef, app);
-                    });
-                    return;
-                }
-
-                allApps = Object.entries(data).map(([id, value]) => ({ id, ...value }));
-                displayApps(allApps);
-                refreshAdminList();
-            });
-        }
-
-        function displayApps(apps) {
-            const container = document.getElementById('appsContainer');
-            if (!container) return;
-
-            let filtered = apps;
-            if (currentAppsTab === 'new-apps') {
-                filtered = apps.filter(app => app.category === 'new');
-            }
-
-            if (filtered.length === 0) {
-                container.innerHTML = '<div style="text-align: center; padding: 2rem; color: #999;">No apps found</div>';
-                return;
-            }
-
-            container.innerHTML = filtered
-                .slice()
-                .sort((a, b) => (a.rank || 999) - (b.rank || 999))
-                .map(app => {
-                    const iconHtml = app.logoUrl
-                        ? `<div class="app-icon">
-                                <img src="${app.logoUrl}" alt="${app.name}" class="app-logo-img">
-                           </div>`
-                        : `<div class="app-icon">${app.icon || "📱"}</div>`;
-
-                    return `
-                        <div class="app-item">
-                            ${iconHtml}
-                            <div class="rank-badge">#${app.rank || "-"}</div>
-                            <div class="app-info">
-                                <div class="app-name">${app.name}</div>
-                                <div class="app-subtitle">${app.subtitle}</div>
-                            </div>
-                            <button class="download-btn" onclick="downloadApp('${app.id}')">⬇️ Download</button>
-                        </div>
-                    `;
-                }).join('');
-        }
-
-        function switchAppTab(tab, el) {
-            currentAppsTab = tab;
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            if (el) el.classList.add('active');
-            displayApps(allApps);
-        }
-
-        function searchApps() {
-            const searchInput = document.getElementById('searchInput');
-            if (!searchInput) return;
-            const searchTerm = searchInput.value.toLowerCase();
-
-            const filtered = allApps.filter(app => 
-                (app.name || "").toLowerCase().includes(searchTerm) || 
-                (app.subtitle || "").toLowerCase().includes(searchTerm)
-            );
-            displayApps(filtered);
-        }
-
-        function switchPage(pageName) {
-            if (pageName === 'admin' && !isAdmin) {
-                const ok = askAdminLogin();
-                if (!ok) return;
-            }
-
-            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
-            const target = document.getElementById(pageName);
-            if (target) target.classList.add('active');
-
-            closeMobileMenu();
-            window.scrollTo(0, 0);
-        }
-
-        function switchPageMobile(pageName) {
-            switchPage(pageName);
-        }
-
-        function toggleMobileMenu() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (!hamburger || !mobileMenu) return;
-            hamburger.classList.toggle('active');
-            mobileMenu.classList.toggle('active');
-        }
-
-        function closeMobileMenu() {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            if (!hamburger || !mobileMenu) return;
-            hamburger.classList.remove('active');
-            mobileMenu.classList.remove('active');
-        }
-
-        function openWhatsApp() { window.open('https://chat.whatsapp.com/TechWithTips', '_blank'); }
-        function openTelegram() { window.open('https://t.me/techwithtips0', '_blank'); }
-        function openYouTube() { window.open('https://youtube.com/@tipswithearn01?si=ktC_vfOobiHFgv8L', '_blank'); }
-        function openInstagram() { window.open('https://www.instagram.com/creator__1619?igsh=MTR4NjFudTh6bWZxeg==', '_blank'); }
-
-        function downloadApp(id) {
-            const app = allApps.find(a => a.id === id);
-            if (!app) { alert("App not found!"); return; }
-            if (!app.url) { alert(`Download link not set for ${app.name}.`); return; }
-
-            alert(`🎉 Thank you for choosing ${app.name}!\n\nOpening download link...\n\nAlways download from official sources to stay safe!`);
-            window.open(app.url, "_blank");
-        }
-
-        async function handleAppForm(e) {
-            e.preventDefault();
-            if (!isAdmin) { alert("Admin only action."); return; }
-
-            const editingId = document.getElementById('editingId').value;
-            const name = document.getElementById('appName').value.trim();
-            const subtitle = document.getElementById('appSubtitle').value.trim();
-            const rankInput = document.getElementById('appRank').value;
-            const rank = rankInput ? parseInt(rankInput, 10) : 999;
-            const category = document.getElementById('appCategory').value;
-            const url = document.getElementById('appUrl').value.trim();
-
-            const logoInput = document.getElementById('appLogo');
-            const existingLogoUrlInput = document.getElementById('existingLogoUrl');
-
-            if (!name || !subtitle || !url) {
-                alert("Please fill App Name, Subtitle and Download Link.");
-                return;
-            }
-
-            // purana logo yahan se (edit mode ke liye)
-            let logoUrl = existingLogoUrlInput ? (existingLogoUrlInput.value || "") : "";
-
-            // agar naya file choose kiya hai to base64 bana lo
-            const file = logoInput && logoInput.files ? logoInput.files[0] : null;
-            if (file) {
-                try {
-                    logoUrl = await readFileAsDataURL(file);
-                } catch (err) {
-                    alert("Logo read karne me error: " + err.message);
-                    return;
-                }
-            }
-
-            // emoji fallback (purane apps ke liye)
-            let icon = "📱";
-            if (editingId) {
-                const oldApp = allApps.find(a => a.id === editingId);
-                if (oldApp && oldApp.icon) {
-                    icon = oldApp.icon;
-                }
-            }
-
-            const appData = { 
-                name, 
-                subtitle, 
-                logoUrl, 
-                icon,
-                rank, 
-                category, 
-                url 
-            };
-
-            try {
-                if (editingId) {
-                    await update(ref(db, "apps/" + editingId), appData);
-                    alert("✅ App updated!");
-                } else {
-                    await push(appsRef, appData);
-                    alert("✅ App successfully added!");
-                }
-
-                resetAdminForm();
-                switchPage('home');
-            } catch (err) {
-                alert(err.message);
-            }
-        }
-
-        function resetAdminForm() {
-            const form = document.getElementById('appForm');
-            if (!form) return;
-            document.getElementById('editingId').value = "";
-            form.reset();
-            const existingLogoUrlInput = document.getElementById('existingLogoUrl');
-            if (existingLogoUrlInput) existingLogoUrlInput.value = "";
-            document.getElementById('appFormBtn').textContent = "➕ Add App to List";
-        }
-
-        function refreshAdminList() {
-            const list = document.getElementById('adminAppList');
-            if (!list) return;
-
-            if (!allApps.length) {
-                list.innerHTML = '<li>No apps available yet.</li>';
-                return;
-            }
-
-            const items = allApps
-                .slice()
-                .sort((a, b) => (a.rank || 999) - (b.rank || 999))
-                .map(app => `
-                    <li style="margin-bottom:0.6rem;">
-                        #${app.rank || "-"} - <strong>${app.name}</strong> (${app.category || "all"})
-                        <button onclick="startEditApp('${app.id}')"
-                                style="margin-left:8px;padding:2px 8px;border-radius:10px;border:none;background:#1a3a52;color:#fff;font-size:0.75rem;cursor:pointer;">
-                            Edit
-                        </button>
-                        <button onclick="deleteApp('${app.id}')"
-                                style="margin-left:4px;padding:2px 8px;border-radius:10px;border:none;background:#e63946;color:#fff;font-size:0.75rem;cursor:pointer;">
-                            Delete
-                        </button>
-                    </li>
-                `).join('');
-
-            list.innerHTML = items;
-        }
-
-        function startEditApp(id) {
-            if (!isAdmin) { alert("Admin only action."); return; }
-
-            const app = allApps.find(a => a.id === id);
-            if (!app) return;
-
-            document.getElementById('editingId').value = app.id;
-            document.getElementById('appName').value = app.name || "";
-            document.getElementById('appSubtitle').value = app.subtitle || "";
-            document.getElementById('appRank').value = app.rank || "";
-            document.getElementById('appCategory').value = app.category || "all";
-            document.getElementById('appUrl').value = app.url || "";
-
-            const existingLogoUrlInput = document.getElementById('existingLogoUrl');
-            if (existingLogoUrlInput) {
-                existingLogoUrlInput.value = app.logoUrl || "";
-            }
-
-            const logoInput = document.getElementById('appLogo');
-            if (logoInput) logoInput.value = "";
-
-            document.getElementById('appFormBtn').textContent = "💾 Update App";
-
-            switchPage('admin');
-        }
-
-        async function deleteApp(id) {
-            if (!isAdmin) { alert("Admin only action."); return; }
-            if (!confirm("Are you sure you want to delete this app?")) return;
-
-            try {
-                await remove(ref(db, "apps/" + id));
-            } catch (err) {
-                alert(err.message);
-            }
-        }
-
-        // Close mobile menu on outside click
-        document.addEventListener('click', function(event) {
-            const hamburger = document.getElementById('hamburger');
-            const mobileMenu = document.getElementById('mobileMenu');
-            
-            if (!event.target.closest('.hamburger') && !event.target.closest('.mobile-menu')) {
-                if (mobileMenu && mobileMenu.classList.contains('active')) {
-                    closeMobileMenu();
-                }
-            }
-        });
-
-        // ---------- START REALTIME LISTENER ----------
-        loadApps();
-
-        // ---------- Expose functions to window ----------
-        window.switchAuthTab = switchAuthTab;
-        window.togglePassword = togglePassword;
-        window.handleLogin = handleLogin;
-        window.handleSignup = handleSignup;
-        window.logoutUser = logoutUser;
-
-        window.switchPage = switchPage;
-        window.switchPageMobile = switchPageMobile;
-        window.toggleMobileMenu = toggleMobileMenu;
-        window.searchApps = searchApps;
-        window.switchAppTab = switchAppTab;
-
-        window.openWhatsApp = openWhatsApp;
-        window.openTelegram = openTelegram;
-        window.openYouTube = openYouTube;
-        window.openInstagram = openInstagram;
-
-        window.handleAppForm = handleAppForm;
-        window.startEditApp = startEditApp;
-        window.deleteApp = deleteApp;
-        window.downloadApp = downloadApp;
-    </script>
 </body>
+</html>
