@@ -18,192 +18,214 @@
 --radius:14px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
-body{font-family:Inter,sans-serif;color:var(--dark)}
-.container{max-width:1200px;margin:auto;padding:0 16px}
+body{
+  font-family:Inter,sans-serif;
+  color:var(--dark);
+  overflow-x:hidden; /* 🔥 cut fix */
+}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 14px; /* 🔥 mobile safe */
+}
 
 /* HEADER */
-.header{position:sticky;top:0;background:#fff;box-shadow:0 2px 10px rgba(0,0,0,.06);z-index:99}
-.nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-.logo{display:flex;gap:10px;align-items:center;font-family:Poppins;font-size:22px;font-weight:700}
-.logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center}
-.btn{padding:10px 22px;border-radius:var(--radius);font-weight:600;background:var(--primary);color:#fff}
+.header{
+  position:sticky;
+  top:0;
+  background:#fff;
+  box-shadow:0 2px 10px rgba(0,0,0,.06);
+  z-index:99
+}
+.nav{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:12px 0
+}
+.logo{
+  display:flex;
+  gap:10px;
+  align-items:center;
+  font-family:Poppins;
+  font-size:20px;
+  font-weight:700
+}
+.logo-icon{
+  width:38px;height:38px;
+  border-radius:10px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center
+}
+.btn{
+  padding:10px 18px;
+  border-radius:var(--radius);
+  font-weight:600;
+  background:var(--primary);
+  color:#fff;
+  white-space:nowrap;
+}
 
 /* HERO */
-.hero{position:relative;height:300px;overflow:hidden}
-.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s}
+.hero{position:relative;height:260px;overflow:hidden}
+.slide{
+  position:absolute;inset:0;
+  background-size:cover;
+  background-position:center;
+  opacity:0;
+  transition:opacity 1s
+}
 .slide.active{opacity:1}
-.hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.7),rgba(16,185,129,.7))}
-.hero-text{position:absolute;z-index:2;color:#fff;text-align:center;width:100%;top:50%;transform:translateY(-50%)}
-.hero-text h1{font-family:Poppins;font-size:32px}
+.hero-overlay{
+  position:absolute;inset:0;
+  background:linear-gradient(135deg,rgba(37,99,235,.7),rgba(16,185,129,.7))
+}
+.hero-text{
+  position:absolute;
+  z-index:2;
+  color:#fff;
+  text-align:center;
+  width:100%;
+  top:50%;
+  transform:translateY(-50%);
+  padding:0 14px;
+}
+.hero-text h1{
+  font-family:Poppins;
+  font-size:24px;
+}
+.hero-text p{font-size:14px}
 
 /* SEARCH */
-.search{margin:-30px auto 40px;max-width:600px;z-index:5;position:relative}
-.search input{width:100%;padding:15px;border-radius:var(--radius);border:2px solid #e5e7eb}
+.search{
+  margin:-24px auto 32px;
+  max-width:600px;
+  z-index:5;
+  position:relative
+}
+.search input{
+  width:100%;
+  padding:14px;
+  border-radius:var(--radius);
+  border:2px solid #e5e7eb;
+}
 
 /* APPS */
-.apps{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:22px}
-.app-card{border:1px solid #e5e7eb;border-radius:var(--radius);padding:16px}
-.app-head{display:flex;gap:14px;align-items:center}
-.app-icon{width:60px;height:60px;border-radius:14px;background:var(--primary);color:#fff;display:flex;align-items:center;justify-content:center;font-size:22px}
-.rank{margin-left:auto;background:var(--accent);color:#fff;padding:4px 10px;border-radius:14px}
+.apps{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:18px
+}
+.app-card{
+  border:1px solid #e5e7eb;
+  border-radius:var(--radius);
+  padding:14px;
+  width:100%;
+}
+.app-head{
+  display:flex;
+  gap:12px;
+  align-items:center
+}
+.app-icon{
+  width:54px;height:54px;
+  border-radius:14px;
+  background:var(--primary);
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  font-size:20px;
+  flex-shrink:0;
+}
+.rank{
+  margin-left:auto;
+  background:var(--accent);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:14px;
+  font-size:13px;
+}
+
+/* BUTTON FIX */
+.app-card .btn{
+  display:block;
+  width:100%;
+  text-align:center;
+}
 
 /* LOADING */
-.shimmer{height:120px;border-radius:var(--radius);
-background:linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 37%,#f1f5f9 63%);
-background-size:400% 100%;animation:shimmer 1.4s infinite}
-@keyframes shimmer{0%{background-position:100% 0}100%{background-position:-100% 0}}
+.shimmer{
+  height:120px;
+  border-radius:var(--radius);
+  background:linear-gradient(90deg,#f1f5f9 25%,#e2e8f0 37%,#f1f5f9 63%);
+  background-size:400% 100%;
+  animation:shimmer 1.4s infinite
+}
+@keyframes shimmer{
+  0%{background-position:100% 0}
+  100%{background-position:-100% 0}
+}
 
 /* FLOATING SOCIAL */
-.social-float{position:fixed;right:14px;top:45%;display:flex;flex-direction:column;gap:12px;z-index:9999}
-.social-btn{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;color:#fff;font-size:22px;box-shadow:0 6px 18px rgba(0,0,0,.3)}
+.social-float{
+  position:fixed;
+  right:12px;
+  top:45%;
+  display:flex;
+  flex-direction:column;
+  gap:12px;
+  z-index:9999
+}
+.social-btn{
+  width:46px;height:46px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#fff;
+  font-size:22px;
+  box-shadow:0 6px 18px rgba(0,0,0,.3)
+}
 .whatsapp{background:#25D366}
 .telegram{background:#229ED9}
 
 /* MOBILE BAR */
-.bottom-bar{display:none;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;padding:10px;z-index:9999}
-.bottom-bar a{flex:1;margin:0 6px;padding:12px;border-radius:var(--radius);text-align:center;font-weight:700;color:#fff}
+.bottom-bar{
+  display:none;
+  position:fixed;
+  bottom:0;left:0;right:0;
+  background:#fff;
+  border-top:1px solid #e5e7eb;
+  padding:10px;
+  z-index:9999
+}
+.bottom-bar a{
+  flex:1;
+  margin:0 6px;
+  padding:12px;
+  border-radius:var(--radius);
+  text-align:center;
+  font-weight:700;
+  color:#fff
+}
 .wa{background:#25D366}
 .tg{background:#229ED9}
 
+/* 🔥 MOBILE FIXES */
+@media(max-width:600px){
+  .apps{grid-template-columns:1fr;} /* 1 card per row */
+  body{padding-bottom:70px;}       /* bottom bar space */
+}
 @media(max-width:768px){
-.bottom-bar{display:flex}
-.social-float{display:none}
-.hero-text h1{font-size:24px}
+  .bottom-bar{display:flex}
+  .social-float{display:none}
 }
 </style>
 </head>
 
 <body>
-
-<header class="header">
-<div class="container nav">
-<div class="logo"><div class="logo-icon">T</div>TechWithTips</div>
-<a class="btn" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52nESKO">Join WhatsApp</a>
-</div>
-</header>
-
-<section>
-<div class="hero">
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1526378722443-4bbd3a6b2e98')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')"></div>
-<div class="hero-overlay"></div>
-<div class="hero-text">
-<h1>Trusted WhatsApp Earning Apps</h1>
-<p>Verified & genuine earning apps</p>
-</div>
-</div>
-
-<div class="container">
-<div class="search">
-<input placeholder="Search earning apps...">
-</div>
-
-<div class="apps" id="apps">
-<div class="shimmer"></div>
-<div class="shimmer"></div>
-<div class="shimmer"></div>
-</div>
-</div>
-</section>
-
-<!-- FLOATING SOCIAL -->
-<div class="social-float">
-<a class="social-btn whatsapp" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52nESKO"><i class="fab fa-whatsapp"></i></a>
-<a class="social-btn telegram" target="_blank"
-href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i></a>
-</div>
-
-<!-- MOBILE BAR -->
-<div class="bottom-bar">
-<a class="wa" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52nESKO">
-<i class="fab fa-whatsapp"></i> WhatsApp
-</a>
-<a class="tg" target="_blank"
-href="https://t.me/techwithtips0">
-<i class="fab fa-telegram-plane"></i> Telegram
-</a>
-</div>
-
-<script>
-/* SLIDER */
-let slides=document.querySelectorAll(".slide"),i=0;
-setInterval(()=>{
-slides[i].classList.remove("active");
-i=(i+1)%slides.length;
-slides[i].classList.add("active");
-},3500);
-</script>
-
-<!-- FIREBASE FAST + CACHE -->
-<script type="module">
-import {
-initializeApp
-} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import {
-getDatabase,
-ref,
-query,
-orderByChild,
-limitToFirst,
-get
-} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
-
-const firebaseConfig={
-apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
-authDomain:"pawan-9dd64.firebaseapp.com",
-databaseURL:"https://pawan-9dd64-default-rtdb.asia-southeast1.firebasedatabase.app",
-projectId:"pawan-9dd64",
-appId:"1:261645960158:web:69b39c9ac9e132c1ef134f"
-};
-
-const app=initializeApp(firebaseConfig);
-const db=getDatabase(app);
-
-let allApps=[];
-
-/* CACHE FIRST */
-const cached=localStorage.getItem("apps_cache");
-if(cached){
-allApps=JSON.parse(cached);
-render();
-}
-
-/* FAST QUERY */
-async function loadApps(){
-const q=query(ref(db,"apps"),orderByChild("rank"),limitToFirst(12));
-const snap=await get(q);
-allApps=snap.exists()?Object.values(snap.val()):[];
-localStorage.setItem("apps_cache",JSON.stringify(allApps));
-render();
-}
-
-setTimeout(loadApps,300);
-
-function render(){
-const c=document.getElementById("apps");
-c.innerHTML="";
-allApps.forEach(a=>{
-c.innerHTML+=`
-<div class="app-card">
-<div class="app-head">
-<div class="app-icon">${a.logoUrl?`<img src="${a.logoUrl}" style="width:100%;height:100%;object-fit:cover;border-radius:14px">`:"📱"}</div>
-<div>
-<h3>${a.name}</h3>
-<p>${a.subtitle||""}</p>
-</div>
-<div class="rank">#${a.rank||"-"}</div>
-</div>
-<div style="margin-top:14px">
-<a class="btn" href="${a.url}" target="_blank">Download</a>
-</div>
-</div>`;
-});
-}
-</script>
-
-</body>
-</html>
+<!-- HTML BODY + FIREBASE JS = SAME AS YOUR FILE -->
