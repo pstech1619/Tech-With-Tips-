@@ -14,7 +14,6 @@
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css"/>
 
 <style>
-/* ================= VARIABLES ================= */
 :root{
 --primary:#6366f1;
 --secondary:#22d3ee;
@@ -22,17 +21,12 @@
 --glass:rgba(255,255,255,.75);
 --text:#0f172a;
 }
-
-/* DARK MODE */
 body.dark{
 --glass:rgba(15,23,42,.75);
 --text:#e5e7eb;
 }
-
-/* RESET */
 *{margin:0;padding:0;box-sizing:border-box}
 
-/* ================= BACKGROUND ================= */
 body{
 font-family:Inter,sans-serif;
 color:var(--text);
@@ -44,27 +38,18 @@ radial-gradient(circle at 50% 80%, #f43f5e55, transparent 40%),
 linear-gradient(120deg,#eef2ff,#ecfeff,#fff1f2);
 background-size:200% 200%;
 animation:bgFlow 22s ease-in-out infinite;
-transition:.4s;
 }
-
-/* DARK BACKGROUND */
 body.dark{
-background:
-radial-gradient(circle at 10% 20%, #0ea5e955, transparent 40%),
-radial-gradient(circle at 90% 30%, #6366f155, transparent 40%),
-radial-gradient(circle at 50% 80%, #be123c55, transparent 40%),
-linear-gradient(120deg,#020617,#020617,#020617);
+background:#020617;
 }
-
 @keyframes bgFlow{
 0%{background-position:0% 50%}
 50%{background-position:100% 50%}
 100%{background-position:0% 50%}
 }
-
 .container{max-width:1200px;margin:auto;padding:0 16px}
 
-/* ================= HEADER ================= */
+/* HEADER */
 .header{
 position:sticky;top:0;
 background:var(--glass);
@@ -90,8 +75,6 @@ background:linear-gradient(135deg,var(--primary),var(--secondary));
 color:#fff;padding:10px 22px;border-radius:16px;
 text-decoration:none;font-weight:600
 }
-
-/* TOGGLE */
 .toggle{
 background:var(--glass);
 border:none;
@@ -101,32 +84,30 @@ cursor:pointer;
 font-size:18px;
 }
 
-/* ================= HERO ================= */
+/* HERO */
 .hero{
 position:relative;height:280px;
 overflow:hidden;border-radius:0 0 26px 26px;
-background:#000
 }
 .hero-slider img{
 position:absolute;inset:0;width:100%;height:100%;
-object-fit:cover;opacity:0;transform:scale(1.1);
-animation:slide 15s ease-in-out infinite
+object-fit:cover;opacity:0;
+animation:slide 15s infinite
 }
 .hero-slider img:nth-child(1){animation-delay:0s}
 .hero-slider img:nth-child(2){animation-delay:5s}
 .hero-slider img:nth-child(3){animation-delay:10s}
 
 @keyframes slide{
-0%{opacity:0;transform:scale(1.1)}
-10%{opacity:1;transform:scale(1)}
-35%{opacity:1}
-45%{opacity:0}
+0%{opacity:0}
+10%{opacity:1}
+30%{opacity:1}
+40%{opacity:0}
 100%{opacity:0}
 }
-
 .hero-overlay{
 position:absolute;inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.45))
+background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.5))
 }
 
 /* SEARCH */
@@ -182,17 +163,15 @@ padding:18px;margin-bottom:16px
 /* FOOTER */
 .footer{
 background:var(--glass);
-backdrop-filter:blur(10px);
 border-top:1px solid #e5e7eb;
 padding:16px;text-align:center;
 font-size:14px;color:#64748b
 }
 
-/* FLOATING */
+/* FLOAT */
 .social-float{
 position:fixed;right:14px;top:45%;
-display:flex;flex-direction:column;
-gap:12px;z-index:999
+display:flex;flex-direction:column;gap:12px;z-index:999
 }
 .social-btn{
 width:48px;height:48px;border-radius:50%;
@@ -206,7 +185,6 @@ color:#fff;font-size:22px
 .bottom-bar{
 position:fixed;bottom:0;left:0;right:0;
 background:var(--glass);
-backdrop-filter:blur(14px);
 border-top:1px solid #e5e7eb;
 display:flex;padding:10px;z-index:1000
 }
@@ -255,15 +233,13 @@ font-weight:700;color:#fff;text-decoration:none
 <h3>About TechWithTips</h3>
 <p>TechWithTips helps users find genuine WhatsApp earning apps safely.</p>
 </div>
-
 <div class="info-box">
 <h3>Privacy Policy</h3>
 <p>We do not collect personal data. Third-party apps have their own policies.</p>
 </div>
-
 <div class="info-box">
 <h3>Contact Us</h3>
-<p>Contact us via WhatsApp or Telegram for support.</p>
+<p>Contact us via WhatsApp or Telegram.</p>
 </div>
 </section>
 
@@ -271,7 +247,6 @@ font-weight:700;color:#fff;text-decoration:none
 © 2025 <strong>TechWithTips</strong>. All Rights Reserved.
 </footer>
 
-<!-- FLOATING -->
 <div class="social-float">
 <a class="social-btn whatsapp" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"><i class="fab fa-whatsapp"></i></a>
 <a class="social-btn telegram" target="_blank" href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i></a>
@@ -282,7 +257,7 @@ font-weight:700;color:#fff;text-decoration:none
 <a class="tg" target="_blank" href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i> Telegram</a>
 </div>
 
-<!-- 🔥 DAY NIGHT SCRIPT -->
+<!-- THEME -->
 <script>
 const toggle=document.getElementById("themeToggle");
 toggle.onclick=()=>{
@@ -291,7 +266,7 @@ toggle.innerText=document.body.classList.contains("dark")?"☀️":"🌙";
 };
 </script>
 
-<!-- FIREBASE -->
+<!-- FIREBASE + RANK SORT -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
@@ -309,13 +284,24 @@ const db=getDatabase(app);
 const box=document.getElementById("apps");
 
 const snap=await get(ref(db,"apps"));
+
 if(snap.exists()){
-Object.values(snap.val()).forEach(a=>{
+let appsArray=Object.values(snap.val());
+
+// 🔥 SORT BY RANK (1 FIRST)
+appsArray.sort((a,b)=>(a.rank||999)-(b.rank||999));
+
+appsArray.forEach(a=>{
 box.innerHTML+=`
 <div class="app-card">
 <div class="app-head">
-<div class="app-icon">${a.logoUrl?`<img src="${a.logoUrl}" style="width:100%;height:100%;object-fit:cover">`:"📱"}</div>
-<div><h3>${a.name}</h3><p>${a.subtitle||""}</p></div>
+<div class="app-icon">
+${a.logoUrl?`<img src="${a.logoUrl}" style="width:100%;height:100%;object-fit:cover">`:"📱"}
+</div>
+<div>
+<h3>${a.name}</h3>
+<p>${a.subtitle||""}</p>
+</div>
 <div class="rank">#${a.rank||"-"}</div>
 </div>
 <a class="btn" href="${a.url}" target="_blank" style="margin-top:12px;display:inline-block">Download</a>
