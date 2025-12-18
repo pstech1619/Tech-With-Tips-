@@ -13,36 +13,35 @@
 --primary:#2563eb;
 --secondary:#10b981;
 --accent:#f97316;
---dark:#1e293b;
 --radius:14px;
 }
 *{margin:0;padding:0;box-sizing:border-box}
+
 body{
 font-family:Inter,sans-serif;
-color:var(--dark);
 background:#f8fafc;
 padding-bottom:90px;
 }
+
 .container{max-width:1200px;margin:auto;padding:0 16px}
 
 /* HEADER */
 .header{position:sticky;top:0;background:#fff;z-index:100;box-shadow:0 2px 10px rgba(0,0,0,.06)}
 .nav{display:flex;justify-content:space-between;align-items:center;padding:14px 0}
-.logo{display:flex;gap:10px;align-items:center;font-family:Poppins;font-size:22px;font-weight:700}
-.logo-icon{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center}
-.btn{padding:10px 22px;border-radius:var(--radius);font-weight:600;background:var(--primary);color:#fff;text-decoration:none}
+.logo{font-family:Poppins;font-size:22px;font-weight:700;display:flex;gap:10px;align-items:center}
+.logo span{width:40px;height:40px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--secondary));color:#fff;display:flex;align-items:center;justify-content:center}
+.btn{background:var(--primary);color:#fff;padding:10px 22px;border-radius:14px;text-decoration:none;font-weight:600}
 
 /* HERO */
-.hero{position:relative;width:100%;min-height:260px;overflow:hidden;border-radius:0 0 22px 22px}
-.slide{position:absolute;inset:0;background-size:cover;background-position:center;opacity:0;transition:opacity 1s}
-.slide.active{opacity:1}
+.hero{position:relative;min-height:260px;border-radius:0 0 22px 22px;overflow:hidden}
+.hero-bg{position:absolute;inset:0;background:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f') center/cover}
 .hero-overlay{position:absolute;inset:0;background:linear-gradient(135deg,rgba(37,99,235,.75),rgba(16,185,129,.75))}
-.hero-text{position:relative;z-index:2;color:#fff;text-align:center;padding:60px 16px}
+.hero-text{position:relative;color:#fff;text-align:center;padding:70px 16px}
 .hero-text h1{font-family:Poppins;font-size:28px}
 .hero-text p{opacity:.95}
 
 /* SEARCH */
-.search{margin:-30px auto 40px;max-width:600px;z-index:10;position:relative}
+.search{margin:-30px auto 40px;max-width:600px;position:relative;z-index:10}
 .search input{width:100%;padding:15px;border-radius:14px;border:2px solid #e5e7eb}
 
 /* APPS */
@@ -63,7 +62,7 @@ padding-bottom:90px;
 .telegram{background:#229ED9}
 
 /* BOTTOM BAR */
-.bottom-bar{display:flex;position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;padding:10px;z-index:1000}
+.bottom-bar{position:fixed;bottom:0;left:0;right:0;background:#fff;border-top:1px solid #e5e7eb;display:flex;padding:10px;z-index:1000}
 .bottom-bar a{flex:1;margin:0 6px;padding:14px;border-radius:14px;text-align:center;font-weight:700;color:#fff;text-decoration:none}
 .wa{background:#25D366}
 .tg{background:#229ED9}
@@ -74,19 +73,15 @@ padding-bottom:90px;
 
 <header class="header">
 <div class="container nav">
-<div class="logo"><div class="logo-icon">T</div>TechWithTips</div>
+<div class="logo"><span>T</span>TechWithTips</div>
 <a class="btn" target="_blank"
-href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">
-Join WhatsApp
-</a>
+href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">Join WhatsApp</a>
 </div>
 </header>
 
 <section>
 <div class="hero">
-<div class="slide active" style="background-image:url('https://images.unsplash.com/photo-1519389950473-47ba0277781c')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1526378722443-4bbd3a6b2e98')"></div>
-<div class="slide" style="background-image:url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f')"></div>
+<div class="hero-bg"></div>
 <div class="hero-overlay"></div>
 <div class="hero-text">
 <h1>Trusted WhatsApp Earning Apps</h1>
@@ -111,25 +106,77 @@ Join WhatsApp
 <div class="social-float">
 <a class="social-btn whatsapp" target="_blank"
 href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">
-<i class="fab fa-whatsapp"></i>
-</a>
+<i class="fab fa-whatsapp"></i></a>
 <a class="social-btn telegram" target="_blank"
 href="https://t.me/techwithtips0">
-<i class="fab fa-telegram-plane"></i>
-</a>
+<i class="fab fa-telegram-plane"></i></a>
 </div>
 
 <!-- BOTTOM BAR -->
 <div class="bottom-bar">
 <a class="wa" target="_blank"
 href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">
-<i class="fab fa-whatsapp"></i> WhatsApp
-</a>
+<i class="fab fa-whatsapp"></i> WhatsApp</a>
 <a class="tg" target="_blank"
 href="https://t.me/techwithtips0">
-<i class="fab fa-telegram-plane"></i> Telegram
-</a>
+<i class="fab fa-telegram-plane"></i> Telegram</a>
 </div>
+
+<!-- 🔥 FAST FIREBASE + CACHE -->
+<script type="module">
+import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
+import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+
+const firebaseConfig={
+apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
+authDomain:"pawan-9dd64.firebaseapp.com",
+databaseURL:"https://pawan-9dd64-default-rtdb.asia-southeast1.firebasedatabase.app",
+projectId:"pawan-9dd64",
+appId:"1:261645960158:web:69b39c9ac9e132c1ef134f"
+};
+
+const app=initializeApp(firebaseConfig);
+const db=getDatabase(app);
+const box=document.getElementById("apps");
+
+/* render */
+function render(list){
+box.innerHTML="";
+list.forEach(a=>{
+box.innerHTML+=`
+<div class="app-card">
+<div class="app-head">
+<div class="app-icon">
+${a.logoUrl?`<img src="${a.logoUrl}" loading="lazy" style="width:100%;height:100%;object-fit:cover">`:"📱"}
+</div>
+<div>
+<h3>${a.name}</h3>
+<p>${a.subtitle||""}</p>
+</div>
+<div class="rank">#${a.rank||"-"}</div>
+</div>
+<div style="margin-top:14px">
+<a class="btn" href="${a.url}" target="_blank">Download</a>
+</div>
+</div>`;
+});
+}
+
+/* CACHE FIRST */
+const cache=localStorage.getItem("apps_cache");
+if(cache){
+render(JSON.parse(cache));
+}
+
+/* FIREBASE LOAD */
+const snap=await get(ref(db,"apps"));
+if(snap.exists()){
+const apps=Object.values(snap.val());
+apps.sort((a,b)=>(a.rank||999)-(b.rank||999));
+localStorage.setItem("apps_cache",JSON.stringify(apps));
+render(apps);
+}
+</script>
 
 </body>
 </html>
