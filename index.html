@@ -274,44 +274,103 @@ body.dark{background:#020617}
   margin:20px 0;
 }
 
-/* BLOG CARDS */
+/* BLOG CARDS WITH EXPAND */
 .blog-list{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
-  gap:18px;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:20px;
+  margin-top:16px;
 }
 .blog-card{
   background:var(--glass);
-  border-radius:18px;
+  backdrop-filter:blur(10px);
   border:1px solid #e5e7eb;
-  padding:14px 16px;
+  border-radius:18px;
+  padding:16px;
+  transition:.3s;
+  height:100%;
   display:flex;
   flex-direction:column;
-  gap:6px;
+  cursor:pointer;
+  overflow:hidden; /* important: text bahar na jaye */
+}
+.blog-card:hover{
+  transform:translateY(-4px);
+  box-shadow:0 12px 30px rgba(0,0,0,.1);
+}
+.blog-thumb{
+  width:100%;
+  height:140px;
+  border-radius:14px;
+  object-fit:cover;
+  margin-bottom:12px;
+  display:block;
 }
 .blog-badge{
   display:inline-block;
-  padding:3px 10px;
+  padding:4px 12px;
   border-radius:999px;
-  font-size:11px;
+  font-size:12px;
   background:#e0f2fe;
   color:#0369a1;
   font-weight:600;
+  margin-bottom:6px;
 }
 .blog-featured{
   background:#fef3c7;
   color:#92400e;
 }
 .blog-date{
-  font-size:11px;
+  font-size:12px;
   color:#6b7280;
+  margin-bottom:8px;
 }
 .blog-title{
+  font-size:16px;
   font-weight:700;
+  line-height:1.4;
+  margin-bottom:8px;
+  color:var(--text);
 }
-.blog-content{
+.blog-content-short{
   font-size:13px;
   color:#4b5563;
+  line-height:1.5;
+  margin-bottom:10px;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+}
+.blog-content-full{
+  font-size:14px;
+  line-height:1.6;
+  color:#374151;
+  margin-top:4px;
+  display:none;
+  word-wrap:break-word;
+  overflow-wrap:break-word;
+}
+.read-more-btn{
+  margin-top:8px;
+  padding:8px 16px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:white;
+  border:none;
+  border-radius:20px;
+  font-size:12px;
+  font-weight:600;
+  cursor:pointer;
+  transition:.25s;
+  align-self:flex-start;
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+}
+.read-more-btn:hover{
+  transform:translateY(-1px);
+  box-shadow:0 4px 12px rgba(99,102,241,.4);
+}
+.read-more-btn.expanded{
+  background:linear-gradient(135deg,#10b981,#059669);
 }
 
 /* FOOTER */
@@ -415,9 +474,7 @@ body.dark{background:#020617}
 <section class="container tab-section" id="blogs">
   <div class="section-box">
     <h3>Latest Blogs</h3>
-    <div id="blogsList" class="blog-list">
-      <!-- Firebase blogs yahan aayenge -->
-    </div>
+    <div id="blogsList" class="blog-list"></div>
   </div>
 </section>
 
@@ -436,7 +493,6 @@ body.dark{background:#020617}
     <p>Support ke liye WhatsApp channel ya Telegram group par message karo.</p>
 
     <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;">
-      <!-- WhatsApp -->
       <a href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"
          target="_blank"
          style="flex:1;min-width:140px;display:flex;align-items:center;gap:10px;
@@ -449,7 +505,6 @@ body.dark{background:#020617}
         <span>WhatsApp Channel</span>
       </a>
 
-      <!-- Telegram -->
       <a href="https://t.me/techwithtips0"
          target="_blank"
          style="flex:1;min-width:140px;display:flex;align-items:center;gap:10px;
@@ -472,20 +527,16 @@ body.dark{background:#020617}
 <!-- BOTTOM NAV -->
 <div class="bottom-bar">
   <a href="#home"    class="nav-home tab-link active-tab" data-target="home">
-    <i class="fa-solid fa-house"></i>
-    <span>Home</span>
+    <i class="fa-solid fa-house"></i><span>Home</span>
   </a>
   <a href="#blogs"   class="nav-blog tab-link" data-target="blogs">
-    <i class="fa-solid fa-blog"></i>
-    <span>Blog</span>
+    <i class="fa-solid fa-blog"></i><span>Blog</span>
   </a>
   <a href="#policy"  class="nav-policy tab-link" data-target="policy">
-    <i class="fa-solid fa-shield-halved"></i>
-    <span>Policy</span>
+    <i class="fa-solid fa-shield-halved"></i><span>Policy</span>
   </a>
   <a href="#contact" class="nav-contact tab-link" data-target="contact">
-    <i class="fa-solid fa-phone"></i>
-    <span>Contact</span>
+    <i class="fa-solid fa-phone"></i><span>Contact</span>
   </a>
 </div>
 
@@ -530,11 +581,8 @@ function showTab(id){
 
   window.scrollTo({top:0,behavior:'smooth'});
 }
-
-// initial
 showTab('home');
 
-// bottom nav
 document.querySelectorAll('.tab-link').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
@@ -542,8 +590,6 @@ document.querySelectorAll('.tab-link').forEach(link=>{
     showTab(id);
   });
 });
-
-// header menu
 document.querySelectorAll('.menu-link').forEach(link=>{
   link.addEventListener('click',e=>{
     e.preventDefault();
@@ -652,7 +698,7 @@ if(searchInput){
   });
 }
 
-/* BLOGS */
+/* BLOGS – IMAGE + EXPAND */
 onValue(ref(db,"blogs"), (snapshot) => {
   const data = snapshot.val();
   allBlogs = data ? Object.entries(data).map(([id, blog]) => ({ id, ...blog })) : [];
@@ -663,25 +709,54 @@ onValue(ref(db,"blogs"), (snapshot) => {
 function renderBlogs(){
   if(!blogsList) return;
   if(allBlogs.length===0){
-    blogsList.innerHTML = "<p style='font-size:14px;color:#6b7280;'>Abhi koi blog add nahi hua. Admin panel se blog publish karte hi yahan dikh jayega.</p>";
+    blogsList.innerHTML = "<p style='font-size:14px;color:#6b7280;text-align:center;padding:40px;'>Abhi koi blog add nahi hua. Admin panel se blog publish karte hi yahan dikh jayega.</p>";
     return;
   }
 
-  blogsList.innerHTML = allBlogs.map(b=>{
-    const short = (b.content || "").slice(0,120) + ((b.content||"").length>120 ? "..." : "");
-    const date = b.date ? new Date(b.date).toLocaleDateString() : "";
+  blogsList.innerHTML = allBlogs.map((b, index)=>{
+    const short = (b.content || "").slice(0,100) + ((b.content||"").length>100 ? "..." : "");
+    const fullContent = b.content || "No content available";
+    const date = b.date ? new Date(b.date).toLocaleDateString('hi-IN') : "Just now";
     const category = b.category || "General";
     const featured = b.featured ? " blog-featured" : "";
-    const featuredText = b.featured ? "Featured" : category;
+    const featuredText = b.featured ? "⭐ Featured" : category;
 
     return `
-<div class="blog-card">
+<div class="blog-card" data-blog-id="${index}">
+  ${b.image ? `<img src="${b.image}" alt="${b.title}" class="blog-thumb" onerror="this.style.display='none'">` : ""}
   <span class="blog-badge${featured}">${featuredText}</span>
   <span class="blog-date">${date}</span>
   <div class="blog-title">${b.title}</div>
-  <div class="blog-content">${short}</div>
+  <div class="blog-content-short">${short}</div>
+  <div class="blog-content-full">${fullContent}</div>
+  <button class="read-more-btn" data-blog="${index}">📖 Read More</button>
 </div>`;
   }).join("");
+
+  attachReadMoreEvents();
+}
+
+function attachReadMoreEvents() {
+  document.querySelectorAll('.read-more-btn').forEach(btn => {
+    btn.onclick = function(e) {
+      e.stopPropagation();
+      const card = this.closest('.blog-card');
+      const shortContent = card.querySelector('.blog-content-short');
+      const fullContent = card.querySelector('.blog-content-full');
+
+      if(fullContent.style.display === 'none' || fullContent.style.display === ''){
+        shortContent.style.display = 'none';
+        fullContent.style.display = 'block';
+        this.textContent = '📖 Read Less';
+        this.classList.add('expanded');
+      } else {
+        shortContent.style.display = 'block';
+        fullContent.style.display = 'none';
+        this.textContent = '📖 Read More';
+        this.classList.remove('expanded');
+      }
+    };
+  });
 }
 </script>
 
