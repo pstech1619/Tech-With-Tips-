@@ -15,395 +15,486 @@
 
 <style>
 :root{
---primary:#6366f1;
---secondary:#22d3ee;
---accent:#f43f5e;
---glass:rgba(255,255,255,.75);
---text:#0f172a;
+  --primary:#6366f1;
+  --secondary:#22d3ee;
+  --accent:#f43f5e;
+  --glass:rgba(255,255,255,.75);
+  --text:#0f172a;
 }
 body.dark{
---glass:rgba(15,23,42,.75);
---text:#e5e7eb;
+  --glass:rgba(15,23,42,.75);
+  --text:#e5e7eb;
 }
 *{margin:0;padding:0;box-sizing:border-box}
 
 body{
-font-family:Inter,sans-serif;
-color:var(--text);
-padding-bottom:130px;
-background:
-radial-gradient(circle at 10% 20%, #22d3ee55, transparent 40%),
-radial-gradient(circle at 90% 30%, #6366f155, transparent 40%),
-radial-gradient(circle at 50% 80%, #f43f5e55, transparent 40%),
-linear-gradient(120deg,#eef2ff,#ecfeff,#fff1f2);
-background-size:200% 200%;
-animation:bgFlow 22s ease-in-out infinite;
+  font-family:Inter,sans-serif;
+  color:var(--text);
+  padding-bottom:80px;
+  background:
+    radial-gradient(circle at 10% 20%, #22d3ee55, transparent 40%),
+    radial-gradient(circle at 90% 30%, #6366f155, transparent 40%),
+    linear-gradient(120deg,#eef2ff,#ecfeff,#fff1f2);
+  background-size:200% 200%;
+  animation:bgFlow 22s ease-in-out infinite;
 }
 body.dark{background:#020617}
 
 @keyframes bgFlow{
-0%{background-position:0% 50%}
-50%{background-position:100% 50%}
-100%{background-position:0% 50%}
+  0%{background-position:0% 50%}
+  50%{background-position:100% 50%}
+  100%{background-position:0% 50%}
 }
 
 .container{max-width:1200px;margin:auto;padding:0 16px}
 
 /* HEADER */
 .header{
-position:sticky;top:0;
-background:var(--glass);
-backdrop-filter:blur(14px);
-z-index:100;
-box-shadow:0 6px 30px rgba(0,0,0,.08)
+  position:sticky;top:0;
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  z-index:100;
+  box-shadow:0 6px 30px rgba(0,0,0,.08)
 }
 .nav{
-display:flex;
-justify-content:space-between;
-align-items:center;
-padding:14px 0;
-position:relative;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  padding:14px 0;
+  position:relative;
 }
 .logo{
-font-family:Poppins;
-font-size:22px;
-font-weight:700;
-display:flex;
-gap:10px;
-align-items:center;
+  font-family:Poppins;
+  font-size:22px;
+  font-weight:700;
+  display:flex;
+  gap:10px;
+  align-items:center;
 }
 .logo span{
-width:40px;
-height:40px;
-border-radius:12px;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:#fff;
-display:flex;
-align-items:center;
-justify-content:center;
+  width:40px;
+  height:40px;
+  border-radius:12px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  display:flex;
+  align-items:center;
+  justify-content:center;
 }
 
 .btn{
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-color:#fff;
-padding:10px 22px;
-border-radius:16px;
-text-decoration:none;
-font-weight:600;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  color:#fff;
+  padding:10px 22px;
+  border-radius:16px;
+  text-decoration:none;
+  font-weight:600;
 }
 
 .toggle{
-background:var(--glass);
-border:none;
-width:42px;
-height:42px;
-border-radius:50%;
-cursor:pointer;
-font-size:18px;
+  background:var(--glass);
+  border:none;
+  width:42px;
+  height:42px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:18px;
 }
 
 /* HEADER MENU */
 .header-menu{
-position:absolute;
-top:70px;
-right:16px;
-background:var(--glass);
-backdrop-filter:blur(14px);
-border-radius:18px;
-box-shadow:0 20px 40px rgba(0,0,0,.15);
-padding:12px;
-display:none;
-flex-direction:column;
-min-width:180px;
-z-index:9999;
+  position:absolute;
+  top:70px;
+  right:16px;
+  background:var(--glass);
+  backdrop-filter:blur(14px);
+  border-radius:18px;
+  box-shadow:0 20px 40px rgba(0,0,0,.15);
+  padding:12px;
+  display:none;
+  flex-direction:column;
+  min-width:180px;
+  z-index:9999;
 }
 .header-menu a{
-text-decoration:none;
-padding:10px 14px;
-border-radius:12px;
-font-weight:600;
-color:var(--text);
+  text-decoration:none;
+  padding:10px 14px;
+  border-radius:12px;
+  font-weight:600;
+  color:var(--text);
 }
 .header-menu a:hover{
-background:rgba(99,102,241,.15);
+  background:rgba(99,102,241,.15);
 }
 
 /* HERO */
 .hero{
-position:relative;
-height:280px;
-overflow:hidden;
-border-radius:0 0 26px 26px;
+  position:relative;
+  height:260px;
+  overflow:hidden;
+  border-radius:0 0 26px 26px;
 }
 .hero-slider img{
-position:absolute;
-inset:0;
-width:100%;
-height:100%;
-object-fit:cover;
-opacity:0;
-animation:slide 15s infinite;
+  position:absolute;
+  inset:0;
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  opacity:0;
+  animation:slide 15s infinite;
 }
 .hero-slider img:nth-child(1){animation-delay:0s}
 .hero-slider img:nth-child(2){animation-delay:5s}
 .hero-slider img:nth-child(3){animation-delay:10s}
 
 @keyframes slide{
-0%{opacity:0}
-10%{opacity:1}
-30%{opacity:1}
-40%{opacity:0}
-100%{opacity:0}
+  0%{opacity:0}
+  10%{opacity:1}
+  30%{opacity:1}
+  40%{opacity:0}
+  100%{opacity:0}
 }
 
 .hero-overlay{
-position:absolute;
-inset:0;
-background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.5));
+  position:absolute;
+  inset:0;
+  background:linear-gradient(to bottom,rgba(0,0,0,.25),rgba(0,0,0,.5));
 }
 
 /* SEARCH */
 .search{
-margin:-30px auto 40px;
-max-width:600px;
-position:relative;
-z-index:10;
+  margin:-30px auto 40px;
+  max-width:600px;
+  position:relative;
+  z-index:10;
 }
 .search input{
-width:100%;
-padding:15px;
-border-radius:18px;
-border:2px solid #e5e7eb;
+  width:100%;
+  padding:15px;
+  border-radius:18px;
+  border:2px solid #e5e7eb;
 }
 
 /* APPS */
 .apps{
-display:grid;
-grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-gap:22px;
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
+  gap:22px;
 }
 .app-card{
-background:var(--glass);
-backdrop-filter:blur(10px);
-border:1px solid #e5e7eb;
-border-radius:18px;
-padding:16px;
-transition:.3s;
+  background:var(--glass);
+  backdrop-filter:blur(10px);
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:16px;
+  transition:.3s;
 }
 .app-card:hover{
-transform:translateY(-6px);
-box-shadow:0 20px 40px rgba(0,0,0,.12);
+  transform:translateY(-6px);
+  box-shadow:0 20px 40px rgba(0,0,0,.12);
 }
 .app-head{
-display:flex;
-gap:14px;
-align-items:center;
+  display:flex;
+  gap:14px;
+  align-items:center;
 }
 .app-icon{
-width:60px;
-height:60px;
-border-radius:16px;
-background:linear-gradient(135deg,var(--primary),var(--secondary));
-display:flex;
-align-items:center;
-justify-content:center;
-overflow:hidden;
-color:#fff;
+  width:60px;
+  height:60px;
+  border-radius:16px;
+  background:linear-gradient(135deg,var(--primary),var(--secondary));
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+  color:#fff;
+  font-size:24px;
+}
+.app-icon img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:16px;
 }
 .rank{
-margin-left:auto;
-background:linear-gradient(135deg,var(--accent),#fb7185);
-color:#fff;
-padding:4px 10px;
-border-radius:14px;
-font-size:13px;
+  margin-left:auto;
+  background:linear-gradient(135deg,var(--accent),#fb7185);
+  color:#fff;
+  padding:4px 10px;
+  border-radius:14px;
+  font-size:13px;
+  font-weight:700;
 }
 
 /* APP LIKE BUTTON */
 .app-like-row{
-display:flex;
-align-items:center;
-justify-content:space-between;
-margin-top:10px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  margin-top:10px;
 }
 .app-like-wrap{
-display:flex;
-align-items:center;
-gap:8px;
+  display:flex;
+  align-items:center;
+  gap:8px;
 }
 .app-like-btn{
-width:34px;
-height:34px;
-border-radius:999px;
-border:none;
-background:linear-gradient(135deg,#ec4899,#f43f5e);
-color:#fff;
-font-size:16px;
-cursor:pointer;
-box-shadow:0 6px 18px rgba(244,63,94,.4);
-display:flex;
-align-items:center;
-justify-content:center;
-transition:.25s;
+  width:34px;
+  height:34px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#ec4899,#f43f5e);
+  color:#fff;
+  font-size:16px;
+  cursor:pointer;
+  box-shadow:0 6px 18px rgba(244,63,94,.4);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  transition:.25s;
 }
 .app-like-btn.liked{
-background:linear-gradient(135deg,#10b981,#059669);
-box-shadow:0 6px 18px rgba(16,185,129,.45);
-transform:scale(1.05);
+  background:linear-gradient(135deg,#10b981,#059669);
+  box-shadow:0 6px 18px rgba(16,185,129,.45);
+  transform:scale(1.05);
 }
 .app-like-count{
-font-weight:600;
-color:var(--accent);
-font-size:15px;
+  font-weight:600;
+  color:var(--accent);
+  font-size:15px;
 }
 
-/* INFO */
-.info-box{
-background:var(--glass);
-backdrop-filter:blur(10px);
-border:1px solid #e5e7eb;
-border-radius:18px;
-padding:18px;
-margin-bottom:16px;
+/* COMMON SECTIONS */
+.section-box{
+  background:var(--glass);
+  backdrop-filter:blur(10px);
+  border:1px solid #e5e7eb;
+  border-radius:18px;
+  padding:18px;
+  margin:20px 0;
+}
+
+/* BLOG CARDS */
+.blog-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;
+}
+.blog-card{
+  background:var(--glass);
+  border-radius:18px;
+  border:1px solid #e5e7eb;
+  padding:14px 16px;
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+}
+.blog-badge{
+  display:inline-block;
+  padding:3px 10px;
+  border-radius:999px;
+  font-size:11px;
+  background:#e0f2fe;
+  color:#0369a1;
+  font-weight:600;
+}
+.blog-featured{
+  background:#fef3c7;
+  color:#92400e;
+}
+.blog-date{
+  font-size:11px;
+  color:#6b7280;
+}
+.blog-title{
+  font-weight:700;
+}
+.blog-content{
+  font-size:13px;
+  color:#4b5563;
 }
 
 /* FOOTER */
 .footer{
-background:var(--glass);
-border-top:1px solid #e5e7eb;
-padding:16px;
-text-align:center;
-font-size:14px;
-color:#64748b;
+  background:var(--glass);
+  border-top:1px solid #e5e7eb;
+  padding:14px;
+  text-align:center;
+  font-size:13px;
+  color:#64748b;
+  margin-top:10px;
 }
 
-/* FLOAT */
-.social-float{
-position:fixed;
-right:14px;
-top:45%;
-display:flex;
-flex-direction:column;
-gap:12px;
-z-index:999;
-}
-.social-btn{
-width:48px;
-height:48px;
-border-radius:50%;
-display:flex;
-align-items:center;
-justify-content:center;
-color:#fff;
-font-size:22px;
-}
-.whatsapp{background:#25D366}
-.telegram{background:#229ED9}
-
-/* BOTTOM BAR */
+/* BOTTOM NAV */
 .bottom-bar{
-position:fixed;
-bottom:0;
-left:0;
-right:0;
-background:var(--glass);
-border-top:1px solid #e5e7eb;
-display:flex;
-padding:10px;
-z-index:1000;
+  position:fixed;
+  bottom:0;
+  left:0;
+  right:0;
+  background:var(--glass);
+  border-top:1px solid #e5e7eb;
+  display:flex;
+  padding:8px;
+  z-index:1000;
 }
 .bottom-bar a{
-flex:1;
-margin:0 6px;
-padding:14px;
-border-radius:18px;
-text-align:center;
-font-weight:700;
-color:#fff;
-text-decoration:none;
+  flex:1;
+  margin:0 4px;
+  padding:8px 6px;
+  border-radius:18px;
+  text-align:center;
+  font-weight:700;
+  color:#fff;
+  text-decoration:none;
+  font-size:13px;
+  display:flex;
+  flex-direction:column;
+  gap:2px;
+  align-items:center;
+  justify-content:center;
+  transition:.2s;
 }
-.wa{background:#25D366}
-.tg{background:#229ED9}
+.bottom-bar a i{
+  font-size:16px;
+}
+.nav-home{background:#6366f1;}
+.nav-blog{background:#22c55e;}
+.nav-policy{background:#f97316;}
+.nav-contact{background:#0ea5e9;}
+.bottom-bar a.active-tab{
+  box-shadow:0 0 0 2px rgba(255,255,255,.7);
+  transform:translateY(-2px);
+}
+
+/* Tab sections */
+.tab-section{display:none;}
 </style>
 </head>
 
 <body>
 
 <header class="header">
-<div class="container nav">
-<div class="logo"><span>T</span>TechWithTips</div>
+  <div class="container nav">
+    <div class="logo"><span>T</span>TechWithTips</div>
 
-<div style="display:flex;gap:10px;align-items:center">
-<button class="toggle" id="themeToggle">🌙</button>
-<button class="toggle" id="menuToggle">☰</button>
-<a class="btn" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">Join</a>
-</div>
+    <div style="display:flex;gap:10px;align-items:center">
+      <button class="toggle" id="themeToggle">🌙</button>
+      <button class="toggle" id="menuToggle">☰</button>
+      <a class="btn" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">Join</a>
+    </div>
 
-<div id="headerMenu" class="header-menu">
-<a href="#blogs">📝 Blog</a>
-<a href="#about">ℹ️ About</a>
-<a href="#privacy">🔒 Privacy Policy</a>
-<a href="#contact">📞 Contact</a>
-</div>
-
-</div>
+    <div id="headerMenu" class="header-menu">
+      <a href="#home"    data-target="home"    class="menu-link">🏠 Home</a>
+      <a href="#blogs"   data-target="blogs"   class="menu-link">📝 Blog</a>
+      <a href="#policy"  data-target="policy"  class="menu-link">🔒 Policy</a>
+      <a href="#contact" data-target="contact" class="menu-link">📞 Contact</a>
+    </div>
+  </div>
 </header>
 
-<section>
-<div class="hero">
-<div class="hero-slider">
-<img src="PK.jpeg">
-<img src="PKS.jpeg">
-<img src="PKS1.jpeg">
-</div>
-<div class="hero-overlay"></div>
-</div>
+<!-- HOME -->
+<section id="home" class="tab-section">
+  <div class="hero">
+    <div class="hero-slider">
+      <img src="PK.jpeg" alt="">
+      <img src="PKS.jpeg" alt="">
+      <img src="PKS1.jpeg" alt="">
+    </div>
+    <div class="hero-overlay"></div>
+  </div>
 
-<div class="container">
-<div class="search">
-<input placeholder="Search WhatsApp earning apps...">
-</div>
-<div class="apps" id="apps"></div>
-</div>
+  <div class="container">
+    <div class="search">
+      <input placeholder="Search WhatsApp earning apps..." id="searchInput">
+    </div>
+    <div class="apps" id="apps"></div>
+  </div>
 </section>
 
-<section class="container" id="about">
-<div class="info-box">
-<h3>About TechWithTips</h3>
-<p>TechWithTips helps users find genuine WhatsApp earning apps safely.</p>
-</div>
+<!-- BLOG TAB -->
+<section class="container tab-section" id="blogs">
+  <div class="section-box">
+    <h3>Latest Blogs</h3>
+    <div id="blogsList" class="blog-list">
+      <!-- Firebase blogs yahan aayenge -->
+    </div>
+  </div>
+</section>
 
-<div class="info-box" id="privacy">
-<h3>Privacy Policy</h3>
-<p>We do not collect personal data. Third-party apps have their own policies.</p>
-</div>
+<!-- POLICY -->
+<section class="container tab-section" id="policy">
+  <div class="section-box">
+    <h3>Privacy & Policy</h3>
+    <p>Hum personal data store nahi karte. Saare third‑party apps ki apni alag privacy policy hoti hai.</p>
+  </div>
+</section>
 
-<div class="info-box" id="contact">
-<h3>Contact Us</h3>
-<p>Contact us via WhatsApp or Telegram.</p>
-</div>
+<!-- CONTACT -->
+<section class="container tab-section" id="contact">
+  <div class="section-box">
+    <h3>Contact Us</h3>
+    <p>Support ke liye WhatsApp channel ya Telegram group par message karo.</p>
+
+    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;">
+      <!-- WhatsApp -->
+      <a href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"
+         target="_blank"
+         style="flex:1;min-width:140px;display:flex;align-items:center;gap:10px;
+                padding:10px 14px;border-radius:14px;background:#25D366;
+                color:#fff;text-decoration:none;font-weight:600;">
+        <span style="width:32px;height:32px;border-radius:50%;background:#fff;
+                     display:flex;align-items:center;justify-content:center;">
+          <i class="fab fa-whatsapp" style="color:#25D366;font-size:18px;"></i>
+        </span>
+        <span>WhatsApp Channel</span>
+      </a>
+
+      <!-- Telegram -->
+      <a href="https://t.me/techwithtips0"
+         target="_blank"
+         style="flex:1;min-width:140px;display:flex;align-items:center;gap:10px;
+                padding:10px 14px;border-radius:14px;background:#229ED9;
+                color:#fff;text-decoration:none;font-weight:600;">
+        <span style="width:32px;height:32px;border-radius:50%;background:#fff;
+                     display:flex;align-items:center;justify-content:center;">
+          <i class="fab fa-telegram-plane" style="color:#229ED9;font-size:18px;"></i>
+        </span>
+        <span>Telegram Group</span>
+      </a>
+    </div>
+  </div>
 </section>
 
 <footer class="footer">
-© 2025 <strong>TechWithTips</strong>. All Rights Reserved.
+  © 2025 <strong>TechWithTips</strong>. All Rights Reserved.
 </footer>
 
-<div class="social-float">
-<a class="social-btn whatsapp" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"><i class="fab fa-whatsapp"></i></a>
-<a class="social-btn telegram" target="_blank" href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i></a>
-</div>
-
+<!-- BOTTOM NAV -->
 <div class="bottom-bar">
-<a class="wa" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"><i class="fab fa-whatsapp"></i> WhatsApp</a>
-<a class="tg" target="_blank" href="https://t.me/techwithtips0"><i class="fab fa-telegram-plane"></i> Telegram</a>
+  <a href="#home"    class="nav-home tab-link active-tab" data-target="home">
+    <i class="fa-solid fa-house"></i>
+    <span>Home</span>
+  </a>
+  <a href="#blogs"   class="nav-blog tab-link" data-target="blogs">
+    <i class="fa-solid fa-blog"></i>
+    <span>Blog</span>
+  </a>
+  <a href="#policy"  class="nav-policy tab-link" data-target="policy">
+    <i class="fa-solid fa-shield-halved"></i>
+    <span>Policy</span>
+  </a>
+  <a href="#contact" class="nav-contact tab-link" data-target="contact">
+    <i class="fa-solid fa-phone"></i>
+    <span>Contact</span>
+  </a>
 </div>
 
 <!-- THEME -->
 <script>
 const toggle=document.getElementById("themeToggle");
 toggle.onclick=()=>{
-document.body.classList.toggle("dark");
-toggle.innerText=document.body.classList.contains("dark")?"☀️":"🌙";
+  document.body.classList.toggle("dark");
+  toggle.innerText=document.body.classList.contains("dark")?"☀️":"🌙";
 };
 </script>
 
@@ -413,93 +504,184 @@ const menuBtn=document.getElementById("menuToggle");
 const menuBox=document.getElementById("headerMenu");
 
 menuBtn.onclick=()=>{
-menuBox.style.display=menuBox.style.display==="flex"?"none":"flex";
+  menuBox.style.display=menuBox.style.display==="flex"?"none":"flex";
 };
 
 document.addEventListener("click",(e)=>{
-if(!menuBtn.contains(e.target)&&!menuBox.contains(e.target)){
-menuBox.style.display="none";
-}
+  if(!menuBtn.contains(e.target)&&!menuBox.contains(e.target)){
+    menuBox.style.display="none";
+  }
 });
 </script>
 
-<!-- FIREBASE + APP LIKE BUTTONS (1 user = 1 like) -->
+<!-- TAB LOGIC -->
+<script>
+function showTab(id){
+  document.querySelectorAll('.tab-section').forEach(sec=>{
+    sec.style.display='none';
+  });
+  const active=document.getElementById(id);
+  if(active) active.style.display='block';
+
+  document.querySelectorAll('.tab-link').forEach(l=>l.classList.remove('active-tab'));
+  document.querySelectorAll('.tab-link[data-target="'+id+'"]').forEach(l=>{
+    l.classList.add('active-tab');
+  });
+
+  window.scrollTo({top:0,behavior:'smooth'});
+}
+
+// initial
+showTab('home');
+
+// bottom nav
+document.querySelectorAll('.tab-link').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=link.getAttribute('data-target');
+    showTab(id);
+  });
+});
+
+// header menu
+document.querySelectorAll('.menu-link').forEach(link=>{
+  link.addEventListener('click',e=>{
+    e.preventDefault();
+    const id=link.getAttribute('data-target');
+    showTab(id);
+    menuBox.style.display='none';
+  });
+});
+</script>
+
+<!-- FIREBASE: APPS + BLOGS -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import { getDatabase, ref, get } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
 const firebaseConfig={
-apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
-databaseURL:"https://pawan-9dd64-default-rtdb.asia-southeast1.firebasedatabase.app"
+  apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
+  databaseURL:"https://pawan-9dd64-default-rtdb.asia-southeast1.firebasedatabase.app"
 };
 
 const app=initializeApp(firebaseConfig);
 const db=getDatabase(app);
-const box=document.getElementById("apps");
 
-// localStorage keys
+const appsContainer=document.getElementById("apps");
+const searchInput=document.getElementById("searchInput");
+const blogsList=document.getElementById("blogsList");
+
 const LIKE_KEY_PREFIX   = "twt_app_like_";
 const LIKED_FLAG_PREFIX = "twt_app_liked_";
 
-const snap=await get(ref(db,"apps"));
-if(snap.exists()){
-  Object.entries(snap.val())
-    .sort(([,a],[,b])=> (a.rank||999)-(b.rank||999))
-    .forEach(([id,a])=>{
-      const likeKey  = LIKE_KEY_PREFIX   + id;
-      const flagKey  = LIKED_FLAG_PREFIX + id;
-      const savedLikes   = parseInt(localStorage.getItem(likeKey) || "0");
-      const alreadyLiked = localStorage.getItem(flagKey) === "1";
+let allApps = [];
+let allBlogs = [];
 
-      box.innerHTML+=`
-<div class="app-card" data-app-id="${id}">
+/* APPS */
+onValue(ref(db,"apps"), (snapshot) => {
+  const data = snapshot.val();
+  allApps = data ? Object.entries(data).map(([id, app]) => ({ id, ...app })) : [];
+  allApps.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0)).reverse();
+  displayApps(allApps);
+});
+
+function displayApps(apps) {
+  appsContainer.innerHTML = apps.map(app => {
+    const likeKey  = LIKE_KEY_PREFIX   + app.id;
+    const flagKey  = LIKED_FLAG_PREFIX + app.id;
+    const savedLikes   = parseInt(localStorage.getItem(likeKey) || "0");
+    const alreadyLiked = localStorage.getItem(flagKey) === "1";
+
+    return `
+<div class="app-card" data-app-id="${app.id}">
   <div class="app-head">
     <div class="app-icon">
-      ${a.logoUrl?`<img src="${a.logoUrl}" style="width:100%;height:100%;object-fit:cover">`:"📱"}
+      ${app.logo ? `<img src="${app.logo}" alt="${app.name}">` : "📱"}
     </div>
     <div>
-      <h3>${a.name}</h3>
-      <p>${a.subtitle||""}</p>
+      <h3>${app.name}</h3>
+      <p>${app.subtitle || "Best WhatsApp earning app"}</p>
     </div>
-    <div class="rank">#${a.rank||"-"}</div>
+    <div class="rank">#${allApps.indexOf(app) + 1}</div>
   </div>
-
   <div class="app-like-row">
-    <a class="btn" href="${a.url}" target="_blank">Download</a>
+    <a class="btn" href="${app.url}" target="_blank">Download</a>
     <div class="app-like-wrap">
-      <button class="app-like-btn ${alreadyLiked?"liked":""}" data-like-btn="${id}">
+      <button class="app-like-btn ${alreadyLiked ? 'liked' : ''}" data-like-btn="${app.id}">
         ${alreadyLiked ? "💖" : "❤️"}
       </button>
-      <span class="app-like-count" data-like-count="${id}">${savedLikes}</span>
+      <span class="app-like-count" data-like-count="${app.id}">${savedLikes}</span>
     </div>
   </div>
 </div>`;
-    });
+  }).join("");
+  attachLikeEvents();
+}
 
-  // attach events
-  document.querySelectorAll("[data-like-btn]").forEach(btn=>{
+function attachLikeEvents() {
+  document.querySelectorAll("[data-like-btn]").forEach(btn => {
     const id = btn.getAttribute("data-like-btn");
     const countEl = document.querySelector(`[data-like-count="${id}"]`);
-    const likeKey = LIKE_KEY_PREFIX   + id;
+    const likeKey = LIKE_KEY_PREFIX + id;
     const flagKey = LIKED_FLAG_PREFIX + id;
 
     let currentLikes = parseInt(localStorage.getItem(likeKey) || "0");
     let alreadyLiked = localStorage.getItem(flagKey) === "1";
 
-    btn.addEventListener("click", ()=>{
-      if(alreadyLiked) return;   // sirf ek baar like allow
-
+    btn.addEventListener("click", () => {
+      if (alreadyLiked) return;
       alreadyLiked = true;
       currentLikes++;
       countEl.textContent = currentLikes;
-
       localStorage.setItem(likeKey, String(currentLikes));
       localStorage.setItem(flagKey, "1");
-
-      btn.classList.add("liked");
-      btn.textContent = "💖";
+      btn.classList.add('liked');
+      btn.innerHTML = "💖";
     });
   });
+}
+
+if(searchInput){
+  searchInput.addEventListener("input", (e) => {
+    const query = e.target.value.toLowerCase();
+    const filteredApps = allApps.filter(app => 
+      app.name.toLowerCase().includes(query) || 
+      (app.subtitle || "").toLowerCase().includes(query)
+    );
+    displayApps(filteredApps);
+  });
+}
+
+/* BLOGS */
+onValue(ref(db,"blogs"), (snapshot) => {
+  const data = snapshot.val();
+  allBlogs = data ? Object.entries(data).map(([id, blog]) => ({ id, ...blog })) : [];
+  allBlogs.sort((a,b)=> new Date(b.date || 0) - new Date(a.date || 0));
+  renderBlogs();
+});
+
+function renderBlogs(){
+  if(!blogsList) return;
+  if(allBlogs.length===0){
+    blogsList.innerHTML = "<p style='font-size:14px;color:#6b7280;'>Abhi koi blog add nahi hua. Admin panel se blog publish karte hi yahan dikh jayega.</p>";
+    return;
+  }
+
+  blogsList.innerHTML = allBlogs.map(b=>{
+    const short = (b.content || "").slice(0,120) + ((b.content||"").length>120 ? "..." : "");
+    const date = b.date ? new Date(b.date).toLocaleDateString() : "";
+    const category = b.category || "General";
+    const featured = b.featured ? " blog-featured" : "";
+    const featuredText = b.featured ? "Featured" : category;
+
+    return `
+<div class="blog-card">
+  <span class="blog-badge${featured}">${featuredText}</span>
+  <span class="blog-date">${date}</span>
+  <div class="blog-title">${b.title}</div>
+  <div class="blog-content">${short}</div>
+</div>`;
+  }).join("");
 }
 </script>
 
