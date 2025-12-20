@@ -127,7 +127,7 @@ body.dark{background:#020617}
   background:rgba(99,102,241,.15);
 }
 
-/* HERO */
+/* HERO - FIXED */
 .hero{
   position:relative;
   height:260px;
@@ -144,8 +144,8 @@ body.dark{background:#020617}
   animation:slide 15s infinite;
 }
 .hero-slider img:nth-child(1){animation-delay:1s}
-hero-slider img:nth-child(2){animation-delay:2s}
-.hero-slider img:nth-child(3){animation-delay:0s}
+.hero-slider img:nth-child(2){animation-delay:6s}
+.hero-slider img:nth-child(3){animation-delay:11s}  /* ✅ FIXED: Added missing dot */
 
 @keyframes slide{
   0%{opacity:0}
@@ -519,9 +519,9 @@ hero-slider img:nth-child(2){animation-delay:2s}
 <section id="home" class="tab-section">
   <div class="hero">
     <div class="hero-slider">
-      <img src="PK.jpeg" alt="">
-      <img src="PKS.jpeg" alt="">
-      <img src="PKS1.jpeg" alt="">
+      <img src="PK.jpeg" alt="Slide 1">
+      <img src="PKS.jpeg" alt="Slide 2">
+      <img src="PKS1.jpeg" alt="Slide 3">
     </div>
     <div class="hero-overlay"></div>
   </div>
