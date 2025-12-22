@@ -127,7 +127,7 @@ body.dark{background:#020617}
   background:rgba(99,102,241,.15);
 }
 
-/* HERO - FIXED */
+/* HERO */
 .hero{
   position:relative;
   height:260px;
@@ -145,7 +145,7 @@ body.dark{background:#020617}
 }
 .hero-slider img:nth-child(1){animation-delay:1s}
 .hero-slider img:nth-child(2){animation-delay:6s}
-.hero-slider img:nth-child(3){animation-delay:11s}  /* ✅ FIXED: Added missing dot */
+.hero-slider img:nth-child(3){animation-delay:11s}
 
 @keyframes slide{
   0%{opacity:0}
@@ -274,7 +274,7 @@ body.dark{background:#020617}
   margin:20px 0;
 }
 
-/* BLOG CARDS WITH EXPAND */
+/* BLOG CARDS */
 .blog-list{
   display:grid;
   grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
@@ -425,10 +425,10 @@ body.dark{background:#020617}
   transform:translateY(-2px);
 }
 
-/* Tab sections */
+/* TABS */
 .tab-section{display:none;}
 
-/* POPUP OVERLAY */
+/* POPUP */
 .popup-backdrop{
   position:fixed;
   inset:0;
@@ -691,12 +691,17 @@ let allBlogs = [];
 onValue(ref(db,"apps"), (snapshot) => {
   const data = snapshot.val();
   allApps = data ? Object.entries(data).map(([id, app]) => ({ id, ...app })) : [];
-  allApps.sort((a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0)).reverse();
+
+  // ✅ FIX: sirf descending sort, koi reverse nahi
+  allApps.sort(
+    (a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0)
+  );
+
   displayApps(allApps);
 });
 
 function displayApps(apps) {
-  appsContainer.innerHTML = apps.map(app => {
+  appsContainer.innerHTML = apps.map((app, index) => {
     const likeKey  = LIKE_KEY_PREFIX   + app.id;
     const flagKey  = LIKED_FLAG_PREFIX + app.id;
     const savedLikes   = parseInt(localStorage.getItem(likeKey) || "0");
@@ -712,7 +717,7 @@ function displayApps(apps) {
       <h3>${app.name}</h3>
       <p>${app.subtitle || "Best WhatsApp earning app"}</p>
     </div>
-    <div class="rank">#${allApps.indexOf(app) + 1}</div>
+    <div class="rank">#${index + 1}</div>
   </div>
   <div class="app-like-row">
     <a class="btn" href="${app.url}" target="_blank">Download</a>
@@ -762,11 +767,11 @@ if(searchInput){
   });
 }
 
-/* BLOGS – IMAGE + EXPAND */
+/* BLOGS */
 onValue(ref(db,"blogs"), (snapshot) => {
   const data = snapshot.val();
   allBlogs = data ? Object.entries(data).map(([id, blog]) => ({ id, ...blog })) : [];
-  allBlogs.sort((a,b)=> new Date(b.date || 0) - new Date(a.date || 0));
+  allBlogs.sort((a,b)=> new Date(b.date || 0) - new Date(a.date || 0)).reverse();
   renderBlogs();
 });
 
