@@ -22,7 +22,7 @@
   --text:#0f172a;
 }
 body.dark{
-  --glass:rgba(15,23,42,.75);
+  --glass:rgba(255,255,255,.75);
   --text:#e5e7eb;
 }
 *{margin:0;padding:0;box-sizing:border-box}
@@ -664,10 +664,15 @@ document.querySelectorAll('.menu-link').forEach(link=>{
 });
 </script>
 
-<!-- FIREBASE: APPS + BLOGS -->
+<!-- FIREBASE: APPS + BLOGS (REAL LIKE SYSTEM) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
-import { getDatabase, ref, onValue } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
+import { 
+  getDatabase, 
+  ref, 
+  onValue,
+  runTransaction        // ✅ transaction for safe like increment
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";  /* [web:17][web:42] */
 
 const firebaseConfig={
   apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
@@ -681,7 +686,7 @@ const appsContainer=document.getElementById("apps");
 const searchInput=document.getElementById("searchInput");
 const blogsList=document.getElementById("blogsList");
 
-const LIKE_KEY_PREFIX   = "twt_app_like_";
+// localStorage key sirf flag ke liye (per device ek like)
 const LIKED_FLAG_PREFIX = "twt_app_liked_";
 
 let allApps = [];
@@ -692,7 +697,7 @@ onValue(ref(db,"apps"), (snapshot) => {
   const data = snapshot.val();
   allApps = data ? Object.entries(data).map(([id, app]) => ({ id, ...app })) : [];
 
-  // ✅ FIX: sirf descending sort, koi reverse nahi
+  // latest first
   allApps.sort(
     (a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0)
   );
@@ -702,10 +707,11 @@ onValue(ref(db,"apps"), (snapshot) => {
 
 function displayApps(apps) {
   appsContainer.innerHTML = apps.map((app, index) => {
-    const likeKey  = LIKE_KEY_PREFIX   + app.id;
     const flagKey  = LIKED_FLAG_PREFIX + app.id;
-    const savedLikes   = parseInt(localStorage.getItem(likeKey) || "0");
     const alreadyLiked = localStorage.getItem(flagKey) === "1";
+
+    // REAL like count from Firebase field `likes`
+    const likeCount = typeof app.likes === "number" ? app.likes : 0;
 
     return `
 <div class="app-card" data-app-id="${app.id}">
@@ -725,7 +731,7 @@ function displayApps(apps) {
       <button class="app-like-btn ${alreadyLiked ? 'liked' : ''}" data-like-btn="${app.id}">
         ${alreadyLiked ? "💖" : "❤️"}
       </button>
-      <span class="app-like-count" data-like-count="${app.id}">${savedLikes}</span>
+      <span class="app-like-count" data-like-count="${app.id}">${likeCount}</span>
     </div>
   </div>
 </div>`;
@@ -737,21 +743,31 @@ function attachLikeEvents() {
   document.querySelectorAll("[data-like-btn]").forEach(btn => {
     const id = btn.getAttribute("data-like-btn");
     const countEl = document.querySelector(`[data-like-count="${id}"]`);
-    const likeKey = LIKE_KEY_PREFIX + id;
     const flagKey = LIKED_FLAG_PREFIX + id;
 
-    let currentLikes = parseInt(localStorage.getItem(likeKey) || "0");
     let alreadyLiked = localStorage.getItem(flagKey) === "1";
 
-    btn.addEventListener("click", () => {
-      if (alreadyLiked) return;
+    btn.addEventListener("click", async () => {
+      if (alreadyLiked) return;   // ek hi baar like per device
+
       alreadyLiked = true;
-      currentLikes++;
-      countEl.textContent = currentLikes;
-      localStorage.setItem(likeKey, String(currentLikes));
       localStorage.setItem(flagKey, "1");
       btn.classList.add('liked');
       btn.innerHTML = "💖";
+
+      const likeRef = ref(db, "apps/" + id + "/likes");
+
+      // Firebase me atomic increment (real global like)
+      await runTransaction(likeRef, (current) => {
+        if (current === null || current === undefined) {
+          return 1;
+        }
+        return current + 1;
+      });  /* [web:17][web:42] */
+
+      // UI count ko bhi turant +1 dikha do
+      const currentLikes = parseInt(countEl.textContent || "0", 10);
+      countEl.textContent = currentLikes + 1;
     });
   });
 }
