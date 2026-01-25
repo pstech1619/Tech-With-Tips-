@@ -1,8 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+<meta name="HandheldFriendly" content="True">
 
 <title>WhatsApp Earning Apps 2025 | Earn Money from WhatsApp – TechWithTips</title>
 
@@ -27,9 +29,13 @@ body.dark{
   --glass-border:rgba(148,163,184,.35);
   --text:#e5e7eb;
 }
-*{margin:0;padding:0;box-sizing:border-box}
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color:transparent;
+}
 
-/* 🔥 Animated gradient background */
 body{
   font-family:Inter,sans-serif;
   color:var(--text);
@@ -41,6 +47,8 @@ body{
     linear-gradient(-45deg,#020617,#0f172a,#020617,#020617);
   background-size:200% 200%;
   animation:bgMove 20s ease-in-out infinite;
+  overflow-x:hidden;
+  scroll-behavior:smooth;
 }
 @keyframes bgMove{
   0%{background-position:0% 50%}
@@ -53,8 +61,6 @@ body.dark{
     radial-gradient(circle at 90% 100%,rgba(16,185,129,.32),transparent 55%),
     linear-gradient(135deg,#020617,#020617,#020617);
 }
-
-/* Small floating glow dots */
 body::before{
   content:"";
   position:fixed;
@@ -64,76 +70,280 @@ body::before{
     radial-gradient(circle at 80% 70%,rgba(255,255,255,.08),transparent 55%);
   pointer-events:none;
   mix-blend-mode:screen;
+  z-index:0;
 }
 
-/* Container */
-.container{max-width:1200px;margin:auto;padding:0 16px}
+.container{
+  max-width:1200px;
+  margin:auto;
+  padding:0 12px;
+  position:relative;
+  z-index:1;
+}
 
-/* HEADER */
 .header{
-  position:sticky;top:0;
-  background:linear-gradient(to bottom,rgba(15,23,42,.7),rgba(15,23,42,.4));
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
+  position:sticky;
+  top:0;
+  background:linear-gradient(to bottom,rgba(15,23,42,.9),rgba(15,23,42,.7));
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
   z-index:100;
-  box-shadow:0 18px 45px rgba(15,23,42,.65);
-  border-bottom:1px solid rgba(148,163,184,.4);
+  box-shadow:0 4px 20px rgba(0,0,0,.3);
+  border-bottom:1px solid rgba(148,163,184,.3);
+  transition:all .3s ease;
 }
 .nav{
   display:flex;
   justify-content:space-between;
   align-items:center;
-  padding:14px 0;
+  padding:10px 0;
   position:relative;
+  gap:8px;
 }
 .logo{
-  font-family:Poppins;
-  font-size:22px;
+  font-family:Poppins,sans-serif;
+  font-size:18px;
   font-weight:700;
   display:flex;
-  gap:10px;
+  gap:8px;
   align-items:center;
   letter-spacing:.02em;
   color:#e5e7eb;
+  transition:transform .3s ease;
+  flex-shrink:0;
+}
+.logo:hover{
+  transform:scale(1.05);
 }
 .logo span{
-  width:40px;
-  height:40px;
-  border-radius:14px;
+  width:32px;
+  height:32px;
+  border-radius:12px;
   background:conic-gradient(from 180deg at 50% 50%,#6366f1,#22d3ee,#f97316,#f43f5e,#6366f1);
   color:#fff;
   display:flex;
   align-items:center;
   justify-content:center;
-  box-shadow:0 10px 25px rgba(15,23,42,.8);
+  box-shadow:0 6px 16px rgba(99,102,241,.5);
+  font-size:14px;
+  animation:logoSpin 10s linear infinite;
+}
+@keyframes logoSpin{
+  0%{transform:rotate(0deg)}
+  100%{transform:rotate(360deg)}
 }
 
-/* MAIN BUTTON */
+.nav-actions{
+  display:flex;
+  gap:6px;
+  align-items:center;
+  flex-shrink:0;
+}
+
+.notification-btn{
+  position:relative;
+  background:rgba(15,23,42,.7);
+  color:#e5e7eb;
+  border:1px solid rgba(148,163,184,.4);
+  width:36px;
+  height:36px;
+  border-radius:50%;
+  cursor:pointer;
+  font-size:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  transition:all .3s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.notification-btn:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 16px rgba(0,0,0,.4);
+}
+.notification-btn:active{
+  transform:scale(.95);
+}
+.notification-badge{
+  position:absolute;
+  top:-2px;
+  right:-2px;
+  background:linear-gradient(135deg,#f43f5e,#fb7185);
+  color:#fff;
+  width:18px;
+  height:18px;
+  border-radius:50%;
+  font-size:10px;
+  font-weight:700;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  box-shadow:0 2px 8px rgba(244,63,94,.6);
+  animation:notificationPulse 2s infinite;
+}
+.notification-badge.show{
+  display:flex;
+}
+@keyframes notificationPulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.15)}
+}
+
+.notification-dropdown{
+  position:absolute;
+  top:56px;
+  right:80px;
+  background:rgba(15,23,42,.98);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  border:1px solid rgba(148,163,184,.3);
+  padding:10px;
+  display:none;
+  flex-direction:column;
+  width:280px;
+  max-width:calc(100vw - 24px);
+  z-index:9999;
+  animation:slideDown .3s ease;
+  max-height:400px;
+  overflow-y:auto;
+}
+@keyframes slideDown{
+  from{
+    opacity:0;
+    transform:translateY(-10px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+.notification-dropdown.show{
+  display:flex;
+}
+.notification-header{
+  padding:8px 10px;
+  border-bottom:1px solid rgba(148,163,184,.3);
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.notification-header h4{
+  color:#e5e7eb;
+  font-size:14px;
+  font-weight:700;
+}
+.clear-notifications{
+  background:transparent;
+  border:none;
+  color:#22d3ee;
+  font-size:11px;
+  font-weight:600;
+  cursor:pointer;
+  padding:4px 8px;
+  border-radius:8px;
+  transition:all .2s ease;
+}
+.clear-notifications:hover{
+  background:rgba(34,211,238,.2);
+}
+.notification-list{
+  display:flex;
+  flex-direction:column;
+  gap:6px;
+  padding:6px 0;
+}
+.notification-item{
+  background:rgba(99,102,241,.15);
+  border:1px solid rgba(99,102,241,.3);
+  border-radius:12px;
+  padding:10px;
+  cursor:pointer;
+  transition:all .3s ease;
+  animation:slideInNotif .3s ease;
+}
+.notification-item:hover{
+  background:rgba(99,102,241,.25);
+  transform:translateX(4px);
+}
+.notification-item.new{
+  background:rgba(34,211,238,.2);
+  border-color:rgba(34,211,238,.5);
+}
+@keyframes slideInNotif{
+  from{
+    opacity:0;
+    transform:translateX(-20px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+.notification-type{
+  display:inline-flex;
+  align-items:center;
+  gap:4px;
+  font-size:11px;
+  font-weight:600;
+  color:#22d3ee;
+  margin-bottom:4px;
+}
+.notification-type i{
+  font-size:12px;
+}
+.notification-title{
+  font-size:12px;
+  font-weight:600;
+  color:#e5e7eb;
+  margin-bottom:2px;
+  line-height:1.3;
+}
+.notification-message{
+  font-size:11px;
+  color:#9ca3af;
+  line-height:1.3;
+}
+.notification-time{
+  font-size:9px;
+  color:#6b7280;
+  margin-top:4px;
+}
+.notification-empty{
+  padding:30px 20px;
+  text-align:center;
+  color:#9ca3af;
+  font-size:12px;
+}
+
 .btn{
   position:relative;
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap:6px;
+  gap:4px;
   background:linear-gradient(135deg,#6366f1,#22d3ee);
   color:#fff;
-  padding:10px 24px;
+  padding:8px 16px;
   border-radius:999px;
   text-decoration:none;
   font-weight:600;
-  font-size:14px;
+  font-size:13px;
   border:0;
   cursor:pointer;
-  box-shadow:0 14px 32px rgba(79,70,229,.55);
-  transition:transform .18s ease,box-shadow .18s ease,background .2s ease,filter .2s ease;
+  box-shadow:0 6px 16px rgba(99,102,241,.4);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  will-change:transform;
+  white-space:nowrap;
 }
 .btn::before{
   content:"";
   position:absolute;
   inset:-2px;
   border-radius:999px;
-  background:radial-gradient(circle at 0 0,rgba(255,255,255,.8),transparent 55%);
-  opacity:.4;
+  background:radial-gradient(circle at 0 0,rgba(255,255,255,.6),transparent 50%);
+  opacity:.5;
   mix-blend-mode:screen;
   pointer-events:none;
 }
@@ -142,69 +352,85 @@ body::before{
   position:absolute;
   inset:0;
   border-radius:999px;
-  border:1px solid rgba(255,255,255,.55);
-  opacity:.65;
+  border:1px solid rgba(255,255,255,.4);
+  opacity:.6;
 }
 .btn:hover{
-  transform:translateY(-1px) scale(1.03);
-  box-shadow:0 20px 45px rgba(79,70,229,.7);
-  filter:saturate(1.1);
+  transform:translateY(-2px);
+  box-shadow:0 10px 24px rgba(99,102,241,.6);
 }
 .btn:active{
-  transform:translateY(1px) scale(.97);
-  box-shadow:0 10px 22px rgba(79,70,229,.5);
+  transform:translateY(0px);
+  box-shadow:0 4px 12px rgba(99,102,241,.4);
+}
+.btn i{
+  font-size:14px;
 }
 
 .toggle{
-  background:rgba(15,23,42,.6);
+  background:rgba(15,23,42,.7);
   color:#e5e7eb;
-  border:1px solid rgba(148,163,184,.5);
-  width:42px;
-  height:42px;
+  border:1px solid rgba(148,163,184,.4);
+  width:36px;
+  height:36px;
   border-radius:50%;
   cursor:pointer;
-  font-size:18px;
-  box-shadow:0 8px 20px rgba(15,23,42,.7);
+  font-size:16px;
+  box-shadow:0 4px 12px rgba(0,0,0,.3);
+  transition:all .3s ease;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.toggle:hover{
+  transform:scale(1.1);
+  box-shadow:0 6px 16px rgba(0,0,0,.4);
+}
+.toggle:active{
+  transform:scale(.95);
 }
 
-/* HEADER MENU */
 .header-menu{
   position:absolute;
-  top:70px;
-  right:16px;
-  background:var(--glass);
-  backdrop-filter:blur(18px);
-  -webkit-backdrop-filter:blur(18px);
-  border-radius:22px;
-  box-shadow:0 24px 60px rgba(15,23,42,.85);
-  border:1px solid var(--glass-border);
-  padding:12px;
+  top:56px;
+  right:12px;
+  background:rgba(15,23,42,.98);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:18px;
+  box-shadow:0 20px 50px rgba(0,0,0,.5);
+  border:1px solid rgba(148,163,184,.3);
+  padding:10px;
   display:none;
   flex-direction:column;
-  min-width:190px;
+  min-width:170px;
   z-index:9999;
+  animation:slideDown .3s ease;
 }
 .header-menu a{
   text-decoration:none;
-  padding:10px 14px;
-  border-radius:14px;
+  padding:10px 12px;
+  border-radius:12px;
   font-weight:600;
   color:#e5e7eb;
   display:flex;
   align-items:center;
   gap:8px;
-  font-size:14px;
+  font-size:13px;
+  transition:all .2s ease;
 }
 .header-menu a:hover{
-  background:rgba(148,163,184,.22);
+  background:rgba(99,102,241,.3);
+  transform:translateX(4px);
 }
 
-/* HERO */
 .hero{
   position:relative;
-  height:260px;
+  height:220px;
   overflow:hidden;
-  border-radius:0 0 26px 26px;
+  border-radius:0 0 22px 22px;
+  margin-bottom:0;
 }
 .hero-slider img{
   position:absolute;
@@ -214,384 +440,782 @@ body::before{
   object-fit:cover;
   opacity:0;
   animation:slide 15s infinite;
+  transition:opacity 1s ease-in-out;
 }
-.hero-slider img:nth-child(1){animation-delay:1s}
-.hero-slider img:nth-child(2){animation-delay:6s}
-.hero-slider img:nth-child(3){animation-delay:11s}
-
+.hero-slider img:nth-child(1){animation-delay:0s}
+.hero-slider img:nth-child(2){animation-delay:5s}
+.hero-slider img:nth-child(3){animation-delay:10s}
 @keyframes slide{
-  0%{opacity:0}
-  10%{opacity:1}
-  30%{opacity:1}
-  40%{opacity:0}
-  100%{opacity:0}
+  0%{opacity:0;transform:scale(1)}
+  6%{opacity:1;transform:scale(1.05)}
+  33%{opacity:1;transform:scale(1.05)}
+  40%{opacity:0;transform:scale(1)}
+  100%{opacity:0;transform:scale(1)}
 }
-
 .hero-overlay{
   position:absolute;
   inset:0;
-  background:linear-gradient(to bottom,rgba(15,23,42,.25),rgba(15,23,42,.85));
+  background:linear-gradient(to bottom,rgba(15,23,42,.2),rgba(15,23,42,.8));
+  z-index:1;
 }
 
-/* SEARCH */
 .search{
-  margin:-30px auto 40px;
+  margin:-25px auto 30px;
   max-width:600px;
   position:relative;
   z-index:10;
+  padding:0 12px;
 }
 .search input{
   width:100%;
-  padding:14px 16px;
-  border-radius:16px;
-  border:1px solid rgba(148,163,184,.7);
-  background:rgba(15,23,42,.7);
+  padding:12px 14px 12px 42px;
+  border-radius:14px;
+  border:1px solid rgba(148,163,184,.5);
+  background:rgba(15,23,42,.9);
   color:#e5e7eb;
-  box-shadow:0 10px 26px rgba(15,23,42,.8);
+  box-shadow:0 8px 24px rgba(0,0,0,.4);
+  font-size:16px;
+  transition:all .3s ease;
+}
+.search input:focus{
+  outline:none;
+  border-color:#6366f1;
+  box-shadow:0 10px 30px rgba(99,102,241,.3);
+  transform:translateY(-2px);
+}
+.search::before{
+  content:"🔍";
+  position:absolute;
+  left:24px;
+  top:50%;
+  transform:translateY(-50%);
+  font-size:16px;
+  z-index:11;
+  pointer-events:none;
 }
 
-/* APPS */
 .apps{
   display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:22px;
+  grid-template-columns:repeat(auto-fill,minmax(260px,1fr));
+  gap:18px;
   margin-bottom:20px;
+  padding:0 12px;
+}
+@media(max-width:600px){
+  .apps{
+    grid-template-columns:1fr;
+  }
 }
 .app-card{
   background:var(--glass);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   border:1px solid var(--glass-border);
-  border-radius:22px;
-  padding:16px;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-  box-shadow:0 20px 45px rgba(15,23,42,.85);
+  border-radius:20px;
+  padding:14px;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
   position:relative;
   overflow:hidden;
+  will-change:transform;
 }
 .app-card::before{
   content:"";
   position:absolute;
-  width:120px;
-  height:120px;
+  width:140px;
+  height:140px;
   border-radius:50%;
-  background:radial-gradient(circle,rgba(59,130,246,.45),transparent 60%);
-  top:-60px;
-  right:-40px;
-  opacity:.45;
+  background:radial-gradient(circle,rgba(99,102,241,.4),transparent 70%);
+  top:-70px;
+  right:-45px;
+  opacity:.5;
   pointer-events:none;
+  transition:all .4s ease;
 }
 .app-card:hover{
-  transform:translateY(-6px);
-  box-shadow:0 28px 60px rgba(15,23,42,.95);
-  border-color:rgba(129,140,248,.9);
+  transform:translateY(-6px) scale(1.02);
+  box-shadow:0 16px 40px rgba(99,102,241,.4);
+  border-color:rgba(99,102,241,.8);
+}
+.app-card:hover::before{
+  transform:scale(1.3);
+  opacity:.7;
 }
 .app-head{
   display:flex;
-  gap:14px;
+  gap:12px;
   align-items:center;
 }
 .app-icon{
-  width:60px;
-  height:60px;
-  border-radius:20px;
+  width:54px;
+  height:54px;
+  border-radius:16px;
   background:radial-gradient(circle at 20% 15%,#fef3c7,#facc15);
   display:flex;
   align-items:center;
   justify-content:center;
   overflow:hidden;
   color:#fff;
-  font-size:24px;
-  box-shadow:0 14px 30px rgba(15,23,42,.9);
+  font-size:22px;
+  box-shadow:0 6px 16px rgba(0,0,0,.3);
+  transition:transform .3s ease;
+  flex-shrink:0;
+}
+.app-card:hover .app-icon{
+  transform:rotate(5deg) scale(1.1);
 }
 .app-icon img{
   width:100%;
   height:100%;
   object-fit:cover;
-  border-radius:20px;
+  border-radius:16px;
 }
 .app-head h3{
-  font-size:16px;
+  font-size:15px;
   font-weight:700;
   color:#e5e7eb;
+  line-height:1.3;
 }
 .app-head p{
-  font-size:13px;
+  font-size:12px;
   color:#9ca3af;
+  line-height:1.3;
 }
 .rank{
   margin-left:auto;
   background:linear-gradient(135deg,#f97316,#fb7185);
   color:#fff;
-  padding:4px 10px;
-  border-radius:14px;
-  font-size:13px;
+  padding:3px 8px;
+  border-radius:12px;
+  font-size:12px;
   font-weight:700;
-  box-shadow:0 8px 20px rgba(15,23,42,.9);
+  box-shadow:0 4px 10px rgba(249,115,22,.4);
+  animation:pulse 2s infinite;
+  flex-shrink:0;
+}
+@keyframes pulse{
+  0%,100%{transform:scale(1)}
+  50%{transform:scale(1.05)}
 }
 
-/* LIKE BUTTON */
 .app-like-row{
   display:flex;
   align-items:center;
   justify-content:space-between;
-  margin-top:14px;
+  margin-top:12px;
+  gap:8px;
 }
 .app-like-wrap{
   display:flex;
   align-items:center;
-  gap:8px;
+  gap:6px;
 }
 .app-like-btn{
-  width:40px;
-  height:40px;
+  width:36px;
+  height:36px;
   border-radius:999px;
   border:none;
-  background:radial-gradient(circle at 30% 30%,#fecaca,#f97373);
+  background:radial-gradient(circle at 30% 30%,#fecaca,#f87171);
   color:#fff;
-  font-size:18px;
+  font-size:16px;
   cursor:pointer;
-  box-shadow:0 10px 22px rgba(248,113,113,.55);
+  box-shadow:0 4px 12px rgba(248,113,113,.4);
   display:flex;
   align-items:center;
   justify-content:center;
-  transition:transform .18s ease,box-shadow .18s ease,background .2s ease;
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  flex-shrink:0;
 }
 .app-like-btn.liked{
   background:radial-gradient(circle at 30% 30%,#bbf7d0,#22c55e);
-  box-shadow:0 10px 24px rgba(34,197,94,.6);
-  transform:scale(1.05);
+  box-shadow:0 4px 12px rgba(34,197,94,.5);
+  animation:likePopIn .5s ease;
+}
+@keyframes likePopIn{
+  0%{transform:scale(1)}
+  50%{transform:scale(1.3)}
+  100%{transform:scale(1)}
 }
 .app-like-btn:hover{
-  transform:translateY(-1px) scale(1.05);
+  transform:scale(1.12);
 }
 .app-like-btn:active{
-  transform:translateY(1px) scale(.96);
+  transform:scale(.9);
 }
 .app-like-count{
   font-weight:600;
   color:#fecaca;
-  font-size:15px;
+  font-size:14px;
 }
 
-/* COMMON SECTIONS */
 .section-box{
   background:var(--glass);
   backdrop-filter:blur(16px);
   -webkit-backdrop-filter:blur(16px);
   border:1px solid var(--glass-border);
-  border-radius:22px;
-  padding:18px;
-  margin:20px 0;
-  box-shadow:0 20px 45px rgba(15,23,42,.9);
-}
-
-/* BLOG CARDS */
-.blog-list{
-  display:grid;
-  grid-template-columns:repeat(auto-fill,minmax(280px,1fr));
-  gap:20px;
-  margin-top:16px;
-}
-.blog-card{
-  background:var(--glass);
-  backdrop-filter:blur(14px);
-  border:1px solid var(--glass-border);
   border-radius:20px;
   padding:16px;
-  transition:transform .25s ease,box-shadow .25s ease,border-color .25s ease;
-  height:100%;
+  margin:20px 12px;
+  box-shadow:0 6px 20px rgba(0,0,0,.3);
+  animation:fadeInUp .6s ease;
+}
+@keyframes fadeInUp{
+  from{
+    opacity:0;
+    transform:translateY(20px);
+  }
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+.blog-list{
+  display:grid;
+  grid-template-columns:repeat(auto-fill,minmax(240px,1fr));
+  gap:16px;
+  margin-top:16px;
+}
+@media(max-width:600px){
+  .blog-list{
+    grid-template-columns:1fr;
+  }
+}
+
+.blog-feed-header{
   display:flex;
-  flex-direction:column;
-  cursor:pointer;
-  overflow:hidden;
-  box-shadow:0 18px 40px rgba(15,23,42,.9);
+  align-items:center;
+  gap:10px;
+  padding:6px 2px 0;
 }
-.blog-card:hover{
-  transform:translateY(-4px);
-  box-shadow:0 26px 55px rgba(15,23,42,1);
-  border-color:rgba(129,140,248,.85);
-}
-.blog-thumb{
-  width:100%;
-  height:140px;
-  border-radius:16px;
-  object-fit:cover;
-  margin-bottom:12px;
-  display:block;
-}
-.blog-badge{
-  display:inline-block;
-  padding:4px 12px;
-  border-radius:999px;
-  font-size:12px;
-  background:#e0f2fe33;
-  color:#bae6fd;
-  font-weight:600;
-  margin-bottom:6px;
-}
-.blog-featured{
-  background:#facc1533;
-  color:#fde68a;
-}
-.blog-date{
-  font-size:12px;
-  color:#9ca3af;
-  margin-bottom:8px;
-}
-.blog-title{
-  font-size:16px;
-  font-weight:700;
-  line-height:1.4;
-  margin-bottom:8px;
-  color:#e5e7eb;
-}
-.blog-content-short{
-  font-size:13px;
-  color:#d1d5db;
-  line-height:1.5;
-  margin-bottom:10px;
-}
-.blog-content-full{
-  font-size:14px;
-  line-height:1.6;
-  color:#e5e7eb;
-  margin-top:4px;
-  display:none;
-}
-.read-more-btn{
-  margin-top:8px;
-  padding:8px 16px;
-  background:linear-gradient(135deg,#6366f1,#22d3ee);
-  color:white;
-  border:none;
-  border-radius:999px;
-  font-size:12px;
-  font-weight:600;
-  cursor:pointer;
-  transition:.2s;
-  align-self:flex-start;
-  display:inline-flex;
+.blog-story-ring{
+  width:38px;
+  height:38px;
+  border-radius:50%;
+  padding:2px;
+  background:conic-gradient(#f97316,#ec4899,#6366f1,#a855f7,#f97316);
+  display:flex;
   align-items:center;
   justify-content:center;
+  animation:rotate 3s linear infinite;
 }
-.read-more-btn:hover{
-  transform:translateY(-1px);
-  box-shadow:0 8px 20px rgba(79,70,229,.7);
+@keyframes rotate{
+  from{transform:rotate(0deg)}
+  to{transform:rotate(360deg)}
 }
-.read-more-btn.expanded{
-  background:linear-gradient(135deg,#10b981,#059669);
+.story-avatar{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#020617;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#e5e7eb;
+  font-weight:700;
+  font-size:14px;
+}
+.blog-username{
+  font-size:13px;
+  font-weight:600;
+  color:#e5e7eb;
+}
+.blog-caption-small{
+  font-size:11px;
+  color:#9ca3af;
 }
 
-/* FOOTER */
-.footer{
-  background:rgba(15,23,42,.9);
-  border-top:1px solid rgba(148,163,184,.5);
-  padding:14px;
-  text-align:center;
+.blog-card{
+  background:linear-gradient(135deg,rgba(15,23,42,.95),rgba(15,23,42,.98));
+  border-radius:20px;
+  overflow:hidden;
+  border:1px solid rgba(148,163,184,.4);
+  box-shadow:0 6px 20px rgba(0,0,0,.4);
+  display:flex;
+  flex-direction:column;
+  transition:all .4s cubic-bezier(.4,0,.2,1);
+  animation:fadeInUp .6s ease backwards;
+}
+.blog-card:nth-child(1){animation-delay:.1s}
+.blog-card:nth-child(2){animation-delay:.2s}
+.blog-card:nth-child(3){animation-delay:.3s}
+.blog-card:hover{
+  transform:translateY(-6px);
+  box-shadow:0 12px 32px rgba(99,102,241,.3);
+  border-color:rgba(99,102,241,.6);
+}
+.blog-card-top{
+  padding:10px 12px 0;
+  display:flex;
+  align-items:center;
+  gap:8px;
+}
+.blog-avatar{
+  width:30px;
+  height:30px;
+  border-radius:50%;
+  background:linear-gradient(135deg,#fb923c,#f97316,#ec4899);
+  padding:2px;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  flex-shrink:0;
+}
+.blog-avatar-inner{
+  width:100%;
+  height:100%;
+  border-radius:50%;
+  background:#020617;
+  display:flex;
+  align-items:center;
+  justify-content:center;
   font-size:13px;
+  font-weight:700;
+  color:#e5e7eb;
+}
+.blog-date{
+  font-size:10px;
+  color:#9ca3af;
+}
+
+.blog-thumb{
+  width:100%;
+  height:200px;
+  object-fit:cover;
+  display:block;
+  margin-top:10px;
+  transition:transform .5s ease;
+}
+.blog-card:hover .blog-thumb{
+  transform:scale(1.05);
+}
+
+.blog-body{
+  padding:10px 12px 10px;
+}
+.blog-badge{
+  font-size:10px;
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:.05em;
+  color:#a5b4fc;
+}
+.blog-title{
+  font-size:14px;
+  font-weight:700;
+  color:#e5e7eb;
+  margin:4px 0 2px;
+  line-height:1.4;
+}
+.blog-content-short,
+.blog-content-full{
+  font-size:12px;
+  color:#d1d5db;
+  line-height:1.5;
+}
+.blog-content-full{
+  display:none;
+}
+
+.blog-actions-row{
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-top:8px;
+  gap:8px;
+}
+.blog-actions-left{
+  display:flex;
+  gap:8px;
+  font-size:17px;
+  color:#f9fafb;
+  align-items:center;
+}
+
+.blog-like-btn{
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  transition:transform .3s ease;
+  padding:0;
+  display:flex;
+  align-items:center;
+}
+.blog-like-btn.blog-liked{
+  color:#f43f5e;
+  animation:heartBeat .6s ease;
+}
+@keyframes heartBeat{
+  0%,100%{transform:scale(1)}
+  25%{transform:scale(1.3)}
+  50%{transform:scale(1.1)}
+}
+.blog-like-btn:hover{
+  transform:scale(1.2);
+}
+.blog-like-btn:active{
+  transform:scale(.9);
+}
+.blog-like-count{
+  font-size:12px;
+  color:#d1d5db;
+  font-weight:600;
+  margin-left:3px;
+}
+
+.blog-comment-btn{
+  background:transparent;
+  border:none;
+  cursor:pointer;
+  font-size:18px;
+  color:#f9fafb;
+  transition:transform .3s ease;
+  padding:0;
+  display:flex;
+  align-items:center;
+}
+.blog-comment-btn:hover{
+  transform:scale(1.2) rotate(15deg);
+}
+.blog-comment-btn:active{
+  transform:scale(.9);
+}
+.blog-comment-count{
+  font-size:12px;
+  color:#d1d5db;
+  font-weight:600;
+  margin-left:3px;
+}
+
+.blog-comment-section{
+  margin-top:10px;
+  padding-top:10px;
+  border-top:1px solid rgba(148,163,184,.3);
+  display:none;
+  animation:slideDown .3s ease;
+}
+.blog-comment-section.show{
+  display:block;
+}
+
+.comment-form{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  margin-bottom:10px;
+}
+.comment-input-name{
+  flex:1 1 100%;
+  min-width:0;
+  padding:9px 11px;
+  border-radius:11px;
+  border:1px solid rgba(148,163,184,.4);
+  background:rgba(15,23,42,.7);
+  color:#e5e7eb;
+  font-size:16px;
+  transition:all .3s ease;
+}
+.comment-input-name:focus{
+  outline:none;
+  border-color:#6366f1;
+  box-shadow:0 0 0 3px rgba(99,102,241,.2);
+}
+.comment-input-text{
+  flex:1 1 100%;
+  min-width:0;
+  padding:9px 11px;
+  border-radius:11px;
+  border:1px solid rgba(148,163,184,.4);
+  background:rgba(15,23,42,.7);
+  color:#e5e7eb;
+  font-size:16px;
+  transition:all .3s ease;
+}
+.comment-input-text:focus{
+  outline:none;
+  border-color:#6366f1;
+  box-shadow:0 0 0 3px rgba(99,102,241,.2);
+}
+.comment-submit-btn{
+  flex:0 0 auto;
+  padding:9px 18px;
+  border-radius:11px;
+  border:none;
+  background:linear-gradient(135deg,#6366f1,#22d3ee);
+  color:#fff;
+  font-size:13px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .3s ease;
+  white-space:nowrap;
+}
+.comment-submit-btn:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(99,102,241,.4);
+}
+.comment-submit-btn:active{
+  transform:translateY(0px);
+}
+
+.comment-list{
+  max-height:180px;
+  overflow-y:auto;
+  scrollbar-width:thin;
+  scrollbar-color:rgba(99,102,241,.5) rgba(15,23,42,.5);
+}
+.comment-list::-webkit-scrollbar{
+  width:5px;
+}
+.comment-list::-webkit-scrollbar-track{
+  background:rgba(15,23,42,.5);
+  border-radius:10px;
+}
+.comment-list::-webkit-scrollbar-thumb{
+  background:rgba(99,102,241,.5);
+  border-radius:10px;
+}
+.comment-item{
+  padding:7px;
+  margin-bottom:6px;
+  background:rgba(15,23,42,.6);
+  border-radius:10px;
+  border:1px solid rgba(148,163,184,.3);
+  animation:slideIn .3s ease;
+}
+@keyframes slideIn{
+  from{
+    opacity:0;
+    transform:translateX(-20px);
+  }
+  to{
+    opacity:1;
+    transform:translateX(0);
+  }
+}
+.comment-author{
+  font-size:11px;
+  font-weight:600;
+  color:#22d3ee;
+  margin-bottom:2px;
+}
+.comment-text{
+  font-size:11px;
+  color:#d1d5db;
+  line-height:1.4;
+}
+.comment-time{
+  font-size:9px;
+  color:#9ca3af;
+  margin-top:3px;
+}
+
+.blog-read-btn{
+  padding:5px 12px;
+  border-radius:999px;
+  border:none;
+  background:linear-gradient(135deg,#6366f1,#22d3ee);
+  color:#fff;
+  font-size:10px;
+  font-weight:600;
+  cursor:pointer;
+  transition:all .3s ease;
+  white-space:nowrap;
+  flex-shrink:0;
+}
+.blog-read-btn:hover{
+  transform:scale(1.05);
+}
+.blog-read-btn.expanded{
+  background:linear-gradient(135deg,#22c55e,#16a34a);
+}
+
+.footer{
+  background:rgba(15,23,42,.95);
+  border-top:1px solid rgba(148,163,184,.3);
+  padding:12px;
+  text-align:center;
+  font-size:12px;
   color:#9ca3af;
   margin-top:10px;
+  position:relative;
+  z-index:1;
 }
 
-/* BOTTOM NAV */
 .bottom-bar{
   position:fixed;
   bottom:0;
   left:0;
   right:0;
-  background:rgba(15,23,42,.96);
-  border-top:1px solid rgba(148,163,184,.6);
+  background:rgba(15,23,42,.98);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-top:1px solid rgba(148,163,184,.4);
   display:flex;
-  padding:8px;
+  padding:6px 8px;
   z-index:1000;
-  box-shadow:0 -14px 35px rgba(15,23,42,1);
+  box-shadow:0 -6px 20px rgba(0,0,0,.4);
+  max-width:100vw;
 }
 .bottom-bar a{
   flex:1;
-  margin:0 4px;
-  padding:8px 10px;
+  margin:0 3px;
+  padding:7px 8px;
   border-radius:999px;
   text-align:center;
   font-weight:600;
   color:#e5e7eb;
   text-decoration:none;
-  font-size:12px;
+  font-size:11px;
   display:flex;
   flex-direction:column;
   gap:2px;
   align-items:center;
   justify-content:center;
-  transition:transform .18s ease,box-shadow .18s ease,background .2s ease;
-  box-shadow:0 6px 18px rgba(15,23,42,.9);
+  transition:all .3s cubic-bezier(.4,0,.2,1);
+  box-shadow:0 3px 10px rgba(0,0,0,.3);
+  position:relative;
+  min-width:0;
 }
-.nav-home{background:linear-gradient(135deg,#4f46e5,#6366f1);}
-.nav-blog{background:linear-gradient(135deg,#16a34a,#22c55e);}
-.nav-policy{background:linear-gradient(135deg,#f97316,#fb923c);}
-.nav-contact{background:linear-gradient(135deg,#0284c7,#0ea5e9);}
+.nav-home{background:linear-gradient(135deg,#4f46e5,#6366f1)}
+.nav-blog{background:linear-gradient(135deg,#16a34a,#22c55e)}
+.nav-contact{background:linear-gradient(135deg,#0284c7,#0ea5e9)}
 .bottom-bar a.active-tab{
-  box-shadow:0 0 0 2px rgba(248,250,252,.9),0 10px 26px rgba(15,23,42,1);
-  transform:translateY(-2px) scale(1.03);
+  box-shadow:0 0 0 2px rgba(248,250,252,.8),0 4px 16px rgba(0,0,0,.5);
+  transform:translateY(-3px) scale(1.05);
+}
+.bottom-bar a:active{
+  transform:translateY(0) scale(.95);
 }
 .bottom-bar a i{
-  font-size:16px;
+  font-size:15px;
+  transition:transform .3s ease;
+}
+.bottom-bar a:hover i{
+  transform:scale(1.15);
+}
+.bottom-bar a span{
+  font-size:10px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+  max-width:100%;
 }
 
-/* TABS */
-.tab-section{display:none;}
+.tab-section{
+  display:none;
+}
 
-/* POPUP */
 .popup-backdrop{
   position:fixed;
   inset:0;
-  background:rgba(15,23,42,0.7);
+  background:rgba(15,23,42,0.85);
+  backdrop-filter:blur(8px);
+  -webkit-backdrop-filter:blur(8px);
   display:flex;
   align-items:center;
   justify-content:center;
   z-index:2000;
+  animation:fadeIn .3s ease;
+  padding:20px;
+}
+@keyframes fadeIn{
+  from{opacity:0}
+  to{opacity:1}
 }
 .popup-card{
-  background:var(--glass);
-  backdrop-filter:blur(18px);
-  border-radius:22px;
-  padding:20px 18px;
-  width:90%;
-  max-width:360px;
-  box-shadow:0 24px 60px rgba(15,23,42,1);
+  background:rgba(15,23,42,.98);
+  backdrop-filter:blur(20px);
+  -webkit-backdrop-filter:blur(20px);
+  border-radius:20px;
+  padding:18px 16px;
+  width:100%;
+  max-width:340px;
+  box-shadow:0 20px 60px rgba(0,0,0,.6);
   text-align:center;
-  border:1px solid var(--glass-border);
+  border:1px solid rgba(148,163,184,.4);
+  animation:popIn .4s cubic-bezier(.4,0,.2,1);
+}
+@keyframes popIn{
+  from{
+    opacity:0;
+    transform:scale(.8);
+  }
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
 }
 .popup-card h3{
-  font-size:18px;
+  font-size:17px;
   font-weight:700;
-  margin-bottom:10px;
+  margin-bottom:8px;
   color:#e5e7eb;
 }
 .popup-card p{
-  font-size:14px;
+  font-size:13px;
   color:#d1d5db;
-  margin-bottom:18px;
+  margin-bottom:16px;
+  line-height:1.4;
 }
 .popup-actions{
   display:flex;
-  gap:10px;
+  gap:8px;
 }
 .popup-btn{
   flex:1;
   padding:10px 0;
   border-radius:999px;
   border:none;
-  font-size:14px;
+  font-size:13px;
   font-weight:600;
   cursor:pointer;
+  transition:all .3s ease;
 }
 .popup-yes{
   background:#22c55e;
   color:#fff;
 }
+.popup-yes:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(34,197,94,.4);
+}
 .popup-no{
   background:#0ea5e9;
   color:#fff;
+}
+.popup-no:hover{
+  transform:translateY(-2px);
+  box-shadow:0 6px 16px rgba(14,165,233,.4);
+}
+
+@media(max-width:480px){
+  .logo{
+    font-size:16px;
+  }
+  .logo span{
+    width:28px;
+    height:28px;
+    font-size:12px;
+  }
+  .btn{
+    padding:7px 12px;
+    font-size:12px;
+  }
+  .toggle, .notification-btn{
+    width:32px;
+    height:32px;
+    font-size:14px;
+  }
+  .notification-dropdown{
+    right:60px;
+  }
+  .hero{
+    height:180px;
+  }
+  .section-box h3{
+    font-size:16px;
+  }
 }
 </style>
 </head>
@@ -602,25 +1226,40 @@ body::before{
   <div class="container nav">
     <div class="logo"><span>T</span>TechWithTips</div>
 
-    <div style="display:flex;gap:10px;align-items:center">
+    <div class="nav-actions">
+      <button class="notification-btn" id="notificationBtn">
+        <i class="fa-solid fa-bell"></i>
+        <span class="notification-badge" id="notificationBadge">0</span>
+      </button>
+
       <button class="toggle" id="themeToggle">🌙</button>
       <button class="toggle" id="menuToggle">☰</button>
       <a class="btn" target="_blank" href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n">
         <i class="fa-brands fa-whatsapp"></i>
-        Join
+        <span>Join</span>
       </a>
+    </div>
+
+    <div id="notificationDropdown" class="notification-dropdown">
+      <div class="notification-header">
+        <h4>Notifications</h4>
+        <button class="clear-notifications" id="clearNotifications">Clear All</button>
+      </div>
+      <div class="notification-list" id="notificationList">
+        <div class="notification-empty">
+          <p>📭 Abhi koi notification nahi hai</p>
+        </div>
+      </div>
     </div>
 
     <div id="headerMenu" class="header-menu">
       <a href="#home" data-target="home" class="menu-link">🏠 Home</a>
       <a href="#blogs" data-target="blogs" class="menu-link">📝 Blog</a>
-      <a href="#policy" data-target="policy" class="menu-link">🔒 Policy</a>
       <a href="#contact" data-target="contact" class="menu-link">📞 Contact</a>
     </div>
   </div>
 </header>
 
-<!-- TELEGRAM POPUP -->
 <div id="telegramPopup" class="popup-backdrop" style="display:none;">
   <div class="popup-card">
     <h3>Telegram join kiya?</h3>
@@ -632,7 +1271,6 @@ body::before{
   </div>
 </div>
 
-<!-- HOME -->
 <section id="home" class="tab-section">
   <div class="hero">
     <div class="hero-slider">
@@ -647,54 +1285,60 @@ body::before{
     <div class="search">
       <input placeholder="Search WhatsApp earning apps..." id="searchInput">
     </div>
-    <div class="apps" id="apps"></div>
+  </div>
+  
+  <div class="apps" id="apps"></div>
+</section>
+
+<section id="blogs" class="tab-section">
+  <div class="container">
+    <div class="section-box">
+      <h3 style="color:#e5e7eb;margin-bottom:12px;">Latest Blogs</h3>
+
+      <div class="blog-feed-header">
+        <div class="blog-story-ring">
+          <div class="story-avatar">T</div>
+        </div>
+        <div>
+          <div class="blog-username">techwithtips</div>
+          <div class="blog-caption-small">WhatsApp earning tips & apps</div>
+        </div>
+      </div>
+
+      <div id="blogsList" class="blog-list"></div>
+    </div>
   </div>
 </section>
 
-<!-- BLOG TAB -->
-<section class="container tab-section" id="blogs">
-  <div class="section-box">
-    <h3 style="color:#e5e7eb;">Latest Blogs</h3>
-    <div id="blogsList" class="blog-list"></div>
-  </div>
-</section>
+<section id="contact" class="tab-section">
+  <div class="container">
+    <div class="section-box">
+      <h3 style="color:#e5e7eb;">Contact Us</h3>
+      <p style="color:#d1d5db;font-size:13px;line-height:1.5;margin-top:6px;">Support ke liye WhatsApp channel ya Telegram group par message karo.</p>
 
-<!-- POLICY -->
-<section class="container tab-section" id="policy">
-  <div class="section-box">
-    <h3 style="color:#e5e7eb;">Privacy & Policy</h3>
-    <p style="color:#d1d5db;">Hum personal data store nahi karte. Saare third‑party apps ki apni alag privacy policy hoti hai.</p>
-  </div>
-</section>
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px;">
+        <a href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"
+           target="_blank"
+           class="btn"
+           style="flex:1;min-width:120px;justify-content:flex-start;">
+          <span style="width:28px;height:28px;border-radius:50%;background:#fff;
+                       display:flex;align-items:center;justify-content:center;margin-right:6px;">
+            <i class="fab fa-whatsapp" style="color:#25D366;font-size:16px;"></i>
+          </span>
+          <span>WhatsApp</span>
+        </a>
 
-<!-- CONTACT -->
-<section class="container tab-section" id="contact">
-  <div class="section-box">
-    <h3 style="color:#e5e7eb;">Contact Us</h3>
-    <p style="color:#d1d5db;">Support ke liye WhatsApp channel ya Telegram group par message karo.</p>
-
-    <div style="display:flex;gap:14px;flex-wrap:wrap;margin-top:14px;">
-      <a href="https://whatsapp.com/channel/0029VbAUFDY47XeFGrOpa52n"
-         target="_blank"
-         class="btn"
-         style="flex:1;min-width:140px;justify-content:flex-start;">
-        <span style="width:32px;height:32px;border-radius:50%;background:#fff;
-                     display:flex;align-items:center;justify-content:center;margin-right:8px;">
-          <i class="fab fa-whatsapp" style="color:#25D366;font-size:18px;"></i>
-        </span>
-        <span>WhatsApp Channel</span>
-      </a>
-
-      <a href="https://t.me/techwithtips0"
-         target="_blank"
-         class="btn"
-         style="flex:1;min-width:140px;justify-content:flex-start;background:linear-gradient(135deg,#0284c7,#0ea5e9);">
-        <span style="width:32px;height:32px;border-radius:50%;background:#fff;
-                     display:flex;align-items:center;justify-content:center;margin-right:8px;">
-          <i class="fab fa-telegram-plane" style="color:#229ED9;font-size:18px;"></i>
-        </span>
-        <span>Telegram Group</span>
-      </a>
+        <a href="https://t.me/techwithtips0"
+           target="_blank"
+           class="btn"
+           style="flex:1;min-width:120px;justify-content:flex-start;background:linear-gradient(135deg,#0284c7,#0ea5e9);">
+          <span style="width:28px;height:28px;border-radius:50%;background:#fff;
+                       display:flex;align-items:center;justify-content:center;margin-right:6px;">
+            <i class="fab fa-telegram-plane" style="color:#229ED9;font-size:16px;"></i>
+          </span>
+          <span>Telegram</span>
+        </a>
+      </div>
     </div>
   </div>
 </section>
@@ -703,23 +1347,18 @@ body::before{
   © 2025 <strong>TechWithTips</strong>. All Rights Reserved.
 </footer>
 
-<!-- BOTTOM NAV -->
 <div class="bottom-bar">
-  <a href="#home"    class="nav-home tab-link active-tab" data-target="home">
+  <a href="#home" class="nav-home tab-link active-tab" data-target="home">
     <i class="fa-solid fa-house"></i><span>Home</span>
   </a>
-  <a href="#blogs"   class="nav-blog tab-link" data-target="blogs">
+  <a href="#blogs" class="nav-blog tab-link" data-target="blogs">
     <i class="fa-solid fa-blog"></i><span>Blog</span>
-  </a>
-  <a href="#policy"  class="nav-policy tab-link" data-target="policy">
-    <i class="fa-solid fa-shield-halved"></i><span>Policy</span>
   </a>
   <a href="#contact" class="nav-contact tab-link" data-target="contact">
     <i class="fa-solid fa-phone"></i><span>Contact</span>
   </a>
 </div>
 
-<!-- THEME -->
 <script>
 const toggle=document.getElementById("themeToggle");
 toggle.onclick=()=>{
@@ -728,7 +1367,6 @@ toggle.onclick=()=>{
 };
 </script>
 
-<!-- MENU -->
 <script>
 const menuBtn=document.getElementById("menuToggle");
 const menuBox=document.getElementById("headerMenu");
@@ -744,7 +1382,109 @@ document.addEventListener("click",(e)=>{
 });
 </script>
 
-<!-- TAB LOGIC -->
+<script>
+const notificationBtn = document.getElementById('notificationBtn');
+const notificationDropdown = document.getElementById('notificationDropdown');
+const notificationBadge = document.getElementById('notificationBadge');
+const notificationList = document.getElementById('notificationList');
+const clearNotificationsBtn = document.getElementById('clearNotifications');
+
+let notifications = JSON.parse(localStorage.getItem('twt_notifications') || '[]');
+let lastAppCount = parseInt(localStorage.getItem('twt_last_app_count') || '0');
+let lastBlogCount = parseInt(localStorage.getItem('twt_last_blog_count') || '0');
+
+function updateNotificationBadge() {
+  const unreadCount = notifications.filter(n => n.unread).length;
+  if (unreadCount > 0) {
+    notificationBadge.textContent = unreadCount > 99 ? '99+' : unreadCount;
+    notificationBadge.classList.add('show');
+  } else {
+    notificationBadge.classList.remove('show');
+  }
+}
+
+function renderNotifications() {
+  if (notifications.length === 0) {
+    notificationList.innerHTML = '<div class="notification-empty"><p>📭 Abhi koi notification nahi hai</p></div>';
+  } else {
+    notificationList.innerHTML = notifications.map((notif, index) => `
+      <div class="notification-item ${notif.unread ? 'new' : ''}" data-index="${index}">
+        <div class="notification-type">
+          <i class="${notif.icon}"></i>
+          ${notif.type}
+        </div>
+        <div class="notification-title">${notif.title}</div>
+        <div class="notification-message">${notif.message}</div>
+        <div class="notification-time">${notif.time}</div>
+      </div>
+    `).join('');
+    
+    document.querySelectorAll('.notification-item').forEach(item => {
+      item.addEventListener('click', () => {
+        const index = parseInt(item.getAttribute('data-index'));
+        const notif = notifications[index];
+        
+        notifications[index].unread = false;
+        localStorage.setItem('twt_notifications', JSON.stringify(notifications));
+        renderNotifications();
+        updateNotificationBadge();
+        
+        if(notif.type === 'New App' && notif.url) {
+          window.open(notif.url, '_blank');
+          notificationDropdown.classList.remove('show');
+        } else if(notif.type === 'New Blog' && notif.blogId) {
+          showTab('blogs');
+          notificationDropdown.classList.remove('show');
+          setTimeout(() => {
+            const blogCard = document.querySelector(`[data-blog-id="${notif.blogId}"]`);
+            if(blogCard) blogCard.scrollIntoView({ behavior: 'smooth', block: 'center' });
+          }, 300);
+        }
+      });
+    });
+  }
+  updateNotificationBadge();
+}
+
+function addNotification(type, title, message, icon, url = null, blogId = null) {
+  const notification = {
+    type: type,
+    title: title,
+    message: message,
+    icon: icon,
+    url: url,
+    blogId: blogId,
+    time: 'Abhi',
+    timestamp: Date.now(),
+    unread: true
+  };
+  notifications.unshift(notification);
+  if (notifications.length > 20) notifications.pop();
+  localStorage.setItem('twt_notifications', JSON.stringify(notifications));
+  renderNotifications();
+}
+
+notificationBtn.addEventListener('click', (e) => {
+  e.stopPropagation();
+  notificationDropdown.classList.toggle('show');
+  menuBox.style.display = 'none';
+});
+
+clearNotificationsBtn.addEventListener('click', () => {
+  notifications = [];
+  localStorage.setItem('twt_notifications', JSON.stringify(notifications));
+  renderNotifications();
+});
+
+document.addEventListener('click', (e) => {
+  if (!notificationBtn.contains(e.target) && !notificationDropdown.contains(e.target)) {
+    notificationDropdown.classList.remove('show');
+  }
+});
+
+renderNotifications();
+</script>
+
 <script>
 function showTab(id){
   document.querySelectorAll('.tab-section').forEach(sec=>{
@@ -779,15 +1519,16 @@ document.querySelectorAll('.menu-link').forEach(link=>{
 });
 </script>
 
-<!-- FIREBASE: APPS + BLOGS + REAL LIKE (UI same) -->
 <script type="module">
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.6.0/firebase-app.js";
 import { 
   getDatabase, 
   ref, 
   onValue,
-  runTransaction
-} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";  /* [web:17][web:42] */
+  runTransaction,
+  push,
+  set
+} from "https://www.gstatic.com/firebasejs/12.6.0/firebase-database.js";
 
 const firebaseConfig={
   apiKey:"AIzaSyBwC35sh20ttnUeNsMOi8ghzsab-Db_6c4",
@@ -802,11 +1543,11 @@ const searchInput=document.getElementById("searchInput");
 const blogsList=document.getElementById("blogsList");
 
 const LIKED_FLAG_PREFIX = "twt_app_liked_";
+const BLOG_LIKED_PREFIX = "twt_blog_liked_";
 
 let allApps = [];
 let allBlogs = [];
 
-/* APPS */
 onValue(ref(db,"apps"), (snapshot) => {
   const data = snapshot.val();
   allApps = data ? Object.entries(data).map(([id, app]) => ({ id, ...app })) : [];
@@ -814,6 +1555,21 @@ onValue(ref(db,"apps"), (snapshot) => {
   allApps.sort(
     (a, b) => new Date(b.timestamp || 0) - new Date(a.timestamp || 0)
   );
+
+  const currentAppCount = allApps.length;
+  if (lastAppCount > 0 && currentAppCount > lastAppCount) {
+    const newApp = allApps[0];
+    addNotification(
+      'New App',
+      newApp.name,
+      'Download karne ke liye click karo! 👆',
+      'fa-solid fa-mobile-screen-button',
+      newApp.url,
+      null
+    );
+  }
+  lastAppCount = currentAppCount;
+  localStorage.setItem('twt_last_app_count', currentAppCount);
 
   displayApps(allApps);
 });
@@ -830,14 +1586,14 @@ function displayApps(apps) {
     <div class="app-icon">
       ${app.logo ? `<img src="${app.logo}" alt="${app.name}">` : "📱"}
     </div>
-    <div>
+    <div style="flex:1;min-width:0;">
       <h3>${app.name}</h3>
       <p>${app.subtitle || "Best WhatsApp earning app"}</p>
     </div>
     <div class="rank">#${index + 1}</div>
   </div>
   <div class="app-like-row">
-    <a class="btn" href="${app.url}" target="_blank">
+    <a class="btn" href="${app.url}" target="_blank" style="flex:1;">
       <i class="fa-solid fa-download"></i>
       Download
     </a>
@@ -893,46 +1649,228 @@ if(searchInput){
   });
 }
 
-/* BLOGS */
 onValue(ref(db,"blogs"), (snapshot) => {
   const data = snapshot.val();
   allBlogs = data ? Object.entries(data).map(([id, blog]) => ({ id, ...blog })) : [];
-  allBlogs.sort((a,b)=> new Date(b.date || 0) - new Date(a.date || 0)).reverse();
+  allBlogs.sort((a,b)=> new Date(b.date || 0) - new Date(a.date || 0));
+  
+  const currentBlogCount = allBlogs.length;
+  if (lastBlogCount > 0 && currentBlogCount > lastBlogCount) {
+    const newBlog = allBlogs[0];
+    addNotification(
+      'New Blog',
+      newBlog.title,
+      'Padhne ke liye click karo! 👆',
+      'fa-solid fa-newspaper',
+      null,
+      newBlog.id
+    );
+  }
+  lastBlogCount = currentBlogCount;
+  localStorage.setItem('twt_last_blog_count', currentBlogCount);
+  
   renderBlogs();
 });
 
 function renderBlogs(){
   if(!blogsList) return;
   if(allBlogs.length===0){
-    blogsList.innerHTML = "<p style='font-size:14px;color:#9ca3af;text-align:center;padding:40px;'>Abhi koi blog add nahi hua. Admin panel se blog publish karte hi yahan dikh jayega.</p>";
+    blogsList.innerHTML =
+      "<p style='font-size:13px;color:#9ca3af;text-align:center;padding:30px;'>Abhi koi blog add nahi hua. Admin panel se blog publish karte hi yahan dikh jayega.</p>";
     return;
   }
 
-  blogsList.innerHTML = allBlogs.map((b, index)=>{
+  blogsList.innerHTML = allBlogs.map((b)=>{
     const short = (b.content || "").slice(0,100) + ((b.content||"").length>100 ? "..." : "");
     const fullContent = b.content || "No content available";
     const date = b.date ? new Date(b.date).toLocaleDateString('hi-IN') : "Just now";
     const category = b.category || "General";
-    const featured = b.featured ? " blog-featured" : "";
-    const featuredText = b.featured ? "⭐ Featured" : category;
+    
+    const likeCount = typeof b.likes === "number" ? b.likes : 0;
+    const commentCount = b.comments ? Object.keys(b.comments).length : 0;
+    
+    const blogLikeKey = BLOG_LIKED_PREFIX + b.id;
+    const alreadyBlogLiked = localStorage.getItem(blogLikeKey) === "1";
 
     return `
-<div class="blog-card" data-blog-id="${index}">
+<div class="blog-card" data-blog-id="${b.id}">
+  <div class="blog-card-top">
+    <div class="blog-avatar">
+      <div class="blog-avatar-inner">T</div>
+    </div>
+    <div style="flex:1;min-width:0;">
+      <div class="blog-username">techwithtips</div>
+      <div class="blog-date">${date}</div>
+    </div>
+    <span style="color:#e5e7eb;font-size:16px;">⋯</span>
+  </div>
+
   ${b.image ? `<img src="${b.image}" alt="${b.title}" class="blog-thumb" onerror="this.style.display='none'">` : ""}
-  <span class="blog-badge${featured}">${featuredText}</span>
-  <span class="blog-date">${date}</span>
-  <div class="blog-title">${b.title}</div>
-  <div class="blog-content-short">${short}</div>
-  <div class="blog-content-full">${fullContent}</div>
-  <button class="read-more-btn" data-blog="${index}">📖 Read More</button>
+
+  <div class="blog-body">
+    <div class="blog-badge">${category}</div>
+    <div class="blog-title">${b.title}</div>
+    <div class="blog-content-short">${short}</div>
+    <div class="blog-content-full">${fullContent}</div>
+
+    <div class="blog-actions-row">
+      <div class="blog-actions-left">
+        <button class="blog-like-btn ${alreadyBlogLiked ? 'blog-liked' : ''}" data-blog-like="${b.id}">
+          ${alreadyBlogLiked ? '❤️' : '♡'}
+        </button>
+        <span class="blog-like-count" data-blog-like-count="${b.id}">${likeCount}</span>
+        
+        <button class="blog-comment-btn" data-blog-comment-toggle="${b.id}">💬</button>
+        <span class="blog-comment-count" data-blog-comment-count="${b.id}">${commentCount}</span>
+      </div>
+      <button class="blog-read-btn" data-blog="${b.id}">Read</button>
+    </div>
+
+    <div class="blog-comment-section" data-comment-section="${b.id}">
+      <div class="comment-form">
+        <input type="text" class="comment-input-name" placeholder="Your Name" data-comment-name="${b.id}">
+        <input type="text" class="comment-input-text" placeholder="Comment..." data-comment-text="${b.id}">
+        <button class="comment-submit-btn" data-comment-submit="${b.id}">Send</button>
+      </div>
+      <div class="comment-list" data-comment-list="${b.id}"></div>
+    </div>
+  </div>
 </div>`;
   }).join("");
 
+  attachBlogLikeEvents();
+  attachCommentEvents();
   attachReadMoreEvents();
+  loadAllComments();
+}
+
+function attachBlogLikeEvents() {
+  document.querySelectorAll('[data-blog-like]').forEach(btn => {
+    const blogId = btn.getAttribute('data-blog-like');
+    const countEl = document.querySelector(`[data-blog-like-count="${blogId}"]`);
+    const likeKey = BLOG_LIKED_PREFIX + blogId;
+    
+    let alreadyLiked = localStorage.getItem(likeKey) === "1";
+    
+    btn.addEventListener('click', async () => {
+      if(alreadyLiked) return;
+      
+      alreadyLiked = true;
+      localStorage.setItem(likeKey, "1");
+      btn.classList.add('blog-liked');
+      btn.innerHTML = '❤️';
+      
+      const likeRef = ref(db, "blogs/" + blogId + "/likes");
+      
+      await runTransaction(likeRef, (current) => {
+        if (current === null || current === undefined) return 1;
+        return current + 1;
+      });
+      
+      const currentLikes = parseInt(countEl.textContent || "0", 10);
+      countEl.textContent = currentLikes + 1;
+    });
+  });
+}
+
+function attachCommentEvents() {
+  document.querySelectorAll('[data-blog-comment-toggle]').forEach(btn => {
+    const blogId = btn.getAttribute('data-blog-comment-toggle');
+    const commentSection = document.querySelector(`[data-comment-section="${blogId}"]`);
+    
+    btn.addEventListener('click', () => {
+      commentSection.classList.toggle('show');
+    });
+  });
+  
+  document.querySelectorAll('[data-comment-submit]').forEach(btn => {
+    const blogId = btn.getAttribute('data-comment-submit');
+    
+    btn.addEventListener('click', async () => {
+      const nameInput = document.querySelector(`[data-comment-name="${blogId}"]`);
+      const textInput = document.querySelector(`[data-comment-text="${blogId}"]`);
+      
+      const name = nameInput.value.trim();
+      const text = textInput.value.trim();
+      
+      if(!name || !text) {
+        alert('Name aur comment dono required hain!');
+        return;
+      }
+      
+      const commentsRef = ref(db, `blogs/${blogId}/comments`);
+      const newCommentRef = push(commentsRef);
+      
+      await set(newCommentRef, {
+        name: name,
+        text: text,
+        timestamp: Date.now()
+      });
+      
+      nameInput.value = '';
+      textInput.value = '';
+      
+      const countEl = document.querySelector(`[data-blog-comment-count="${blogId}"]`);
+      const currentCount = parseInt(countEl.textContent || "0", 10);
+      countEl.textContent = currentCount + 1;
+      
+      loadCommentsForBlog(blogId);
+    });
+  });
+}
+
+function loadCommentsForBlog(blogId) {
+  const commentsRef = ref(db, `blogs/${blogId}/comments`);
+  
+  onValue(commentsRef, (snapshot) => {
+    const comments = snapshot.val();
+    const commentListEl = document.querySelector(`[data-comment-list="${blogId}"]`);
+    
+    if(!comments || !commentListEl) {
+      if(commentListEl) commentListEl.innerHTML = '<p style="font-size:10px;color:#9ca3af;text-align:center;padding:8px;">Abhi koi comment nahi hai.</p>';
+      return;
+    }
+    
+    const commentArray = Object.entries(comments).map(([id, comment]) => ({
+      id,
+      ...comment
+    })).sort((a, b) => b.timestamp - a.timestamp);
+    
+    commentListEl.innerHTML = commentArray.map(comment => {
+      const timeAgo = getTimeAgo(comment.timestamp);
+      return `
+<div class="comment-item">
+  <div class="comment-author">${comment.name}</div>
+  <div class="comment-text">${comment.text}</div>
+  <div class="comment-time">${timeAgo}</div>
+</div>`;
+    }).join('');
+  });
+}
+
+function loadAllComments() {
+  allBlogs.forEach(blog => {
+    loadCommentsForBlog(blog.id);
+  });
+}
+
+function getTimeAgo(timestamp) {
+  const now = Date.now();
+  const diff = now - timestamp;
+  
+  const seconds = Math.floor(diff / 1000);
+  const minutes = Math.floor(seconds / 60);
+  const hours = Math.floor(minutes / 60);
+  const days = Math.floor(hours / 24);
+  
+  if(days > 0) return `${days} din pehle`;
+  if(hours > 0) return `${hours} ghante pehle`;
+  if(minutes > 0) return `${minutes} minute pehle`;
+  return 'Abhi';
 }
 
 function attachReadMoreEvents() {
-  document.querySelectorAll('.read-more-btn').forEach(btn => {
+  document.querySelectorAll('.blog-read-btn').forEach(btn => {
     btn.onclick = function(e) {
       e.stopPropagation();
       const card = this.closest('.blog-card');
@@ -942,12 +1880,12 @@ function attachReadMoreEvents() {
       if(fullContent.style.display === 'none' || fullContent.style.display === ''){
         shortContent.style.display = 'none';
         fullContent.style.display = 'block';
-        this.textContent = '📖 Read Less';
+        this.textContent = 'Less';
         this.classList.add('expanded');
       } else {
         shortContent.style.display = 'block';
         fullContent.style.display = 'none';
-        this.textContent = '📖 Read More';
+        this.textContent = 'Read';
         this.classList.remove('expanded');
       }
     };
@@ -955,7 +1893,6 @@ function attachReadMoreEvents() {
 }
 </script>
 
-<!-- TELEGRAM POPUP LOGIC -->
 <script>
 const popup = document.getElementById('telegramPopup');
 const popupYes = document.getElementById('popupYes');
@@ -982,4 +1919,3 @@ popupNo.addEventListener('click', () => {
 
 </body>
 </html>
-
