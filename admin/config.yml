@@ -2,8 +2,8 @@ backend:
   name: git-gateway
   branch: main
 
-media_folder: "admin/uploads"
-public_folder: "/admin/uploads"
+media_folder: "posts/uploads"
+public_folder: "/posts/uploads"
 
 site_url: https://techwithtips.in
 
@@ -16,6 +16,5 @@ collections:
     fields:
       - { label: "Title", name: "title", widget: "string" }
       - { label: "Publish Date", name: "date", widget: "datetime" }
-      - { label: "Description", name: "description", widget: "string" }
       - { label: "Body", name: "body", widget: "markdown" }
-      - { label: "Image", name: "thumbnail", widget: "image" }
+      - { label: "Image", name: "image", widget: "image" }
