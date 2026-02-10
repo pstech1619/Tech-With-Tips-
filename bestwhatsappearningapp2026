@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>techwithtips - WhatsApp Earning App Review 2026</title>
+<meta name="description" content="techwithtips - WhatsApp earning app full reviews, online earning guide, real or fake analysis, withdrawal proof & FAQs." />
+
+<!-- Tailwind CDN -->
+<script src="https://cdn.tailwindcss.com"></script>
+
+<style>
+body { scroll-behavior: smooth; }
+.page { display: none; }
+.active-page { display: block; }
+</style>
+
+</head>
+<body class="bg-orange-50 text-slate-900">
+
+<!-- HEADER -->
+<header class="sticky top-0 z-20 border-b border-orange-100 bg-white/90 backdrop-blur">
+  <div class="mx-auto flex max-w-5xl items-center justify-between px-4 py-3">
+    <button onclick="navigate('home')" class="flex items-center gap-2">
+      <div class="flex h-9 w-9 items-center justify-center rounded-xl bg-gradient-to-br from-orange-500 to-amber-500 text-white font-semibold">twt</div>
+      <div class="leading-tight">
+        <span class="text-sm font-semibold uppercase tracking-wide text-orange-600">techwithtips</span><br>
+        <span class="text-[11px] text-slate-500">WhatsApp earning app reviews</span>
+      </div>
+    </button>
+
+    <nav class="hidden sm:flex gap-5 text-sm font-medium text-slate-700">
+      <button onclick="navigate('home')" class="hover:text-orange-600">Home</button>
+      <button onclick="navigate('about')" class="hover:text-orange-600">About</button>
+      <button onclick="navigate('blog')" class="hover:text-orange-600">Win03 Review</button>
+      <button onclick="navigate('faq')" class="hover:text-orange-600">FAQ</button>
+      <button onclick="navigate('contact')" class="hover:text-orange-600">Contact</button>
+    </nav>
+  </div>
+</header>
+
+<!-- PAGES WRAPPER -->
+<div class="mx-auto max-w-5xl px-4 py-6">
+
+<!-- HOME PAGE -->
+<section id="home" class="page active-page">
+
+  <div class="rounded-2xl bg-gradient-to-br from-orange-500 to-amber-400 p-6 text-white shadow-sm">
+    <h1 class="text-3xl font-bold">[win03] WhatsApp Earning App Review</h1>
+    <p class="mt-3 text-orange-50">
+      Is article me hum WhatsApp earning app [win03] ka full review karenge –
+      earning method, registration, tasks, withdrawal proof, real or fake analysis।
+    </p>
+  </div>
+
+  <div class="mt-5 h-px w-full bg-gradient-to-r from-transparent via-orange-200 to-transparent"></div>
+
+  <div class="mt-5 space-y-6">
+
+    <div class="rounded-2xl border border-orange-100 bg-white p-5">
+      <h2 class="text-xl font-semibold">[win03] Kya Hai?</h2>
+      <p class="mt-2 text-slate-700">
+        [win03] ek WhatsApp earning app hai jisme aap tasks complete karke earning kar sakte ho।
+        Tasks like: share, status, click, view campaigns.
+      </p>
+    </div>
+
+    <div class="rounded-2xl border border-orange-100 bg-white p-5">
+      <h2 class="text-xl font-semibold">[win03] Se Earning Kaise Kare?</h2>
+      <ol class="mt-2 list-decimal pl-5 space-y-2">
+        <li>App download & install</li>
+        <li>Mobile + WhatsApp verify</li>
+        <li>Tasks complete karo</li>
+        <li>Proof submit</li>
+        <li>Minimum withdrawal ke baad UPI payout</li>
+      </ol>
+    </div>
+
+    <button onclick="navigate('blog')" 
+      class="px-6 py-3 rounded-full bg-orange-600 text-white shadow hover:brightness-110">
+      Full Review Padho →
+    </button>
+
+  </div>
+
+</section>
+
+
+
+<!-- ABOUT PAGE -->
+<section id="about" class="page">
+  <h1 class="text-2xl font-bold">About techwithtips</h1>
+  <p class="mt-2 text-slate-600">
+    techwithtips ek independent blogging project hai jo WhatsApp earning apps, online earning app 2026,
+    scam alerts aur digital income guides Hindi me deta hai।
+  </p>
+
+  <div class="mt-4 rounded-2xl bg-white p-5 border border-orange-100">
+    <h2 class="font-semibold text-lg">Hamari Approach</h2>
+    <p class="mt-2">
+      - No hype, no fake promise  
+      - Sirf real testing ke baad review  
+      - Scam protection aur genuine info  
+    </p>
+  </div>
+</section>
+
+
+
+<!-- FULL REVIEW PAGE -->
+<section id="blog" class="page">
+
+  <h1 class="text-2xl font-bold">[win03] WhatsApp Earning App Review – Real or Fake?</h1>
+  <p class="mt-2 text-slate-600">
+    Poora detailed honest review aap yahan padhenge।
+  </p>
+
+  <div class="mt-5 space-y-6">
+
+    <div class="rounded-xl bg-white p-5 border border-orange-100">
+      <h2 class="text-lg font-semibold">Background & Concept</h2>
+      <p class="mt-2 text-slate-700">
+        App claim karta hai ki WhatsApp tasks se earning ho sakti hai – but transparency low hoti hai।
+      </p>
+    </div>
+
+    <div class="rounded-xl bg-white p-5 border border-orange-100">
+      <h2 class="text-lg font-semibold">Withdrawal Proof</h2>
+      <img src="https://via.placeholder.com/600x300.png?text=Sample+Withdrawal" class="rounded mt-3" />
+      <p class="mt-2 text-slate-700">Real proof inconsistent milta hai, bahut users pending withdrawal batate hain.</p>
+    </div>
+
+    <div class="rounded-xl bg-white p-5 border border-orange-100">
+      <h2 class="text-lg font-semibold">Final Verdict</h2>
+      <p class="mt-2">
+        ✔ Small earning possible  
+        ❌ Long-term safe nahi  
+        ❌ High-risk app  
+      </p>
+    </div>
+
+  </div>
+
+</section>
+
+
+
+<!-- FAQ PAGE -->
+<section id="faq" class="page">
+
+  <h1 class="text-2xl font-bold">FAQ – WhatsApp Earning App</h1>
+
+  <div class="mt-4 space-y-4">
+
+    <details class="bg-white p-4 border rounded-xl">
+      <summary class="font-semibold">WhatsApp earning app kya hota hai?</summary>
+      <p class="mt-2 text-slate-700">
+        Ye apps tasks ke badle thodi earning dete hain।
+      </p>
+    </details>
+
+    <details class="bg-white p-4 border rounded-xl">
+      <summary class="font-semibold">Kya [win03] safe hai?</summary>
+      <p class="mt-2 text-slate-700">
+        High risk app — consistent payout nahi hai।
+      </p>
+    </details>
+
+  </div>
+
+</section>
+
+
+
+<!-- CONTACT PAGE -->
+<section id="contact" class="page">
+
+  <h1 class="text-2xl font-bold">Contact Us</h1>
+  <p class="mt-2 text-slate-700">Kisi app review ka request ho to message bhejein।</p>
+
+  <form class="mt-4 space-y-3 bg-white p-5 rounded-xl border">
+    <input class="w-full border px-3 py-2 rounded" placeholder="Your Name" required />
+    <input class="w-full border px-3 py-2 rounded" placeholder="Email" required />
+    <textarea class="w-full border px-3 py-2 rounded" rows="4" placeholder="Your Message"></textarea>
+    <button class="px-6 py-2 bg-orange-600 text-white rounded-full">Send (Demo)</button>
+  </form>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer class="mt-10 border-t border-orange-100 bg-white py-6 text-xs text-slate-500">
+  <div class="max-w-5xl mx-auto px-4 flex flex-col sm:flex-row justify-between">
+    <p>© techwithtips 2026 — Educational purpose only.</p>
+    <button onclick="navigate('about')" class="underline text-orange-600">About</button>
+  </div>
+</footer>
+
+</div>
+
+<script>
+function navigate(page) {
+  document.querySelectorAll('.page').forEach(p => p.classList.remove('active-page'));
+  document.getElementById(page).classList.add('active-page');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
